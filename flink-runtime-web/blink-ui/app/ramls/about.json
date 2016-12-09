@@ -1,0 +1,5 @@
+{
+  "version": "0.1.0",
+  "jdk": "1.7",
+  "builder": "test"
+}

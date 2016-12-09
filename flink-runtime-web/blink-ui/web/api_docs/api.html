@@ -1,0 +1,5244 @@
+<!DOCTYPE HTML><html><head><title>blink-master API documentation</title><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="generator" content="https://github.com/kevinrenskers/raml2html 1.6.0"><link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"><link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css"><script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script><script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script><script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {
+            $('.page-header pre code, .top-resource-description pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+
+            $('[data-toggle]').click(function() {
+                var selector = $(this).data('target') + ' pre code';
+                $(selector).each(function(i, block) {
+                    hljs.highlightBlock(block);
+                });
+            });
+            
+            
+            // open modal on hashes like #_action_get
+            $(window).bind('hashchange', function(e) {
+                var anchor_id = document.location.hash.substr(1); //strip #
+                var element = $('#' + anchor_id);
+
+                // do we have such element + is it a modal?  --> show it
+                if (element.length && element.hasClass('modal')) {
+                    element.modal('show');
+                }
+            });
+
+            // execute hashchange on first page load
+            $(window).trigger('hashchange');
+            
+            // remove url fragment on modal hide
+            $('.modal').on('hidden.bs.modal', function() {
+                if(history && history.replaceState) { 
+                    history.replaceState({}, '', '#');
+                }
+            });
+        });
+    </script><style>
+        .hljs {
+            background: transparent;
+        }
+        .parent {
+            color: #999;
+        }
+        .list-group-item > .badge {
+            float: none;
+            margin-right: 6px;
+        }
+        .panel-title > .methods {
+            float: right;
+        }
+        .badge {
+            border-radius: 0;
+            text-transform: uppercase;
+            width: 70px;
+            font-weight: normal;
+            color: #f3f3f6;
+            line-height: normal;
+        }
+        .badge_get {
+            background-color: #63a8e2;
+        }
+        .badge_post {
+            background-color: #6cbd7d;
+        }
+        .badge_put {
+            background-color: #22bac4;
+        }
+        .badge_delete {
+            background-color: #d26460;
+        }
+        .badge_patch {
+            background-color: #ccc444;
+        }
+        .list-group, .panel-group {
+            margin-bottom: 0;
+        }
+        .panel-group .panel+.panel-white {
+            margin-top: 0;
+        }
+        .panel-group .panel-white {
+            border-bottom: 1px solid #F5F5F5;
+            border-radius: 0;
+        }
+        .panel-white:last-child {
+            border-bottom-color: white;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+        .panel-white .panel-heading {
+            background: white;
+        }
+        .tab-pane ul {
+            padding-left: 2em;
+        }
+        .tab-pane h2 {
+            font-size: 1.2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #ddd;
+        }
+        .tab-pane h3 {
+            font-size: 1.1em;
+        }
+        .tab-content {
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+        #sidebar {
+            margin-top: 30px;
+            padding-right: 5px;
+            overflow: auto;
+            height: 90%;
+        }
+        .top-resource-description {
+            border-bottom: 1px solid #ddd;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description {
+            border-bottom: 1px solid #fcfcfc;
+            background: #fcfcfc;
+            padding: 15px 15px 0 15px;
+            margin: -15px -15px 10px -15px;
+        }
+        .resource-description p:last-child {
+            margin: 0;
+        }
+        .list-group .badge {
+            float: left;
+        }
+        .method_description {
+            margin-left: 85px;
+        }
+        .method_description p:last-child {
+            margin: 0;
+        }
+        .list-group-item {
+            cursor: pointer;
+        }
+        .list-group-item:hover {
+            background-color: #f5f5f5;
+        }
+    </style></head><body data-spy="scroll" data-target="#sidebar"><div class="container"><div class="row"><div class="col-md-9" role="main"><div class="page-header"><h1>blink-master API documentation <small>version 0.0.1</small></h1><p>http://server/api/0.0.1</p></div><div class="panel panel-default"><div class="panel-heading"><h3 id="_jobs" class="panel-title">/jobs</h3></div><div class="panel-body"><div class="panel-group"><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs"><span class="parent"></span>/jobs</a> <span class="methods"><a href="#_jobs_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get all job id loaded in the api server</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent"></span>/jobs</h4></div><div class="modal-body"><div class="alert alert-info"><p>get all job id loaded in the api server</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs_get_request"><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all jobs",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "jobs": {
+        "type": "array",
+        "items": {"$ref": "job"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 1,
+  "jobs": [
+    {
+      "id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+      "name": "FileLineCountAndWordCountWithCounter",
+      "status": "RUNNING",
+      "start_time": 1.450164790433E12,
+      "stop_time": -1,
+      "duration": 1116262.0,
+      "vertices": 7,
+      "executions": 11,
+      "executors": 11
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id_"><span class="parent">/jobs</span>/{job_id}</a> <span class="methods"><a href="#_jobs__job_id__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overview of the given job</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs</span>/{job_id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overview of the given job</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "overview of a job",
+   "properties": {
+     "id": { "type": "string", "required": true },
+     "name": { "type": "string", "required": true },
+     "status": { "type": "string", "required": true },
+     "start_time": { "type": "number", "required": true},
+     "duration": { "type": "number", "required": true},
+     "stop_time": { "type": "number"},
+     "vertices": { "type": "integer", "required": true},
+     "executions": { "type": "integer", "required": true},
+     "executors": { "type": "integer", "required": true}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+  "name": "FileLineCountAndWordCountWithCounter",
+  "status": "RUNNING",
+  "start_time": 1.450164790433E12,
+  "stop_time": -1.0,
+  "duration": 1139939.0,
+  "vertices": 7,
+  "executions": 11,
+  "executors": 11
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__configuration"><span class="parent">/jobs/{job_id}</span>/configuration</a> <span class="methods"><a href="#_jobs__job_id__configuration_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__configuration" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__configuration_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get configuration of the given job</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__configuration_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}</span>/configuration</h4></div><div class="modal-body"><div class="alert alert-info"><p>get configuration of the given job</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__configuration_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__configuration_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__configuration_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__configuration_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all config",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "configs": {
+        "type": "array",
+        "items": {"$ref": "config"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 749,
+  "configs": [
+    {
+      "name": "dfs.datanode.data.dir",
+      "value": "file:///dump/2/dfs/data,file:///dump/3/dfs/data,file:///dump/4/dfs/data,file:///dump/5/dfs/data,file:///dump/6/dfs/data,file:///dump/7/dfs/data,file:///dump/8/dfs/data,file:///dump/9/dfs/data,[SSD]file:///dump/10/dfs/data,[SSD]file:///dump/11/dfs/data,[SSD]file:///dump/1/dfs/data"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.txns",
+      "value": "40000000"
+    },
+    {
+      "name": "s3.replication",
+      "value": "3"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.event-log-enabled",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress.type",
+      "value": "RECORD"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.lru.cache.size",
+      "value": "5"
+    },
+    {
+      "name": "dfs.datanode.failed.volumes.tolerated",
+      "value": "1"
+    },
+    {
+      "name": "hadoop.http.filter.initializers",
+      "value": "org.apache.hadoop.http.lib.StaticUserWebFilter"
+    },
+    {
+      "name": "dfs.namenode.top.window.num.buckets",
+      "value": "10"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.allow-undeclared-pools",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.cluster.temp.dir",
+      "value": "${hadoop.tmp.dir}/mapred/temp"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.memory.limit.percent",
+      "value": "0.25"
+    },
+    {
+      "name": "yarn.nodemanager.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.times",
+      "value": "5"
+    },
+    {
+      "name": "nfs.mountd.port",
+      "value": "4242"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-acl",
+      "value": "world:anyone:rwcda"
+    },
+    {
+      "name": "dfs.namenode.top.num.users",
+      "value": "10"
+    },
+    {
+      "name": "dfs.https.server.keystore.resource",
+      "value": "ssl-server.xml"
+    },
+    {
+      "name": "mapreduce.reduce.skip.maxgroups",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.http.authentication.kerberos.keytab",
+      "value": "${user.home}/hadoop.keytab"
+    },
+    {
+      "name": "dfs.domain.socket.path",
+      "value": "/var/run/hadoop-hdfs/dn._PORT"
+    },
+    {
+      "name": "yarn.app.mapreduce.task.container.log.backups",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.fileoutputcommitter.algorithm.version",
+      "value": "1"
+    },
+    {
+      "name": "dfs.ha.fencing.ssh.private-key-files",
+      "value": "${user.home.name}/.ssh/id_rsa"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage",
+      "value": "90.0"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.best-effort",
+      "value": "false"
+    },
+    {
+      "name": "dfs.datanode.sync.behind.writes.in.background",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.done-dir",
+      "value": "/history/done"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.client.thread-count",
+      "value": "5"
+    },
+    {
+      "name": "hadoop.shell.missing.defaultFs.warning",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.framework.name",
+      "value": "yarn"
+    },
+    {
+      "name": "ha.failover-controller.new-active.rpc-timeout.ms",
+      "value": "60000"
+    },
+    {
+      "name": "ha.health-monitor.check-interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "io.file.buffer.size",
+      "value": "131072"
+    },
+    {
+      "name": "mapreduce.shuffle.max.connections",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.resource.check.interval",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.block.map.allocation.percent",
+      "value": "0.25"
+    },
+    {
+      "name": "mapreduce.task.tmp.dir",
+      "value": "./tmp"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.period",
+      "value": "86400"
+    },
+    {
+      "name": "dfs.client.mmap.cache.timeout.ms",
+      "value": "3600000"
+    },
+    {
+      "name": "ipc.client.kill.max",
+      "value": "10"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.class",
+      "value": "com.etao.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler"
+    },
+    {
+      "name": "mapreduce.jobtracker.taskcache.levels",
+      "value": "2"
+    },
+    {
+      "name": "s3.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "dfs.namenode.secondary.http-address",
+      "value": "0.0.0.0:50090"
+    },
+    {
+      "name": "yarn.client.nodemanager-connect.max-wait-ms",
+      "value": "900000"
+    },
+    {
+      "name": "dfs.namenode.decommission.interval",
+      "value": "30"
+    },
+    {
+      "name": "dfs.namenode.http-address",
+      "value": "0.0.0.0:50070"
+    },
+    {
+      "name": "dfs.encrypt.data.transfer",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.files.preserve.failedtasks",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.avoid.write.stale.datanode",
+      "value": "true"
+    },
+    {
+      "name": "dfs.datanode.address",
+      "value": "0.0.0.0:50010"
+    },
+    {
+      "name": "hadoop.proxyuser.hadoop.hosts",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.http.authentication.token.validity",
+      "value": "36000"
+    },
+    {
+      "name": "yarn.resourcemanager.nodes.exclude-path",
+      "value": "/home/hadoop/hadoop_hbase/hadoop-current/etc/hadoop/yarn-exclude"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.filter.group",
+      "value": "(objectClass\u003dgroup)"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.monitor.policies",
+      "value": "org.apache.hadoop.yarn.server.resourcemanager.monitor.capacity.ProportionalCapacityPreemptionPolicy"
+    },
+    {
+      "name": "dfs.client.failover.max.attempts",
+      "value": "15"
+    },
+    {
+      "name": "hadoop.registry.zk.connection.timeout.ms",
+      "value": "15000"
+    },
+    {
+      "name": "hadoop.security.crypto.cipher.suite",
+      "value": "AES/CTR/NoPadding"
+    },
+    {
+      "name": "yarn.resourcemanager.fs.state-store.retry-policy-spec",
+      "value": "2000, 500"
+    },
+    {
+      "name": "mapreduce.task.profile.params",
+      "value": "-agentlib:hprof\u003dcpu\u003dsamples,heap\u003dsites,force\u003dn,thread\u003dy,verbose\u003dn,file\u003d%s"
+    },
+    {
+      "name": "yarn.timeline-service.http-authentication.simple.anonymous.allowed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.local-cache.max-files-per-directory",
+      "value": "8192"
+    },
+    {
+      "name": "yarn.admin.acl",
+      "value": "*"
+    },
+    {
+      "name": "yarn.resourcemanager.cluster-id",
+      "value": "hdp"
+    },
+    {
+      "name": "yarn.client.failover-retries-on-socket-timeouts",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.retrycache.expirytime.millis",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.resourcemanager.nodemanagers.heartbeat-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.client.failover.connection.retries.on.timeouts",
+      "value": "0"
+    },
+    {
+      "name": "yarn.client.failover-proxy-provider",
+      "value": "org.apache.hadoop.yarn.client.ConfiguredRMFailoverProxyProvider"
+    },
+    {
+      "name": "mapreduce.map.sort.spill.percent",
+      "value": "0.80"
+    },
+    {
+      "name": "file.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "user.home.name",
+      "value": "/home/hadoop"
+    },
+    {
+      "name": "dfs.webhdfs.enabled",
+      "value": "true"
+    },
+    {
+      "name": "io.compression.codec.lzo.class",
+      "value": "com.hadoop.compression.lzo.LzoCodec"
+    },
+    {
+      "name": "ipc.client.connection.maxidletime",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.task.combine.progress.records",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.hours",
+      "value": "1"
+    },
+    {
+      "name": "dfs.datanode.ipc.address",
+      "value": "0.0.0.0:50020"
+    },
+    {
+      "name": "yarn.nodemanager.address",
+      "value": "${yarn.nodemanager.hostname}:0"
+    },
+    {
+      "name": "dfs.image.transfer.chunksize",
+      "value": "65536"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.embedded",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.store.fs.uri",
+      "value": "${hadoop.tmp.dir}/mapred/history/recoverystore"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-state-store.parent-path",
+      "value": "/rmstore"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.task.listener.thread-count",
+      "value": "30"
+    },
+    {
+      "name": "nfs.dump.dir",
+      "value": "/tmp/.hdfs-nfs"
+    },
+    {
+      "name": "dfs.namenode.list.cache.pools.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.job.running.map.limit",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.shared.edits.dir",
+      "value": "qjournal://hdpm1.zmf.tbsite.net;hdpm2.zmf.tbsite.net;hdp1.tbc.tbsite.net;/hdp"
+    },
+    {
+      "name": "dfs.namenode.safemode.extension",
+      "value": "30000"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.sizebasedweight",
+      "value": "false"
+    },
+    {
+      "name": "ha.zookeeper.parent-znode",
+      "value": "/hadoop-ha"
+    },
+    {
+      "name": "yarn.nodemanager.container-executor.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor"
+    },
+    {
+      "name": "io.skip.checksum.errors",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.refresh.interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.encrypt.data.transfer.cipher.key.bitlength",
+      "value": "128"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.nodemanager.recovery.dir",
+      "value": "${hadoop.tmp.dir}/yarn-nm-recovery"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files.timestamp",
+      "value": "1450164780300,1450164781565,1450164781945"
+    },
+    {
+      "name": "mapreduce.job.emit-timeline-data",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.http.authentication.kerberos.principal",
+      "value": "HTTP/_HOST@LOCALHOST"
+    },
+    {
+      "name": "mapreduce.reduce.log.level",
+      "value": "DEBUG"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.user-pattern",
+      "value": "^[_.A-Za-z0-9][-@_.A-Za-z0-9]{0,255}?[$]?$"
+    },
+    {
+      "name": "fs.s3.maxRetries",
+      "value": "4"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compression.type",
+      "value": "RECORD"
+    },
+    {
+      "name": "yarn.nodemanager.resourcemanager.minimum.version",
+      "value": "NONE"
+    },
+    {
+      "name": "hadoop.kerberos.kinit.command",
+      "value": "kinit"
+    },
+    {
+      "name": "yarn.log-aggregation.retain-check-interval-seconds",
+      "value": "18000"
+    },
+    {
+      "name": "yarn.nodemanager.process-kill-wait.ms",
+      "value": "2000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.mount",
+      "value": "true"
+    },
+    {
+      "name": "dfs.balancer.maxIterationTime",
+      "value": "60000"
+    },
+    {
+      "name": "fs.s3a.fast.buffer.size",
+      "value": "1048576"
+    },
+    {
+      "name": "dfs.namenode.name.dir.restore",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobtracker.handler.count",
+      "value": "10"
+    },
+    {
+      "name": "mapreduce.jobhistory.admin.address",
+      "value": "0.0.0.0:10033"
+    },
+    {
+      "name": "yarn.app.mapreduce.client-am.ipc.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "dfs.client.use.datanode.hostname",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.util.hash.type",
+      "value": "murmur"
+    },
+    {
+      "name": "dfs.datanode.available-space-volume-choosing-policy.balanced-space-preference-fraction",
+      "value": "0.75f"
+    },
+    {
+      "name": "dfs.datanode.dns.interface",
+      "value": "default"
+    },
+    {
+      "name": "io.seqfile.lazydecompress",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.lazypersist.file.scrub.interval.sec",
+      "value": "300"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.min-healthy-disks",
+      "value": "0.25"
+    },
+    {
+      "name": "yarn.client.max-cached-nodemanagers-proxies",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.job.maxtaskfailures.per.tracker",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.tasktracker.healthchecker.script.timeout",
+      "value": "600000"
+    },
+    {
+      "name": "hadoop.proxyuser.httpfs.groups",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.attr.group.name",
+      "value": "cn"
+    },
+    {
+      "name": "dfs.namenode.top.enabled",
+      "value": "true"
+    },
+    {
+      "name": "fs.df.interval",
+      "value": "60000"
+    },
+    {
+      "name": "hadoop.security.crypto.buffer.size",
+      "value": "8192"
+    },
+    {
+      "name": "dfs.balancer.dispatcherThreads",
+      "value": "20"
+    },
+    {
+      "name": "dfs.namenode.kerberos.internal.spnego.principal",
+      "value": "${dfs.web.authentication.kerberos.principal}"
+    },
+    {
+      "name": "dfs.client.cached.conn.retry",
+      "value": "3"
+    },
+    {
+      "name": "mapreduce.job.reduce.shuffle.consumer.plugin.class",
+      "value": "org.apache.hadoop.mapreduce.task.reduce.Shuffle"
+    },
+    {
+      "name": "mapreduce.jobtracker.address",
+      "value": "local"
+    },
+    {
+      "name": "mapreduce.tasktracker.tasks.sleeptimebeforesigkill",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.journalnode.rpc-address",
+      "value": "0.0.0.0:8485"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-blocks-per-file",
+      "value": "1048576"
+    },
+    {
+      "name": "mapreduce.job.acl-view-job",
+      "value": "* "
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.committer.cancel-timeout",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.policy",
+      "value": "DEFAULT"
+    },
+    {
+      "name": "mapreduce.shuffle.connection-keep-alive.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.blink.zookeeper.quorum",
+      "value": "hdp1.tbc.tbsite.net"
+    },
+    {
+      "name": "dfs.namenode.replication.interval",
+      "value": "3"
+    },
+    {
+      "name": "mapreduce.jobhistory.minicluster.fixed.ports",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.num.checkpoints.retained",
+      "value": "2"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.address",
+      "value": "hdpm1.zmf.tbsite.net:8030"
+    },
+    {
+      "name": "mapreduce.tasktracker.http.address",
+      "value": "0.0.0.0:50060"
+    },
+    {
+      "name": "mapreduce.jobhistory.admin.acl",
+      "value": "*"
+    },
+    {
+      "name": "dfs.datanode.directoryscan.threads",
+      "value": "6"
+    },
+    {
+      "name": "mapreduce.reduce.memory.mb",
+      "value": "2048"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.ssl",
+      "value": "false"
+    },
+    {
+      "name": "dfs.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "mapreduce.task.merge.progress.records",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.heartbeat.interval",
+      "value": "3"
+    },
+    {
+      "name": "yarn.resourcemanager.system-metrics-publisher.dispatcher.pool-size",
+      "value": "10"
+    },
+    {
+      "name": "fs.s3a.threads.keepalivetime",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.hosts.exclude",
+      "value": "${hadoop.home}/etc/hadoop/exclude"
+    },
+    {
+      "name": "net.topology.script.number.args",
+      "value": "100"
+    },
+    {
+      "name": "fs.s3a.threads.core",
+      "value": "15"
+    },
+    {
+      "name": "mapreduce.local.clientfactory.class.name",
+      "value": "org.apache.hadoop.mapred.LocalClientFactory"
+    },
+    {
+      "name": "dfs.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "yarn.dispatcher.drain-events.timeout",
+      "value": "300000"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.directory.search.timeout",
+      "value": "10000"
+    },
+    {
+      "name": "io.native.lib.available",
+      "value": "true"
+    },
+    {
+      "name": "dfs.nameservices",
+      "value": "hdp"
+    },
+    {
+      "name": "dfs.client.failover.connection.retries",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.interval-ms",
+      "value": "120000"
+    },
+    {
+      "name": "dfs.blocksize",
+      "value": "134217728"
+    },
+    {
+      "name": "dfs.client.use.legacy.blockreader.local",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.container-tokens.master-key-rolling-interval-secs",
+      "value": "86400"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.webapp.address",
+      "value": "hdpm1.zmf.tbsite.net:19888"
+    },
+    {
+      "name": "yarn.resourcemanager.resource-tracker.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.client.failover-retries",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.registry.jaas.context",
+      "value": "Client"
+    },
+    {
+      "name": "dfs.blockreport.initialDelay",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.aux-services.mapreduce_shuffle.class",
+      "value": "org.apache.hadoop.mapred.ShuffleHandler"
+    },
+    {
+      "name": "ha.health-monitor.rpc-timeout.ms",
+      "value": "45000"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-timeout-ms",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.reduce.markreset.buffer.percent",
+      "value": "0.0"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.start-time-read-cache-size",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.ha.tail-edits.period",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.nodemanager.health-checker.script.timeout-ms",
+      "value": "1200000"
+    },
+    {
+      "name": "file.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "dfs.replication.max",
+      "value": "512"
+    },
+    {
+      "name": "yarn.nodemanager.container-metrics.enable",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.max.extra.edits.segments.retained",
+      "value": "10000"
+    },
+    {
+      "name": "io.map.index.skip",
+      "value": "0"
+    },
+    {
+      "name": "yarn.timeline-service.client.retry-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.mount-path",
+      "value": "/cgroup"
+    },
+    {
+      "name": "mapreduce.task.timeout",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.reduce.cpu.vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.datanode.du.reserved",
+      "value": "53687091200"
+    },
+    {
+      "name": "dfs.support.append",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.file-block-storage-locations.num-threads",
+      "value": "10"
+    },
+    {
+      "name": "ftp.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "net.topology.script.file.name",
+      "value": "${hadoop.home}/etc/hadoop/rack_awareness.py"
+    },
+    {
+      "name": "yarn.nodemanager.container-manager.thread-count",
+      "value": "20"
+    },
+    {
+      "name": "ipc.server.listen.queue.size",
+      "value": "12800"
+    },
+    {
+      "name": "hadoop.ssl.hostname.verifier",
+      "value": "DEFAULT"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.tasktracker.dns.interface",
+      "value": "default"
+    },
+    {
+      "name": "nfs.server.port",
+      "value": "2049"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.attr.member",
+      "value": "member"
+    },
+    {
+      "name": "dfs.datanode.synconclose",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.impl",
+      "value": "org.apache.hadoop.fs.s3a.S3AFileSystem"
+    },
+    {
+      "name": "mapreduce.tasktracker.outofband.heartbeat",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.job.userlog.retain.hours",
+      "value": "24"
+    },
+    {
+      "name": "hadoop.registry.system.acls",
+      "value": "sasl:yarn@, sasl:mapred@, sasl:mapred@hdfs@"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.EtaoContainersMonitorImpl"
+    },
+    {
+      "name": "yarn.nodemanager.resource.memory-mb",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.webhdfs.user.provider.user.pattern",
+      "value": "^[A-Za-z_][A-Za-z0-9._-]*[$]?$"
+    },
+    {
+      "name": "yarn.nodemanager.log-aggregation.roll-monitoring-interval-seconds",
+      "value": "-1"
+    },
+    {
+      "name": "dfs.namenode.delegation.token.renew-interval",
+      "value": "86400000"
+    },
+    {
+      "name": "hadoop.ssl.keystores.factory.class",
+      "value": "org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory"
+    },
+    {
+      "name": "yarn.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.ceiling.ms",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.datanode.sync.behind.writes",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.os-overlimit-rate",
+      "value": "0.85"
+    },
+    {
+      "name": "nfs.wtmax",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.AbstractFileSystem.har.impl",
+      "value": "org.apache.hadoop.fs.HarFs"
+    },
+    {
+      "name": "mapreduce.map.maxattempts",
+      "value": "10"
+    },
+    {
+      "name": "hadoop.security.random.device.file.path",
+      "value": "/dev/urandom"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.skip.checksum",
+      "value": "false"
+    },
+    {
+      "name": "dfs.datanode.handler.count",
+      "value": "32"
+    },
+    {
+      "name": "yarn.timeline-service.webapp.address",
+      "value": "${yarn.timeline-service.hostname}:8188"
+    },
+    {
+      "name": "hadoop.ssl.require.client.cert",
+      "value": "false"
+    },
+    {
+      "name": "ftp.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.client.write.exclude.nodes.cache.expiry.interval.millis",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.jobhistory.cleaner.enable",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.retry-delay.max.ms",
+      "value": "60000"
+    },
+    {
+      "name": "yarn.app.blink.file.user.jar",
+      "value": "/home/wenlong.lwl/Blink/blink-dist/target/blink-dist-0.1.0-SNAPSHOT-bin/bin/../lib/blink-examples-0.1.0-SNAPSHOT.jar"
+    },
+    {
+      "name": "fs.du.interval",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.task.profile.reduces",
+      "value": "0-2"
+    },
+    {
+      "name": "ha.health-monitor.connect-retry-interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "hadoop.fuse.connection.timeout",
+      "value": "300"
+    },
+    {
+      "name": "dfs.permissions.superusergroup",
+      "value": "hadoop"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.task.numberprogresssplits",
+      "value": "12"
+    },
+    {
+      "name": "mapreduce.map.speculative",
+      "value": "false"
+    },
+    {
+      "name": "fs.ftp.host.port",
+      "value": "21"
+    },
+    {
+      "name": "dfs.namenode.startup.delay.block.deletion.sec",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.client.submit.file.replication",
+      "value": "10"
+    },
+    {
+      "name": "dfs.datanode.data.dir.perm",
+      "value": "700"
+    },
+    {
+      "name": "mapreduce.job.ubertask.maxmaps",
+      "value": "9"
+    },
+    {
+      "name": "dfs.block.scanner.volume.bytes.per.second",
+      "value": "1048576"
+    },
+    {
+      "name": "s3native.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "dfs.namenode.replication.min",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.cluster.acls.enabled",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.security.uid.cache.secs",
+      "value": "14400"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.fetch.thread-count",
+      "value": "4"
+    },
+    {
+      "name": "nfs.allow.insecure.ports",
+      "value": "true"
+    },
+    {
+      "name": "fs.trash.checkpoint.interval",
+      "value": "0"
+    },
+    {
+      "name": "map.sort.class",
+      "value": "org.apache.hadoop.util.QuickSort"
+    },
+    {
+      "name": "yarn.timeline-service.generic-application-history.max-applications",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.namenode.blocks.per.postponedblocks.rescan",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.image.transfer.timeout",
+      "value": "6000000"
+    },
+    {
+      "name": "dfs.namenode.name.dir",
+      "value": "${hadoop.tmp.dir}/dfs/name"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.staging-dir",
+      "value": "/tmp/hadoop-yarn/staging"
+    },
+    {
+      "name": "ipc.client.connect.timeout",
+      "value": "20000"
+    },
+    {
+      "name": "fs.AbstractFileSystem.file.impl",
+      "value": "org.apache.hadoop.fs.local.LocalFs"
+    },
+    {
+      "name": "yarn.nodemanager.env-whitelist",
+      "value": "JAVA_HOME,HADOOP_CONF_DIR,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_YARN_HOME,HBASE_HOME,LD_LIBRARY_PATH"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.strict-resource-usage",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "dfs.image.compression.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "mapreduce.job.reduces",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.store.class",
+      "value": "org.apache.hadoop.mapreduce.v2.hs.HistoryServerFileSystemStateStoreService"
+    },
+    {
+      "name": "mapreduce.job.complete.cancel.delegation.tokens",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.filter.user",
+      "value": "(\u0026(objectClass\u003duser)(sAMAccountName\u003d{0}))"
+    },
+    {
+      "name": "yarn.nodemanager.sleep-delay-before-sigkill.ms",
+      "value": "250"
+    },
+    {
+      "name": "dfs.namenode.enable.retrycache",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.joblist.cache.size",
+      "value": "20000"
+    },
+    {
+      "name": "mapreduce.tasktracker.healthchecker.interval",
+      "value": "60000"
+    },
+    {
+      "name": "mapreduce.jobtracker.heartbeats.in.second",
+      "value": "100"
+    },
+    {
+      "name": "dfs.namenode.backup.http-address",
+      "value": "0.0.0.0:50105"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.dir",
+      "value": "/jobtracker/jobsInfo"
+    },
+    {
+      "name": "hadoop.rpc.protection",
+      "value": "authentication"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.container.log.backups",
+      "value": "0"
+    },
+    {
+      "name": "dfs.client.mmap.enabled",
+      "value": "true"
+    },
+    {
+      "name": "ftp.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "dfs.namenode.https-address",
+      "value": "0.0.0.0:50470"
+    },
+    {
+      "name": "yarn.timeline-service.address",
+      "value": "${yarn.timeline-service.hostname}:10200"
+    },
+    {
+      "name": "yarn.nodemanager.recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.ha.log-roll.period",
+      "value": "120"
+    },
+    {
+      "name": "yarn.resourcemanager.admin.client.thread-count",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.top.windows.minutes",
+      "value": "1,5,25"
+    },
+    {
+      "name": "hadoop.security.groups.negative-cache.secs",
+      "value": "30"
+    },
+    {
+      "name": "yarn.app.blink.name",
+      "value": "FileLineCountAndWordCountWithCounter"
+    },
+    {
+      "name": "dfs.datanode.fsdatasetcache.max.threads.per.volume",
+      "value": "4"
+    },
+    {
+      "name": "file.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "hadoop.http.authentication.simple.anonymous.allowed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.path",
+      "value": "${hadoop.tmp.dir}/yarn/timeline"
+    },
+    {
+      "name": "yarn.nodemanager.log.retain-seconds",
+      "value": "108000"
+    },
+    {
+      "name": "dfs.datanode.drop.cache.behind.reads",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.proxy-user-privileges.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.image.transfer.bandwidthPerSec",
+      "value": "70000000"
+    },
+    {
+      "name": "yarn.resourcemanager.work-preserving-recovery.scheduling-wait-ms",
+      "value": "10000"
+    },
+    {
+      "name": "hadoop.registry.zk.session.timeout.ms",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.datanode.slow.io.warning.threshold.ms",
+      "value": "300"
+    },
+    {
+      "name": "ha.failover-controller.cli-check.rpc-timeout.ms",
+      "value": "20000"
+    },
+    {
+      "name": "mapreduce.tasktracker.instrumentation",
+      "value": "org.apache.hadoop.mapred.TaskTrackerMetricsInst"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.hierarchy",
+      "value": "/hadoop-yarn"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.assignmultiple",
+      "value": "true"
+    },
+    {
+      "name": "yarn.app.blink.distribute.classpath.files",
+      "value": "/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-examples-0.1.0-SNAPSHOT.jar,/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-dist.jar"
+    },
+    {
+      "name": "hadoop.security.groups.cache.warn.after.ms",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.namenode.write.stale.datanode.ratio",
+      "value": "1.0f"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.timeout-ms",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.jobhistory.client.thread-count",
+      "value": "10"
+    },
+    {
+      "name": "io.mapfile.bloom.size",
+      "value": "1048576"
+    },
+    {
+      "name": "yarn.resourcemanager.work-preserving-recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.docker-container-executor.exec-name",
+      "value": "/usr/bin/docker"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-num-retries",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.ha.fencing.ssh.connect-timeout",
+      "value": "30000"
+    },
+    {
+      "name": "hadoop.registry.zk.root",
+      "value": "/registry"
+    },
+    {
+      "name": "s3.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.container.log.limit.kb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.edit.log.autoroll.check.interval.ms",
+      "value": "300000"
+    },
+    {
+      "name": "fs.automatic.close",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.size.expiry.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.app.blink.conf",
+      "value": "/user/wenlong.lwl/.staging/application_1450160119977_0011/blink-job.xml"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.user-as-default-queue",
+      "value": "false"
+    },
+    {
+      "name": "fs.trash.interval",
+      "value": "1440"
+    },
+    {
+      "name": "dfs.journalnode.https-address",
+      "value": "0.0.0.0:8481"
+    },
+    {
+      "name": "hadoop.security.authentication",
+      "value": "simple"
+    },
+    {
+      "name": "yarn.timeline-service.ttl-ms",
+      "value": "604800000"
+    },
+    {
+      "name": "fs.defaultFS",
+      "value": "hdfs://hdp"
+    },
+    {
+      "name": "ipc.client.connect.max.retries",
+      "value": "10"
+    },
+    {
+      "name": "hadoop.ssl.server.conf",
+      "value": "ssl-server.xml"
+    },
+    {
+      "name": "nfs.rtmax",
+      "value": "1048576"
+    },
+    {
+      "name": "yarn.resourcemanager.delayed.delegation-token.removal-interval-ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.namenode.xattrs.enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.journalnode.http-address",
+      "value": "0.0.0.0:8480"
+    },
+    {
+      "name": "dfs.datanode.shared.file.descriptor.paths",
+      "value": "/dev/shm,/tmp"
+    },
+    {
+      "name": "hadoop.proxyuser.httpfs.hosts",
+      "value": "*"
+    },
+    {
+      "name": "mapreduce.jobtracker.taskscheduler",
+      "value": "org.apache.hadoop.mapred.JobQueueTaskScheduler"
+    },
+    {
+      "name": "yarn.timeline-service.store-class",
+      "value": "org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress",
+      "value": "false"
+    },
+    {
+      "name": "yarn.am.liveness-monitor.expiry-interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "dfs.checksum.type",
+      "value": "CRC32"
+    },
+    {
+      "name": "dfs.user.home.dir.prefix",
+      "value": "/user"
+    },
+    {
+      "name": "net.topology.node.switch.mapping.impl",
+      "value": "org.apache.hadoop.net.ScriptBasedMapping"
+    },
+    {
+      "name": "dfs.namenode.replication.considerLoad",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.min-block-size",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.swift.impl",
+      "value": "org.apache.hadoop.fs.swift.snative.SwiftNativeFileSystem"
+    },
+    {
+      "name": "fs.s3a.fast.upload",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.audit.loggers",
+      "value": "default"
+    },
+    {
+      "name": "app.zookeeper.quorum",
+      "value": "hdp1.tbc.tbsite.net,hdp9.tbc.tbsite.net,hdp14.tbc.tbsite.net"
+    },
+    {
+      "name": "mapreduce.job.counters.max",
+      "value": "100000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.enabled",
+      "value": "${yarn.nodemanager.recovery.enabled}"
+    },
+    {
+      "name": "yarn.resourcemanager.address",
+      "value": "hdpm1.zmf.tbsite.net:8040"
+    },
+    {
+      "name": "mapreduce.job.max.split.locations",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.client.block.write.retries",
+      "value": "3"
+    },
+    {
+      "name": "dfs.namenode.resource.checked.volumes.minimum",
+      "value": "1"
+    },
+    {
+      "name": "dfs.short.circuit.shared.memory.watcher.interrupt.check.ms",
+      "value": "60000"
+    },
+    {
+      "name": "io.map.index.interval",
+      "value": "128"
+    },
+    {
+      "name": "mapreduce.tasktracker.local.dir.minspacestart",
+      "value": "0"
+    },
+    {
+      "name": "dfs.client.https.keystore.resource",
+      "value": "ssl-client.xml"
+    },
+    {
+      "name": "mapreduce.client.progressmonitor.pollinterval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.task.profile.map.params",
+      "value": "${mapreduce.task.profile.params}"
+    },
+    {
+      "name": "mapreduce.job.queuename",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.jobtracker.tasktracker.maxblacklists",
+      "value": "4"
+    },
+    {
+      "name": "fs.s3a.connection.establish.timeout",
+      "value": "5000"
+    },
+    {
+      "name": "hadoop.registry.zk.quorum",
+      "value": "hdp1.tbc.tbsite.net:2181,hdp9.tbc.tbsite.net:2181,hdp14.tbc.tbsite.net:2181"
+    },
+    {
+      "name": "yarn.app.mapreduce.client-am.ipc.max-retries-on-timeouts",
+      "value": "3"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.address",
+      "value": "${yarn.nodemanager.hostname}:8040"
+    },
+    {
+      "name": "io.mapfile.bloom.error.rate",
+      "value": "0.005"
+    },
+    {
+      "name": "mapreduce.job.split.metainfo.maxsize",
+      "value": "10000000"
+    },
+    {
+      "name": "yarn.nodemanager.delete.thread-count",
+      "value": "4"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files.size",
+      "value": "36351,50415632,97705"
+    },
+    {
+      "name": "yarn.scheduler.maximum-allocation-vcores",
+      "value": "32"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.resource.mb",
+      "value": "3072"
+    },
+    {
+      "name": "dfs.client.slow.io.warning.threshold.ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.datanode.dns.nameserver",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.job.reducer.preempt.delay.sec",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.map.output.compress.codec",
+      "value": "org.apache.hadoop.io.compress.SnappyCodec"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.min-free-space-per-disk-mb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.accesstime.precision",
+      "value": "3600000"
+    },
+    {
+      "name": "mapreduce.map.log.level",
+      "value": "DEBUG"
+    },
+    {
+      "name": "fs.s3a.connection.maximum",
+      "value": "15"
+    },
+    {
+      "name": "io.seqfile.compress.blocksize",
+      "value": "1000000"
+    },
+    {
+      "name": "mapreduce.tasktracker.taskcontroller",
+      "value": "org.apache.hadoop.mapred.DefaultTaskController"
+    },
+    {
+      "name": "dfs.namenode.heartbeat.recheck-interval",
+      "value": "300000"
+    },
+    {
+      "name": "hadoop.security.groups.cache.secs",
+      "value": "300"
+    },
+    {
+      "name": "dfs.datanode.cache.revocation.timeout.ms",
+      "value": "900000"
+    },
+    {
+      "name": "yarn.app.blink.jobgraph",
+      "value": "jobGraph"
+    },
+    {
+      "name": "dfs.client.context",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.input.lineinputformat.linespermap",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.job.end-notification.max.attempts",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user",
+      "value": "yarn"
+    },
+    {
+      "name": "yarn.nodemanager.webapp.address",
+      "value": "${yarn.nodemanager.hostname}:8042"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.enable",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobtracker.expire.trackers.interval",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.address",
+      "value": "hdpm1.zmf.tbsite.net:8088"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.num.refill.threads",
+      "value": "2"
+    },
+    {
+      "name": "yarn.nodemanager.health-checker.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.jobhistory.loadedjobs.cache.size",
+      "value": "5"
+    },
+    {
+      "name": "yarn.app.blink.am.staging-dir",
+      "value": "/user"
+    },
+    {
+      "name": "hadoop.security.authorization",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.job.map.output.collector.class",
+      "value": "org.apache.hadoop.mapred.MapTask$MapOutputBuffer"
+    },
+    {
+      "name": "mapreduce.am.max-attempts",
+      "value": "2"
+    },
+    {
+      "name": "fs.ftp.host",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "fs.s3a.attempts.maximum",
+      "value": "10"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.scheduler.heartbeat.interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.ifile.readahead",
+      "value": "true"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.monitor.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-retry-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "ha.zookeeper.session-timeout.ms",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.tasktracker.taskmemorymanager.monitoringinterval",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.parallelcopies",
+      "value": "5"
+    },
+    {
+      "name": "dfs.client.mmap.retry.timeout.ms",
+      "value": "300000"
+    },
+    {
+      "name": "mapreduce.map.skip.maxrecords",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.yarn-overlimit-rate",
+      "value": "1.2"
+    },
+    {
+      "name": "dfs.namenode.avoid.read.stale.datanode",
+      "value": "true"
+    },
+    {
+      "name": "dfs.https.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.webapp.https.address",
+      "value": "${yarn.timeline-service.hostname}:8190"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.read.timeout",
+      "value": "180000"
+    },
+    {
+      "name": "dfs.namenode.list.encryption.zones.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "yarn.nodemanager.remote-app-log-dir-suffix",
+      "value": "logs"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "mapreduce.jobtracker.instrumentation",
+      "value": "org.apache.hadoop.mapred.JobTrackerMetricsInst"
+    },
+    {
+      "name": "dfs.blockreport.intervalMsec",
+      "value": "21600000"
+    },
+    {
+      "name": "ipc.client.connect.retry.interval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.reduce.speculative",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobhistory.keytab",
+      "value": "/etc/security/keytab/jhs.service.keytab"
+    },
+    {
+      "name": "mapreduce.jobhistory.datestring.cache.size",
+      "value": "100000"
+    },
+    {
+      "name": "dfs.datanode.balance.bandwidthPerSec",
+      "value": "10485760"
+    },
+    {
+      "name": "file.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "yarn.resourcemanager.admin.address",
+      "value": "hdpm1.zmf.tbsite.net:8141"
+    },
+    {
+      "name": "mapreduce.map.cpu.vcores",
+      "value": "1"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.procfs-tree.smaps-based-rss.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.configuration.provider-class",
+      "value": "org.apache.hadoop.yarn.LocalConfigurationProvider"
+    },
+    {
+      "name": "yarn.resourcemanager.resource-tracker.address",
+      "value": "hdpm1.zmf.tbsite.net:8025"
+    },
+    {
+      "name": "mapreduce.tasktracker.local.dir.minspacekill",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.jobtracker.staging.root.dir",
+      "value": "${hadoop.tmp.dir}/mapred/staging"
+    },
+    {
+      "name": "mapreduce.jobtracker.retiredjobs.cache.size",
+      "value": "1000"
+    },
+    {
+      "name": "hadoop.registry.rm.enabled",
+      "value": "false"
+    },
+    {
+      "name": "ipc.client.connect.max.retries.on.timeouts",
+      "value": "45"
+    },
+    {
+      "name": "dfs.ha.fencing.methods",
+      "value": "sshfence"
+    },
+    {
+      "name": "ha.zookeeper.acl",
+      "value": "world:anyone:rwcda"
+    },
+    {
+      "name": "hadoop.security.crypto.codec.classes.aes.ctr.nopadding",
+      "value": "org.apache.hadoop.crypto.OpensslAesCtrCryptoCodec,org.apache.hadoop.crypto.JceAesCtrCryptoCodec"
+    },
+    {
+      "name": "yarn.nodemanager.local-dirs",
+      "value": "/dump/2/nm-local-dir,/dump/3/nm-local-dir,/dump/4/nm-local-dir,/dump/5/nm-local-dir,/dump/6/nm-local-dir,/dump/7/nm-local-dir,/dump/8/nm-local-dir,/dump/9/nm-local-dir"
+    },
+    {
+      "name": "mapreduce.app-submission.cross-platform",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.connect.timeout",
+      "value": "180000"
+    },
+    {
+      "name": "dfs.block.access.key.update.interval",
+      "value": "600"
+    },
+    {
+      "name": "rpc.metrics.quantile.enable",
+      "value": "false"
+    },
+    {
+      "name": "dfs.block.access.token.lifetime",
+      "value": "600"
+    },
+    {
+      "name": "mapreduce.job.end-notification.retry.attempts",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-xattrs-per-inode",
+      "value": "32"
+    },
+    {
+      "name": "mapreduce.jobtracker.system.dir",
+      "value": "${hadoop.tmp.dir}/mapred/system"
+    },
+    {
+      "name": "dfs.balancer.moverThreads",
+      "value": "100"
+    },
+    {
+      "name": "dfs.client.file-block-storage-locations.timeout.millis",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.admin-env",
+      "value": "MALLOC_ARENA_MAX\u003d$MALLOC_ARENA_MAX"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.block.size",
+      "value": "3145728"
+    },
+    {
+      "name": "yarn.log-aggregation.retain-seconds",
+      "value": "604800"
+    },
+    {
+      "name": "mapreduce.tasktracker.indexcache.mb",
+      "value": "10"
+    },
+    {
+      "name": "yarn.timeline-service.handler-thread-count",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.check.period",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.enable",
+      "value": "true"
+    },
+    {
+      "name": "net.topology.impl",
+      "value": "org.apache.hadoop.net.NetworkTopology"
+    },
+    {
+      "name": "dfs.datanode.directoryscan.interval",
+      "value": "21600"
+    },
+    {
+      "name": "fs.s3a.multipart.purge.age",
+      "value": "86400"
+    },
+    {
+      "name": "fs.s3a.threads.max",
+      "value": "256"
+    },
+    {
+      "name": "hadoop.security.java.secure.random.algorithm",
+      "value": "SHA1PRNG"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.interval-ms",
+      "value": "3000"
+    },
+    {
+      "name": "dfs.default.chunk.view.size",
+      "value": "32768"
+    },
+    {
+      "name": "fs.s3a.multipart.threshold",
+      "value": "2147483647"
+    },
+    {
+      "name": "dfs.namenode.http-address.hdp.nn2",
+      "value": "hdpm2.zmf.tbsite.net:50070"
+    },
+    {
+      "name": "mapreduce.job.reduce.slowstart.completedmaps",
+      "value": "0.05"
+    },
+    {
+      "name": "dfs.namenode.http-address.hdp.nn1",
+      "value": "hdpm1.zmf.tbsite.net:50070"
+    },
+    {
+      "name": "hadoop.security.instrumentation.requires.admin",
+      "value": "false"
+    },
+    {
+      "name": "io.compression.codec.bzip2.library",
+      "value": "system-native"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.page.class",
+      "value": "com.etao.hadoop.yarn.server.resourcemanager.webapp.FairSchedulerPage"
+    },
+    {
+      "name": "hadoop.proxyuser.hadoop.groups",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.http.authentication.signature.secret.file",
+      "value": "${user.home}/hadoop-http-auth-signature-secret"
+    },
+    {
+      "name": "hadoop.registry.secure",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.safemode.min.datanodes",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.cache.target-size-mb",
+      "value": "10240"
+    },
+    {
+      "name": "mapreduce.reduce.maxattempts",
+      "value": "10"
+    },
+    {
+      "name": "dfs.datanode.https.address",
+      "value": "0.0.0.0:50475"
+    },
+    {
+      "name": "dfs.ha.namenodes.hdp",
+      "value": "nn1,nn2"
+    },
+    {
+      "name": "s3native.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.journalnode.edits.dir",
+      "value": "${hadoop.tmp.dir}/dfs/edits"
+    },
+    {
+      "name": "dfs.namenode.inotify.max.events.per.rpc",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.retry.interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.reduce.skip.proc.count.autoincr",
+      "value": "true"
+    },
+    {
+      "name": "dfs.datanode.cache.revocation.polling.ms",
+      "value": "500"
+    },
+    {
+      "name": "mapreduce.jobhistory.cleaner.interval-ms",
+      "value": "86400000"
+    },
+    {
+      "name": "file.replication",
+      "value": "1"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.max.assign",
+      "value": "1"
+    },
+    {
+      "name": "hadoop.hdfs.configuration.version",
+      "value": "1"
+    },
+    {
+      "name": "ipc.client.idlethreshold",
+      "value": "4000"
+    },
+    {
+      "name": "hadoop.tmp.dir",
+      "value": "${user.home.name}/hadoop-data"
+    },
+    {
+      "name": "yarn.resourcemanager.store.class",
+      "value": "org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore"
+    },
+    {
+      "name": "mapreduce.jobhistory.address",
+      "value": "hdpm1.zmf.tbsite.net:10020"
+    },
+    {
+      "name": "mapreduce.jobtracker.restart.recover",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.cluster.local.dir",
+      "value": "${hadoop.tmp.dir}/mapred/local"
+    },
+    {
+      "name": "mapreduce.job.speculative.retry-after-no-speculate",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.client.nodemanager-client-async.thread-pool-max-size",
+      "value": "500"
+    },
+    {
+      "name": "dfs.namenode.decommission.nodes.per.interval",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.resource.cpu-vcores",
+      "value": "20"
+    },
+    {
+      "name": "dfs.namenode.reject-unresolved-dn-topology-mapping",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.delegation.key.update-interval",
+      "value": "86400000"
+    },
+    {
+      "name": "fs.s3.buffer.dir",
+      "value": "${hadoop.tmp.dir}/s3"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.expiry.ms",
+      "value": "300000"
+    },
+    {
+      "name": "dfs.namenode.support.allow.format",
+      "value": "true"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.continuous-scheduling-enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.remote-app-log-dir",
+      "value": "/logs"
+    },
+    {
+      "name": "io.compression.codecs",
+      "value": "org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec"
+    },
+    {
+      "name": "mapreduce.map.memory.mb",
+      "value": "2048"
+    },
+    {
+      "name": "yarn.nodemanager.aux-services",
+      "value": "mapreduce_shuffle"
+    },
+    {
+      "name": "dfs.namenode.edit.log.autoroll.multiplier.threshold",
+      "value": "2.0"
+    },
+    {
+      "name": "hadoop.work.around.non.threadsafe.getpwuid",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.profile.reduce.params",
+      "value": "${mapreduce.task.profile.params}"
+    },
+    {
+      "name": "yarn.timeline-service.client.max-retries",
+      "value": "30"
+    },
+    {
+      "name": "dfs.ha.automatic-failover.enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.edits.noeditlogchannelflush",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.stale.datanode.interval",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.shuffle.transfer.buffer.size",
+      "value": "131072"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.active",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.logging.level",
+      "value": "info"
+    },
+    {
+      "name": "yarn.resourcemanager.am-rm-tokens.master-key-rolling-interval-secs",
+      "value": "86400"
+    },
+    {
+      "name": "yarn.nodemanager.log-dirs",
+      "value": "/dump/2/nm-logs,/dump/3/nm-logs,/dump/4/nm-logs,/dump/5/nm-logs,/dump/6/nm-logs,/dump/7/nm-logs,/dump/8/nm-logs,/dump/9/nm-logs"
+    },
+    {
+      "name": "ha.health-monitor.sleep-after-disconnect.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.resourcemanager.fs.state-store.uri",
+      "value": "${hadoop.tmp.dir}/yarn/system/rmstore"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.edits.dir",
+      "value": "${dfs.namenode.checkpoint.dir}"
+    },
+    {
+      "name": "yarn.resourcemanager.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "hadoop.rpc.socket.factory.class.default",
+      "value": "org.apache.hadoop.net.StandardSocketFactory"
+    },
+    {
+      "name": "yarn.resourcemanager.fail-fast",
+      "value": "${yarn.fail-fast}"
+    },
+    {
+      "name": "dfs.datanode.http.address",
+      "value": "0.0.0.0:50075"
+    },
+    {
+      "name": "mapreduce.task.profile",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobhistory.move.interval-ms",
+      "value": "360000"
+    },
+    {
+      "name": "fs.s3a.max.total.tasks",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.namenode.edits.dir",
+      "value": "${dfs.namenode.name.dir}"
+    },
+    {
+      "name": "dfs.storage.policy.enabled",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.size",
+      "value": "500"
+    },
+    {
+      "name": "hadoop.fuse.timer.period",
+      "value": "5"
+    },
+    {
+      "name": "mapreduce.jobhistory.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "mapreduce.jobhistory.intermediate-done-dir",
+      "value": "/history/done_intermediate"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.allocation.file",
+      "value": "etao-fair-scheduler.xml"
+    },
+    {
+      "name": "mapreduce.map.skip.proc.count.autoincr",
+      "value": "true"
+    },
+    {
+      "name": "fs.AbstractFileSystem.viewfs.impl",
+      "value": "org.apache.hadoop.fs.viewfs.ViewFs"
+    },
+    {
+      "name": "mapreduce.job.speculative.slowtaskthreshold",
+      "value": "1.0"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.delegation-token-auth-filter.enabled",
+      "value": "true"
+    },
+    {
+      "name": "s3native.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "yarn.nodemanager.delete.debug-delay-sec",
+      "value": "0"
+    },
+    {
+      "name": "dfs.secondary.namenode.kerberos.internal.spnego.principal",
+      "value": "${dfs.web.authentication.kerberos.principal}"
+    },
+    {
+      "name": "dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold",
+      "value": "10737418240"
+    },
+    {
+      "name": "fs.s3n.multipart.uploads.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "hadoop.job.ugi",
+      "value": "etaocp,cug-etao,cug-edc_datauser,cug-tbdp,cug-tbdump,supergroup,hadoop"
+    },
+    {
+      "name": "dfs.namenode.safemode.threshold-pct",
+      "value": "0.999f"
+    },
+    {
+      "name": "mapreduce.ifile.readahead.bytes",
+      "value": "4194304"
+    },
+    {
+      "name": "yarn.scheduler.maximum-allocation-mb",
+      "value": "40960"
+    },
+    {
+      "name": "ipc.client.fallback-to-simple-auth-allowed",
+      "value": "false"
+    },
+    {
+      "name": "fs.har.impl.disable.cache",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.read-cache-size",
+      "value": "104857600"
+    },
+    {
+      "name": "yarn.timeline-service.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "s3native.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.job.committer.setup.cleanup.needed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.ttl-interval-ms",
+      "value": "300000"
+    },
+    {
+      "name": "fs.s3a.paging.maximum",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.client.nodemanager-connect.retry-interval-ms",
+      "value": "10000"
+    },
+    {
+      "name": "yarn.nodemanager.log-aggregation.compression-type",
+      "value": "none"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.committer.commit-window",
+      "value": "10000"
+    },
+    {
+      "name": "hadoop.http.authentication.type",
+      "value": "simple"
+    },
+    {
+      "name": "dfs.client.failover.sleep.base.millis",
+      "value": "500"
+    },
+    {
+      "name": "yarn.nodemanager.vmem-check-enabled",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.jetty.logs.serve.aliases",
+      "value": "true"
+    },
+    {
+      "name": "ha.failover-controller.graceful-fence.rpc-timeout.ms",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.input.buffer.percent",
+      "value": "0.60"
+    },
+    {
+      "name": "mapreduce.job.running.reduce.limit",
+      "value": "0"
+    },
+    {
+      "name": "dfs.datanode.max.transfer.threads",
+      "value": "10240"
+    },
+    {
+      "name": "mapreduce.reduce.merge.inmem.threshold",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.task.io.sort.mb",
+      "value": "200"
+    },
+    {
+      "name": "dfs.namenode.acls.enabled",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.security.kms.client.authentication.retry-count",
+      "value": "1"
+    },
+    {
+      "name": "yarn.client.application-client-protocol.poll-interval-ms",
+      "value": "200"
+    },
+    {
+      "name": "dfs.namenode.handler.count",
+      "value": "256"
+    },
+    {
+      "name": "yarn.resourcemanager.connect.max-wait.ms",
+      "value": "900000"
+    },
+    {
+      "name": "dfs.namenode.retrycache.heap.percent",
+      "value": "0.03f"
+    },
+    {
+      "name": "yarn.timeline-service.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.ssl.client.conf",
+      "value": "ssl-client.xml"
+    },
+    {
+      "name": "yarn.resourcemanager.container.liveness-monitor.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.nodemanager.vmem-pmem-ratio",
+      "value": "100"
+    },
+    {
+      "name": "mapreduce.client.completion.pollinterval",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.app.mapreduce.client.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "hadoop.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.client.resolve.remote.symlinks",
+      "value": "true"
+    },
+    {
+      "name": "fs.AbstractFileSystem.hdfs.impl",
+      "value": "org.apache.hadoop.fs.Hdfs"
+    },
+    {
+      "name": "mapreduce.reduce.java.opts",
+      "value": "-Xmx1200m"
+    },
+    {
+      "name": "mapreduce.client.genericoptionsparser.used",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.map.java.opts",
+      "value": "-Xmx1200m"
+    },
+    {
+      "name": "mapreduce.tasktracker.reduce.tasks.maximum",
+      "value": "6"
+    },
+    {
+      "name": "yarn.nodemanager.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "mapreduce.reduce.input.buffer.percent",
+      "value": "0.0"
+    },
+    {
+      "name": "fs.s3a.multipart.purge",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.command-opts",
+      "value": "-Xmx2048m -XX:+UseConcMarkSweepGC"
+    },
+    {
+      "name": "dfs.namenode.invalidate.work.pct.per.iteration",
+      "value": "0.32f"
+    },
+    {
+      "name": "dfs.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.job.heap.memory-mb.ratio",
+      "value": "0.8"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.https.address",
+      "value": "${yarn.resourcemanager.hostname}:8090"
+    },
+    {
+      "name": "dfs.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.datanode.block.id.layout.upgrade.threads",
+      "value": "12"
+    },
+    {
+      "name": "mapreduce.shuffle.ssl.file.buffer.size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.namenode.list.cache.directives.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "dfs.permissions.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobtracker.maxtasks.perjob",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.datanode.scan.period.hours",
+      "value": "0"
+    },
+    {
+      "name": "dfs.datanode.use.datanode.hostname",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.userlog.limit.kb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-directory-items",
+      "value": "1048576"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.low-watermark",
+      "value": "0.3f"
+    },
+    {
+      "name": "fs.s3a.buffer.dir",
+      "value": "${hadoop.tmp.dir}/s3a"
+    },
+    {
+      "name": "s3.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.client.failover.proxy.provider.hdp",
+      "value": "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider"
+    },
+    {
+      "name": "hadoop.user.group.static.mapping.overrides",
+      "value": "dr.who\u003d;"
+    },
+    {
+      "name": "mapreduce.shuffle.max.threads",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.expiry",
+      "value": "43200000"
+    },
+    {
+      "name": "dfs.client.failover.sleep.max.millis",
+      "value": "15000"
+    },
+    {
+      "name": "mapreduce.job.maps",
+      "value": "2"
+    },
+    {
+      "name": "yarn.app.blink.deploy.path",
+      "value": "/home/wenlong.lwl/Blink/blink-dist/target/blink-dist-0.1.0-SNAPSHOT-bin/bin/../"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-component-length",
+      "value": "255"
+    },
+    {
+      "name": "yarn.fail-fast",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.ssl.enabled.protocols",
+      "value": "TLSv1"
+    },
+    {
+      "name": "s3.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "mapreduce.map.output.compress",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.edits.journal-plugin.qjournal",
+      "value": "org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager"
+    },
+    {
+      "name": "dfs.namenode.datanode.registration.ip-hostname-check",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.pmem-check-enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.short.circuit.replica.stale.threshold.ms",
+      "value": "1800000"
+    },
+    {
+      "name": "dfs.client.https.need-auth",
+      "value": "false"
+    },
+    {
+      "name": "ha.zookeeper.quorum",
+      "value": "hdp11.tbc.tbsite.net,hdp12.tbc.tbsite.net,hdp13.tbc.tbsite.net"
+    },
+    {
+      "name": "yarn.scheduler.minimum-allocation-mb",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.jobhistory.max-age-ms",
+      "value": "604800000"
+    },
+    {
+      "name": "yarn.timeline-service.http-authentication.type",
+      "value": "simple"
+    },
+    {
+      "name": "ftp.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.namenode.secondary.https-address",
+      "value": "0.0.0.0:50091"
+    },
+    {
+      "name": "dfs.blockreport.split.threshold",
+      "value": "1000000"
+    },
+    {
+      "name": "mapreduce.input.fileinputformat.split.minsize",
+      "value": "0"
+    },
+    {
+      "name": "fs.s3n.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files",
+      "value": "hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-examples-0.1.0-SNAPSHOT.jar,hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-dist.jar,hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/blink-job.xml"
+    },
+    {
+      "name": "mapreduce.job.token.tracking.ids.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.ipc.rpc.class",
+      "value": "org.apache.hadoop.yarn.ipc.HadoopYarnProtoRPC"
+    },
+    {
+      "name": "mapreduce.job.user.classpath.first",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.num.extra.edits.retained",
+      "value": "1000000"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.cache.cleanup.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "hadoop.http.staticuser.user",
+      "value": "dr.who"
+    },
+    {
+      "name": "mapreduce.jobhistory.move.thread-count",
+      "value": "3"
+    },
+    {
+      "name": "fs.s3a.multipart.size",
+      "value": "104857600"
+    },
+    {
+      "name": "mapreduce.job.jvm.numtasks",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.task.profile.maps",
+      "value": "0-2"
+    },
+    {
+      "name": "dfs.block.local-path-access.user",
+      "value": "hadoop,admin"
+    },
+    {
+      "name": "dfs.datanode.max.locked.memory",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.home",
+      "value": "${user.home.name}/hadoop_hbase/hadoop-current"
+    },
+    {
+      "name": "dfs.cachereport.intervalMsec",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.shuffle.port",
+      "value": "13562"
+    },
+    {
+      "name": "yarn.resourcemanager.nodemanager.minimum.version",
+      "value": "NONE"
+    },
+    {
+      "name": "mapreduce.shuffle.connection-keep-alive.timeout",
+      "value": "5"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.merge.percent",
+      "value": "0.66"
+    },
+    {
+      "name": "mapreduce.jobtracker.http.address",
+      "value": "0.0.0.0:50030"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.preemption",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.skip.start.attempts",
+      "value": "2"
+    },
+    {
+      "name": "yarn.resourcemanager.connect.retry-interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "yarn.scheduler.minimum-allocation-vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.rpc-address.hdp.nn1",
+      "value": "hdpm1.zmf.tbsite.net:9000"
+    },
+    {
+      "name": "dfs.namenode.rpc-address.hdp.nn2",
+      "value": "hdpm2.zmf.tbsite.net:9000"
+    },
+    {
+      "name": "mapreduce.task.io.sort.factor",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.dir",
+      "value": "file://${hadoop.tmp.dir}/dfs/namesecondary"
+    },
+    {
+      "name": "mapreduce.job.speculative.retry-after-speculate",
+      "value": "15000"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compression.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "nfs.exports.allowed.hosts",
+      "value": "* rw"
+    },
+    {
+      "name": "tfile.fs.input.buffer.size",
+      "value": "262144"
+    },
+    {
+      "name": "fs.s3.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "tfile.io.chunk.size",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.s3n.multipart.copy.block.size",
+      "value": "5368709120"
+    },
+    {
+      "name": "mapreduce.job.speculative.speculative-cap-total-tasks",
+      "value": "0.01"
+    },
+    {
+      "name": "io.serializations",
+      "value": "org.apache.hadoop.io.serializer.WritableSerialization,org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,org.apache.hadoop.io.serializer.avro.AvroReflectSerialization"
+    },
+    {
+      "name": "yarn.resourcemanager.max-completed-applications",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.jobhistory.principal",
+      "value": "jhs/_HOST@REALM.TLD"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.zk-base-path",
+      "value": "/yarn-leader-election"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.job.end-notification.retry.interval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.job.speculative.minimum-allowed-tasks",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.backup.address",
+      "value": "0.0.0.0:50100"
+    },
+    {
+      "name": "fs.s3n.multipart.uploads.enabled",
+      "value": "false"
+    },
+    {
+      "name": "io.seqfile.sorter.recordlimit",
+      "value": "1000000"
+    },
+    {
+      "name": "dfs.block.access.token.enable",
+      "value": "false"
+    },
+    {
+      "name": "s3native.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-xattr-size",
+      "value": "16384"
+    },
+    {
+      "name": "ftp.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "hadoop.security.group.mapping",
+      "value": "org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback"
+    },
+    {
+      "name": "dfs.client.domain.socket.data.traffic",
+      "value": "false"
+    },
+    {
+      "name": "dfs.balancer.maxBlocksSizeToFetch",
+      "value": "536870912"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.size",
+      "value": "1000"
+    },
+    {
+      "name": "fs.s3a.connection.timeout",
+      "value": "50000"
+    },
+    {
+      "name": "mapreduce.job.end-notification.max.retry.interval",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.acl.enable",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nm.liveness-monitor.expiry-interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.input.fileinputformat.list-status.num-threads",
+      "value": "1"
+    },
+    {
+      "name": "dfs.client.mmap.cache.size",
+      "value": "256"
+    },
+    {
+      "name": "mapreduce.tasktracker.map.tasks.maximum",
+      "value": "6"
+    },
+    {
+      "name": "yarn.timeline-service.ttl-enable",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.resources-handler.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.util.CgroupsLCEResourcesHandler"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-address",
+      "value": "hdp1.tbc.tbsite.net,hdp9.tbc.tbsite.net,hdp14.tbc.tbsite.net"
+    },
+    {
+      "name": "dfs.namenode.max.objects",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.kerberos.principal.pattern",
+      "value": "*"
+    },
+    {
+      "name": "yarn.resourcemanager.state-store.max-completed-applications",
+      "value": "${yarn.resourcemanager.max-completed-applications}"
+    },
+    {
+      "name": "dfs.namenode.delegation.token.max-lifetime",
+      "value": "604800000"
+    },
+    {
+      "name": "mapreduce.job.classloader",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.start-time-write-cache-size",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.job.hdfs-servers",
+      "value": "${fs.defaultFS}"
+    },
+    {
+      "name": "yarn.application.classpath",
+      "value": "\n        $HADOOP_CONF_DIR,\n        $HADOOP_COMMON_HOME/share/hadoop/common/*,\n        $HADOOP_COMMON_HOME/share/hadoop/common/lib/*,\n        $HADOOP_HDFS_HOME/share/hadoop/hdfs/*,\n        $HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,\n        $HADOOP_YARN_HOME/share/hadoop/yarn/*,\n        $HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,\n        $HADOOP_YARN_HOME/share/hadoop/mapreduce/*,\n        $HADOOP_YARN_HOME/share/hadoop/mapreduce/lib/*,\n        $HBASE_HOME/conf,\n        $HBASE_HOME/*,\n        $HBASE_HOME/lib/*\n     "
+    },
+    {
+      "name": "dfs.datanode.hdfs-blocks-metadata.enabled",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.tasktracker.dns.nameserver",
+      "value": "default"
+    },
+    {
+      "name": "dfs.datanode.readahead.bytes",
+      "value": "4193404"
+    },
+    {
+      "name": "mapreduce.job.ubertask.maxreduces",
+      "value": "1"
+    },
+    {
+      "name": "dfs.image.compress",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.shuffle.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.log-aggregation-enable",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.tasktracker.report.address",
+      "value": "127.0.0.1:0"
+    },
+    {
+      "name": "mapreduce.tasktracker.http.threads",
+      "value": "40"
+    },
+    {
+      "name": "dfs.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "tfile.fs.output.buffer.size",
+      "value": "262144"
+    },
+    {
+      "name": "fs.permissions.umask-mode",
+      "value": "022"
+    },
+    {
+      "name": "dfs.client.datanode-restart.timeout",
+      "value": "30"
+    },
+    {
+      "name": "dfs.namenode.resource.du.reserved",
+      "value": "104857600"
+    },
+    {
+      "name": "yarn.resourcemanager.am.max-attempts",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.resource.percentage-physical-cpu-limit",
+      "value": "100"
+    },
+    {
+      "name": "ha.failover-controller.graceful-fence.connection.retries",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.job.speculative.speculative-cap-running-tasks",
+      "value": "0.1"
+    },
+    {
+      "name": "dfs.datanode.drop.cache.behind.writes",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.common.configuration.version",
+      "value": "0.23.0"
+    },
+    {
+      "name": "mapreduce.job.ubertask.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.resource.cpu-vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.replication.work.multiplier.per.iteration",
+      "value": "2"
+    },
+    {
+      "name": "mapreduce.job.acl-modify-job",
+      "value": "* "
+    },
+    {
+      "name": "io.seqfile.local.dir",
+      "value": "${hadoop.tmp.dir}/io/local"
+    },
+    {
+      "name": "yarn.resourcemanager.system-metrics-publisher.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3.sleepTimeSeconds",
+      "value": "10"
+    },
+    {
+      "name": "mapreduce.client.output.filter",
+      "value": "FAILED"
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__master_log"><span class="parent">/jobs/{job_id}</span>/master-log</a> <span class="methods"><a href="#_jobs__job_id__master_log_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__master_log" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__master_log_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get master log and stdout of the given job</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__master_log_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}</span>/master-log</h4></div><div class="modal-body"><div class="alert alert-info"><p>get master log and stdout of the given job</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__master_log_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__master_log_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__master_log_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__master_log_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "log url",
+   "properties": {
+     "url": { "type": "string", "required": true}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "url": "http://hdp3.tbc.tbsite.net:8042/node/containerlogs/container_1450160119977_0011_01_000001/wenlong.lwl"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__plan"><span class="parent">/jobs/{job_id}</span>/plan</a> <span class="methods"><a href="#_jobs__job_id__plan_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__plan" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__plan_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get the execution plan of the given job</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__plan_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}</span>/plan</h4></div><div class="modal-body"><div class="alert alert-info"><p>get the execution plan of the given job</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__plan_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__plan_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__plan_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__plan_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "job plan description",
+   "properties": {
+     "id": { "type": "string", "required": true},
+     "name": { "type": "string", "required": true},
+     "nodes": {
+        "type": "array",
+        "items": {"$ref": "node"}
+     }
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+  "name": "FileLineCountAndWordCountWithCounter",
+  "nodes": [
+    {
+      "id": "607a92f0551691743f8bd88d2d076f5d",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Source: Custom Source",
+      "inputs": []
+    },
+    {
+      "id": "561371308bfe2fc83cdf6e8fffccb573",
+      "parallelism": 2,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Flat Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "607a92f0551691743f8bd88d2d076f5d",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "605330236f9a87e61d5df719b030a2d5",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "561371308bfe2fc83cdf6e8fffccb573",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "df28e35e9b731d678c18b22464d3336c",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Fast TumblingTimeWindows(60000) of Reduce at aggregate(WindowedStream.java:588) -\u003e Sink: Unnamed",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "605330236f9a87e61d5df719b030a2d5",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "186872bd1aee503cdc6f9a329376284c",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Flat Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "561371308bfe2fc83cdf6e8fffccb573",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "5f134851a59fb8a3363600d6fc9a0b78",
+      "parallelism": 4,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "186872bd1aee503cdc6f9a329376284c",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "27f8c9064ab6010e231347049478d232",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Sink: Unnamed",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "5f134851a59fb8a3363600d6fc9a0b78",
+          "exchange": "pipelined"
+        }
+      ]
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__about"><span class="parent">/jobs/{job_id}</span>/about</a> <span class="methods"><a href="#_jobs__job_id__about_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__about" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__about_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get summary of the given job</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__about_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}</span>/about</h4></div><div class="modal-body"><div class="alert alert-info"><p>get summary of the given job</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__about_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__about_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__about_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__about_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "system info of the job runtime",
+   "properties": {
+     "version": { "type": "string", "required": true}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "version": "/home/wenlong.lwl/Blink/blink-dist/target/blink-dist-0.1.0-SNAPSHOT-bin/bin/../"
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices"><span class="parent">/jobs/{job_id}</span>/job_vertices</a> <span class="methods"><a href="#_jobs__job_id__job_vertices_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overviews of all execution job vertices</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}</span>/job_vertices</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overviews of all execution job vertices</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all metrics",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "job_vertices": {
+        "type": "array",
+        "items": {"$ref": "jobVertex"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 7,
+  "job_vertices": [
+    {
+      "id": "607a92f0551691743f8bd88d2d076f5d",
+      "name": "Source: Custom Source",
+      "status": "RUNNING",
+      "start_time": 1.450164810095E12,
+      "duration": 1429350.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.401298464324817E-45
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 3.4028234663852886E38
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "561371308bfe2fc83cdf6e8fffccb573",
+      "name": "Flat Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810154E12,
+      "duration": 1429291.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 1243432.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1210.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 4.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 25084.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0035118327693329904
+          }
+        ]
+      },
+      "parallelism": 2,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 2,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "605330236f9a87e61d5df719b030a2d5",
+      "name": "Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810288E12,
+      "duration": 1429158.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 516239.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.01331526072396747
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 2.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 621716.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.810405579314725
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "df28e35e9b731d678c18b22464d3336c",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at aggregate(WindowedStream.java:588) -\u003e Sink: Unnamed",
+      "status": "RUNNING",
+      "start_time": 1.450164810358E12,
+      "duration": 1429089.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.005820443310476798
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 516239.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.81119785080398
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "186872bd1aee503cdc6f9a329376284c",
+      "name": "Flat Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810436E12,
+      "duration": 1429012.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 1371229.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.02559400414606921
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 2.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 621716.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 28894.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.81082026615112
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "5f134851a59fb8a3363600d6fc9a0b78",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164810526E12,
+      "duration": 1428922.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 204635.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 3.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 1371229.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 4001.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 28894.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 15.113822100307807
+          }
+        ]
+      },
+      "parallelism": 4,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 4,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "27f8c9064ab6010e231347049478d232",
+      "name": "Sink: Unnamed",
+      "status": "RUNNING",
+      "start_time": 1.450164810863E12,
+      "duration": 1428587.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.036740814796300925
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 204635.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 4001.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 2.8115904143107917
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id_"><span class="parent">/jobs/{job_id}/job_vertices</span>/{job_vertex_id}</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overviews of the given EJV</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices</span>/{job_vertex_id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overviews of the given EJV</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "overview of job vertex",
+   "properties": {
+     "id": { "type": "string", "required": true},
+     "name": { "type": "string"},
+     "status": { "type": "string", "required": true },
+     "start_time": { "type": "number", "required": true},
+     "duration": { "type": "number", "required": true},
+     "stop_time": { "type": "number"},
+     "metric_summary": {"$ref": "metrics"},
+     "parallelism": { "type": "integer", "required": true},
+     "execution_summary": {"$ref": "executionSummary"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "5f134851a59fb8a3363600d6fc9a0b78",
+  "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+  "status": "RUNNING",
+  "start_time": 1.450164810526E12,
+  "duration": 1509525.0,
+  "stop_time": -1.0,
+  "metric_summary": {
+    "total": 6,
+    "metrics": [
+      {
+        "group": "system",
+        "name": "num_bytes_out",
+        "description": "num_bytes_out",
+        "value": 204635.0
+      },
+      {
+        "group": "system",
+        "name": "latency_max",
+        "description": "latency",
+        "value": 3.0
+      },
+      {
+        "group": "system",
+        "name": "latency_min",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "num_bytes_in",
+        "description": "num_bytes_in",
+        "value": 1371229.0
+      },
+      {
+        "group": "system",
+        "name": "num_records_out",
+        "description": "num_records_out",
+        "value": 4001.0
+      },
+      {
+        "group": "system",
+        "name": "num_records_in",
+        "description": "num_records_in",
+        "value": 28894.0
+      },
+      {
+        "group": "system",
+        "name": "TPS",
+        "description": "TPS",
+        "value": 14.303694335073871
+      }
+    ]
+  },
+  "parallelism": 4,
+  "execution_summary": {
+    "created": 0,
+    "scheduled": 0,
+    "deploying": 0,
+    "running": 4,
+    "finished": 0,
+    "canceling": 0,
+    "canceled": 0,
+    "failed": 0
+  }
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__metrics"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}</span>/metrics</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__metrics_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__metrics" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__metrics_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get metrics of the given EJV</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__metrics_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}</span>/metrics</h4></div><div class="modal-body"><div class="alert alert-info"><p>get metrics of the given EJV</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__metrics_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__metrics_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__metrics_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__metrics_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all metrics",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "metrics": {
+        "type": "array",
+        "items": {"$ref": "metric"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 24,
+  "metrics": [
+    {
+      "group": "system",
+      "name": "num_bytes_out",
+      "description": "num_bytes_out",
+      "value": 204635.0
+    },
+    {
+      "group": "system",
+      "name": "latency_max",
+      "description": "latency",
+      "value": 3.0
+    },
+    {
+      "group": "system",
+      "name": "latency_min",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_in",
+      "description": "num_bytes_in",
+      "value": 1371229.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_out",
+      "description": "num_records_out",
+      "value": 4001.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_in",
+      "description": "num_records_in",
+      "value": 28894.0
+    },
+    {
+      "group": "system",
+      "name": "TPS",
+      "description": "TPS",
+      "value": 13.999387229098975
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "value": 7061.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "value": 158.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "value": 0.015641239496602122
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "value": 0.015641239496602122
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "value": 3.025732191362966
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "value": 3.5487280879224876
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "value": 0.14402959083450373
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "value": 36.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "value": 36.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "value": 239.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "value": 1.6297767445700022
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "value": 0.019550186697770883
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "value": 0.0892515579220289
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "value": 7061.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "value": 3205.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "value": 7061.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "value": 3.5489777175774524
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "value": 36.0
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}</span>/execution_vertices</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overview of all execution vertices</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}</span>/execution_vertices</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overview of all execution vertices</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all execution vertices",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "execution_vertices": {
+        "type": "array",
+        "items": {"$ref": "executionVertex"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 4,
+  "execution_vertices": [
+    {
+      "id": "0",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652446.0,
+      "stop_time": -1.0,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 49526.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.008530805687203791
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 3.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 348145.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 966.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7385.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.53995529511861
+          }
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652446.0,
+      "stop_time": 1.45016481626E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 52321.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.008413624643777989
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 348280.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 1021.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7369.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.529782288913928
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652447.0,
+      "stop_time": 1.450164816534E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 52624.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.013241937996572676
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 308564.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 1029.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 6419.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 3.946469664934335
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652447.0,
+      "stop_time": 1.450164816526E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 50164.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.009843284548633596
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 366240.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 985.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7721.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.7469298043374675
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id_"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices</span>/{execution_vertex_id}</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id_" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overview of given execution vertex</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices</span>/{execution_vertex_id}</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overview of given execution vertex</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_vertex_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "overview of execution vertex",
+   "properties": {
+     "id": { "type": "string", "required": true},
+     "name": { "type": "string"},
+     "status": { "type": "string", "required": true },
+     "start_time": { "type": "number", "required": true},
+     "duration": { "type": "number", "required": true},
+     "stop_time": { "type": "number"},
+     "execution_summary": {"$ref": "executionSummary"},
+     "metric_summary": {"$ref": "metrics"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "id": "0",
+  "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+  "status": "RUNNING",
+  "start_time": 1.450164790481E12,
+  "duration": 1685337.0,
+  "stop_time": -1,
+  "execution_summary": {
+    "created": 0,
+    "scheduled": 0,
+    "deploying": 0,
+    "running": 1,
+    "finished": 0,
+    "canceling": 0,
+    "canceled": 0,
+    "failed": 0
+  },
+  "metric_summary": {
+    "total": 6,
+    "metrics": [
+      {
+        "group": "system",
+        "name": "num_bytes_out",
+        "description": "num_bytes_out",
+        "value": 49526.0
+      },
+      {
+        "group": "system",
+        "name": "latency_75",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "latency_95",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "latency_99",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "latency_average",
+        "description": "latency",
+        "value": 0.008530805687203791
+      },
+      {
+        "group": "system",
+        "name": "latency_max",
+        "description": "latency",
+        "value": 3.0
+      },
+      {
+        "group": "system",
+        "name": "latency_median",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "latency_min",
+        "description": "latency",
+        "value": 0.0
+      },
+      {
+        "group": "system",
+        "name": "num_bytes_in",
+        "description": "num_bytes_in",
+        "value": 348145.0
+      },
+      {
+        "group": "system",
+        "name": "num_records_out",
+        "description": "num_records_out",
+        "value": 966.0
+      },
+      {
+        "group": "system",
+        "name": "num_records_in",
+        "description": "num_records_in",
+        "value": 7385.0
+      },
+      {
+        "group": "system",
+        "name": "TPS",
+        "description": "TPS",
+        "value": 4.449977373507059
+      }
+    ]
+  }
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}</span>/metrics</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get metric of the given execution vertex</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}</span>/metrics</h4></div><div class="modal-body"><div class="alert alert-info"><p>get metric of the given execution vertex</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_vertex_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__metrics_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all metrics",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "metrics": {
+        "type": "array",
+        "items": {"$ref": "metric"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 24,
+  "metrics": [
+    {
+      "group": "system",
+      "name": "num_bytes_out",
+      "description": "num_bytes_out",
+      "value": 49526.0
+    },
+    {
+      "group": "system",
+      "name": "latency_75",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_95",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_99",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_average",
+      "description": "latency",
+      "value": 0.008530805687203791
+    },
+    {
+      "group": "system",
+      "name": "latency_max",
+      "description": "latency",
+      "value": 3.0
+    },
+    {
+      "group": "system",
+      "name": "latency_median",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_min",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_in",
+      "description": "num_bytes_in",
+      "value": 348145.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_out",
+      "description": "num_records_out",
+      "value": 966.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_in",
+      "description": "num_records_in",
+      "value": 7385.0
+    },
+    {
+      "group": "system",
+      "name": "TPS",
+      "description": "TPS",
+      "value": 4.352058874487447
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "value": 21.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "value": 0.00708039374069592
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "value": 0.00708039374069592
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "value": 1.4266151637745947
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "value": 0.9520242311991435
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "value": 0.01062057807806479
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "value": 6.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "value": 12.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "value": 18.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "value": 0.4153416834317607
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "value": 0.003539944139681476
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "value": 0.012386216382481642
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "value": 704.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "value": 2418.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "value": 12.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "value": 0.9520809516562316
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}</span>/executions</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get overview of all execution, the same as the /jobs/{jobId}/executoinJobVertices/{EJVID}/executionVertices/{EVId}</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}</span>/executions</h4></div><div class="modal-body"><div class="alert alert-info"><p>get overview of all execution, the same as the /jobs/{jobId}/executoinJobVertices/{EJVID}/executionVertices/{EVId}</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_vertex_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all executions",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "executions": {
+        "type": "array",
+        "items": {"$ref": "execution"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 1,
+  "executions": [
+    {
+      "id": "8df70e101cd465435de28c11ea849492",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "stop_time": -1,
+      "duration": 1764252.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.401298464324817E-45
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 3.4028234663852886E38
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0
+          }
+        ]
+      }
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}/executions/{execution_id}</span>/metrics</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get metric of the given execution</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}/executions/{execution_id}</span>/metrics</h4></div><div class="modal-body"><div class="alert alert-info"><p>get metric of the given execution</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_id</strong>: <em>required (string )</em></li></ul><h3>Query Parameters</h3><ul><li><strong>start</strong>: <em>(integer )</em><p>The offset of the items to return</p></li><li><strong>pages</strong>: <em>(integer )</em><p>The number of item to return</p></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__metrics_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "list of all metrics",
+   "properties": {
+     "total": { "type": "integer", "required": true},
+     "metrics": {
+        "type": "array",
+        "items": {"$ref": "metric"}
+     },
+     "offset": { "type": "integer"},
+     "limit": { "type": "integer"}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "total": 24,
+  "metrics": [
+    {
+      "group": "system",
+      "name": "num_records_out",
+      "description": "num_records_out",
+      "value": 966.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_in",
+      "description": "num_records_in",
+      "value": 7385.0
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_out",
+      "description": "num_bytes_out",
+      "value": 49526.0
+    },
+    {
+      "group": "system",
+      "name": "latency_75",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_95",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_99",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_average",
+      "description": "latency",
+      "value": 0.008530805687203791
+    },
+    {
+      "group": "system",
+      "name": "latency_max",
+      "description": "latency",
+      "value": 3.0
+    },
+    {
+      "group": "system",
+      "name": "latency_median",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_min",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "TPS",
+      "description": "TPS",
+      "value": 4.0796890045061645
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_in",
+      "description": "num_bytes_in",
+      "value": 348145.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "value": 21.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "value": 0.006636764356150898
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "value": 0.006636764356150898
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "value": 1.337233320668882
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "value": 0.8923906282396848
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "value": 0.009955135522578247
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "value": 6.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "value": 12.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "value": 18.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "value": 0.38932045331500287
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "value": 0.003318160124453126
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "value": 0.011610407790694202
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "value": 2418.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "value": 704.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "value": 0.892440958727094
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "value": 12.0
+    }
+  ]
+}
+</code></pre></div></div></div></div></div></div></div><div class="panel panel-white"><div class="panel-heading"><h4 class="panel-title"><a class="collapsed" data-toggle="collapse" href="#panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log"><span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}/executions/{execution_id}</span>/log</a> <span class="methods"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get"><span class="badge badge_get">get</span></a></span></h4></div><div id="panel__jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log" class="panel-collapse collapse"><div class="panel-body"><div class="list-group"><div onclick="window.location.href = '#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get'" class="list-group-item"><span class="badge badge_get">get</span><div class="method_description"><p>get log of the given execution</p></div><div class="clearfix"></div></div></div></div></div><div class="modal fade" tabindex="0" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button><h4 class="modal-title" id="myModalLabel"><span class="badge badge_get">get</span> <span class="parent">/jobs/{job_id}/job_vertices/{job_vertex_id}/execution_vertices/{execution_vertex_id}/executions/{execution_id}</span>/log</h4></div><div class="modal-body"><div class="alert alert-info"><p>get log of the given execution</p></div><ul class="nav nav-tabs"><li class="active"><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get_request" data-toggle="tab">Request</a></li><li><a href="#_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get_response" data-toggle="tab">Response</a></li></ul><div class="tab-content"><div class="tab-pane active" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get_request"><h3>URI Parameters</h3><ul><li><strong>job_id</strong>: <em>required (string )</em></li><li><strong>job_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_vertex_id</strong>: <em>required (string )</em></li><li><strong>execution_id</strong>: <em>required (string )</em></li></ul></div><div class="tab-pane" id="_jobs__job_id__job_vertices__job_vertex_id__execution_vertices__execution_vertex_id__executions__execution_id__log_get_response"><h2>HTTP status code <a href="http://httpstatus.es/200" target="_blank">200</a></h2><p>OK</p><h3>Body</h3><p><strong>Type: application/json</strong></p><p><strong>Schema</strong>:</p><pre><code>{  "$schema":"http://json-schema.org/draft-03/schema",
+   "type":"object",
+   "description": "log url",
+   "properties": {
+     "url": { "type": "string", "required": true}
+   }
+}
+</code></pre><p><strong>Example</strong>:</p><pre><code>{
+  "url": "http://hdp12.tbc.tbsite.net:8042/node/containerlogs/container_1450160119977_0011_01_000008/wenlong.lwl"
+}
+</code></pre></div></div></div></div></div></div></div></div></div></div></div><div class="col-md-3"><div id="sidebar" class="hidden-print affix" role="complementary"><ul class="nav nav-pills nav-stacked"><li><a href="#_jobs">/jobs</a></li></ul></div></div></div></div></body></html>

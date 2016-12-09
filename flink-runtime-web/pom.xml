@@ -111,7 +111,7 @@ under the License.
 		<resources>
 			<resource>
 				<!-- Only include the web folder from the web-dashboard directory -->
-				<directory>web-dashboard</directory>
+				<directory>blink-ui</directory>
 				<includes>
 					<include>web/**</include>
 				</includes>

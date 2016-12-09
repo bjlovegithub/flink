@@ -1,0 +1,89 @@
+{
+  "total": 1,
+  "executions": [
+    {
+      "id": "8df70e101cd465435de28c11ea849492",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "stop_time": -1,
+      "duration": 1764252.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.401298464324817E-45
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 3.4028234663852886E38
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0
+          }
+        ]
+      }
+    }
+  ]
+}

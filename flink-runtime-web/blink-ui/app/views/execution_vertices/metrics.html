@@ -1,0 +1,20 @@
+<li ng-repeat="(group_name, groups) in group_map"><h3>{{group_name}}</h3>
+    <table st-table="" class="table-list table-hover table-left table-top">
+        <thead>
+        <tr>
+            <th width = "30%">Name</th>
+            <th width = "70%">Value</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="row in groups">
+            <td>
+                {{row.name}}
+            </td>
+            <td>
+                {{row.value | number}}
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</li>

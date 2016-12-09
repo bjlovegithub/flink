@@ -1,0 +1,21 @@
+{
+  "id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+  "name": "FileLineCountAndWordCountWithCounter",
+  "status": "RUNNING",
+  "start_time": 1.450164790433E12,
+  "stop_time": -1.0,
+  "duration": 1139939.0,
+  "master_host": "hadoop0001.et2",
+  "master_port": "1080",
+  "vertices": 7,
+  "executions": 11,
+  "executors": 11,
+  "created_task_num": 1,
+  "scheduled_task_num": 1,
+  "running_task_num": 1,
+  "finished_task_num": 1,
+  "canceled_task_num": 1,
+  "failed_task_num": 1,
+  "vcore_total": 99,
+  "memory_total": 99
+}

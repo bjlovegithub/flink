@@ -1,0 +1,58 @@
+<table st-table="executions_displayed_collection" st-safe-src="executions_row_collection" class="table-list table-hover table-top table-left table-sort">
+    <thead>
+    <tr>
+        <th st-sort-default="true" st-sort="index" width="2%">ID</th>
+        <th st-sort="start_time" width="6%">StartTime</th>
+        <th st-sort="stop_time" width="6%">StopTime</th>
+        <th st-sort="duration" width="6%">Duration</th>
+        <th st-sort="host" width="8%">Host</th>
+        <th st-sort="container" width="10%">Container</th>
+        <th st-sort="message" width="50%">Message</th>
+        <th st-sort="status" width="6%">Status</th>
+        <th width="6%">Log</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <th colspan="9"><input st-search ng-model="query" class="form-control" placeholder="global search ..." type="text"/></th>
+    </tr>
+    <tr ng-repeat="row in executions_displayed_collection">
+        <td>{{row.index}}</td>
+        <td>
+            <span ng-if="row.start_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</span>
+            <span ng-if="row.start_time <= 0" >-</span>
+        </td>
+        <td>
+            <span ng-if="row.stop_time >0" >{{row.stop_time | date:'yyyy-MM-dd'}}<br/>{{row.stop_time | date: 'HH:mm:ss'}}</span>
+            <span ng-if="row.stop_time <= 0" >-</span>
+        </td>
+        <td>{{(row.duration/1000) | number}}</td>
+        <td>{{row.host}}</td>
+        <td>{{row.container}}</td>
+        <td>{{row.message}}</td>
+        <td>
+            <span ng-if="row.status=='CREATED'" title="created" status="created"  class="label label-default">{{row.status}}</span>
+            <span ng-if="row.status=='SCHEDULED'" title="scheduling" status="scheduling"  class="label label-info">SCHEDULING</span>
+            <span ng-if="row.status=='RUNNING'" title="running" status="running"  class="label label-success">{{row.status}}</span>
+            <span ng-if="row.status=='FINISHED'" title="finished" status="finished"  class="label label-primary">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELING'" title="canceling" status="canceling"  class="label label-warning2">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELED'" title="canceled" status="canceled"  class="label label-warning">{{row.status}}</span>
+            <span ng-if="row.status=='FAILED'" title="failed" status="failed"  class="label label-danger">{{row.status}}</span></td>
+        <td>
+            <a ui-sref="job.execution.log({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{execution_vertex_id}}', execution_id: '{{row.id}}'})">LOG</a>
+        </td>
+    </tr>
+    <tfoot>
+    <tr>
+        <td colspan="9" class="text-center">
+            <div st-pagination="" st-items-by-page="20" st-displayed-pages="10" st-template="views/pagination.html"></div>
+        </td>
+    </tr>
+    </tfoot>
+    </tbody>
+</table>
+
+
+
+

@@ -1,0 +1,617 @@
+{
+  "total": 7,
+  "job_vertices": [
+    {
+      "id": "607a92f0551691743f8bd88d2d076f5d",
+      "name": "Source: Custom Source",
+      "status": "RUNNING",
+      "start_time": 1.450164810095E12,
+      "duration": 1429350.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.401298464324817E-45
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 3.4028234663852886E38
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "561371308bfe2fc83cdf6e8fffccb573",
+      "name": "Flat Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810154E12,
+      "duration": 1429291.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 1243432.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1210.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 4.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 535.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 25084.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 10.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 0.0035118327693329904
+          }
+        ]
+      },
+      "parallelism": 2,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 2,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "605330236f9a87e61d5df719b030a2d5",
+      "name": "Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810288E12,
+      "duration": 1429158.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 516239.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.01331526072396747
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 2.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 621716.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.810405579314725
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "df28e35e9b731d678c18b22464d3336c",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at aggregate(WindowedStream.java:588) -\u003e Sink: Unnamed",
+      "status": "RUNNING",
+      "start_time": 1.450164810358E12,
+      "duration": 1429089.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.005820443310476798
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 516239.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.81119785080398
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "186872bd1aee503cdc6f9a329376284c",
+      "name": "Flat Map",
+      "status": "RUNNING",
+      "start_time": 1.450164810436E12,
+      "duration": 1429012.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 1371229.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.02559400414606921
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 2.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 621716.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 28894.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 12542.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 8.81082026615112
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "5f134851a59fb8a3363600d6fc9a0b78",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164810526E12,
+      "duration": 1428922.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 204635.0
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 3.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 1371229.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 4001.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 28894.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 15.113822100307807
+          }
+        ]
+      },
+      "parallelism": 4,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 4,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    },
+    {
+      "id": "27f8c9064ab6010e231347049478d232",
+      "name": "Sink: Unnamed",
+      "status": "RUNNING",
+      "start_time": 1.450164810863E12,
+      "duration": 1428587.0,
+      "stop_time": -1.0,
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.036740814796300925
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 204635.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 4001.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 2.8115904143107917
+          }
+        ]
+      },
+      "parallelism": 1,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      }
+    }
+  ]
+}

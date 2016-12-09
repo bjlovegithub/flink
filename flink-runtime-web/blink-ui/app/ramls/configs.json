@@ -1,0 +1,3001 @@
+{
+  "total": 749,
+  "configs": [
+    {
+      "name": "dfs.datanode.data.dir",
+      "value": "file:///dump/2/dfs/data,file:///dump/3/dfs/data,file:///dump/4/dfs/data,file:///dump/5/dfs/data,file:///dump/6/dfs/data,file:///dump/7/dfs/data,file:///dump/8/dfs/data,file:///dump/9/dfs/data,[SSD]file:///dump/10/dfs/data,[SSD]file:///dump/11/dfs/data,[SSD]file:///dump/1/dfs/data"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.txns",
+      "value": "40000000"
+    },
+    {
+      "name": "s3.replication",
+      "value": "3"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.event-log-enabled",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress.type",
+      "value": "RECORD"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.lru.cache.size",
+      "value": "5"
+    },
+    {
+      "name": "dfs.datanode.failed.volumes.tolerated",
+      "value": "1"
+    },
+    {
+      "name": "hadoop.http.filter.initializers",
+      "value": "org.apache.hadoop.http.lib.StaticUserWebFilter"
+    },
+    {
+      "name": "dfs.namenode.top.window.num.buckets",
+      "value": "10"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.allow-undeclared-pools",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.cluster.temp.dir",
+      "value": "${hadoop.tmp.dir}/mapred/temp"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.memory.limit.percent",
+      "value": "0.25"
+    },
+    {
+      "name": "yarn.nodemanager.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.times",
+      "value": "5"
+    },
+    {
+      "name": "nfs.mountd.port",
+      "value": "4242"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-acl",
+      "value": "world:anyone:rwcda"
+    },
+    {
+      "name": "dfs.namenode.top.num.users",
+      "value": "10"
+    },
+    {
+      "name": "dfs.https.server.keystore.resource",
+      "value": "ssl-server.xml"
+    },
+    {
+      "name": "mapreduce.reduce.skip.maxgroups",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.http.authentication.kerberos.keytab",
+      "value": "${user.home}/hadoop.keytab"
+    },
+    {
+      "name": "dfs.domain.socket.path",
+      "value": "/var/run/hadoop-hdfs/dn._PORT"
+    },
+    {
+      "name": "yarn.app.mapreduce.task.container.log.backups",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.fileoutputcommitter.algorithm.version",
+      "value": "1"
+    },
+    {
+      "name": "dfs.ha.fencing.ssh.private-key-files",
+      "value": "${user.home.name}/.ssh/id_rsa"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.max-disk-utilization-per-disk-percentage",
+      "value": "90.0"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.best-effort",
+      "value": "false"
+    },
+    {
+      "name": "dfs.datanode.sync.behind.writes.in.background",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.done-dir",
+      "value": "/history/done"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.client.thread-count",
+      "value": "5"
+    },
+    {
+      "name": "hadoop.shell.missing.defaultFs.warning",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.framework.name",
+      "value": "yarn"
+    },
+    {
+      "name": "ha.failover-controller.new-active.rpc-timeout.ms",
+      "value": "60000"
+    },
+    {
+      "name": "ha.health-monitor.check-interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "io.file.buffer.size",
+      "value": "131072"
+    },
+    {
+      "name": "mapreduce.shuffle.max.connections",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.resource.check.interval",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.block.map.allocation.percent",
+      "value": "0.25"
+    },
+    {
+      "name": "mapreduce.task.tmp.dir",
+      "value": "./tmp"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.period",
+      "value": "86400"
+    },
+    {
+      "name": "dfs.client.mmap.cache.timeout.ms",
+      "value": "3600000"
+    },
+    {
+      "name": "ipc.client.kill.max",
+      "value": "10"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.class",
+      "value": "com.etao.hadoop.yarn.server.resourcemanager.scheduler.fair.FairScheduler"
+    },
+    {
+      "name": "mapreduce.jobtracker.taskcache.levels",
+      "value": "2"
+    },
+    {
+      "name": "s3.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "dfs.namenode.secondary.http-address",
+      "value": "0.0.0.0:50090"
+    },
+    {
+      "name": "yarn.client.nodemanager-connect.max-wait-ms",
+      "value": "900000"
+    },
+    {
+      "name": "dfs.namenode.decommission.interval",
+      "value": "30"
+    },
+    {
+      "name": "dfs.namenode.http-address",
+      "value": "0.0.0.0:50070"
+    },
+    {
+      "name": "dfs.encrypt.data.transfer",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.files.preserve.failedtasks",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.avoid.write.stale.datanode",
+      "value": "true"
+    },
+    {
+      "name": "dfs.datanode.address",
+      "value": "0.0.0.0:50010"
+    },
+    {
+      "name": "hadoop.proxyuser.hadoop.hosts",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.http.authentication.token.validity",
+      "value": "36000"
+    },
+    {
+      "name": "yarn.resourcemanager.nodes.exclude-path",
+      "value": "/home/hadoop/hadoop_hbase/hadoop-current/etc/hadoop/yarn-exclude"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.filter.group",
+      "value": "(objectClass\u003dgroup)"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.monitor.policies",
+      "value": "org.apache.hadoop.yarn.server.resourcemanager.monitor.capacity.ProportionalCapacityPreemptionPolicy"
+    },
+    {
+      "name": "dfs.client.failover.max.attempts",
+      "value": "15"
+    },
+    {
+      "name": "hadoop.registry.zk.connection.timeout.ms",
+      "value": "15000"
+    },
+    {
+      "name": "hadoop.security.crypto.cipher.suite",
+      "value": "AES/CTR/NoPadding"
+    },
+    {
+      "name": "yarn.resourcemanager.fs.state-store.retry-policy-spec",
+      "value": "2000, 500"
+    },
+    {
+      "name": "mapreduce.task.profile.params",
+      "value": "-agentlib:hprof\u003dcpu\u003dsamples,heap\u003dsites,force\u003dn,thread\u003dy,verbose\u003dn,file\u003d%s"
+    },
+    {
+      "name": "yarn.timeline-service.http-authentication.simple.anonymous.allowed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.local-cache.max-files-per-directory",
+      "value": "8192"
+    },
+    {
+      "name": "yarn.admin.acl",
+      "value": "*"
+    },
+    {
+      "name": "yarn.resourcemanager.cluster-id",
+      "value": "hdp"
+    },
+    {
+      "name": "yarn.client.failover-retries-on-socket-timeouts",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.retrycache.expirytime.millis",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.resourcemanager.nodemanagers.heartbeat-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.client.failover.connection.retries.on.timeouts",
+      "value": "0"
+    },
+    {
+      "name": "yarn.client.failover-proxy-provider",
+      "value": "org.apache.hadoop.yarn.client.ConfiguredRMFailoverProxyProvider"
+    },
+    {
+      "name": "mapreduce.map.sort.spill.percent",
+      "value": "0.80"
+    },
+    {
+      "name": "file.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "user.home.name",
+      "value": "/home/hadoop"
+    },
+    {
+      "name": "dfs.webhdfs.enabled",
+      "value": "true"
+    },
+    {
+      "name": "io.compression.codec.lzo.class",
+      "value": "com.hadoop.compression.lzo.LzoCodec"
+    },
+    {
+      "name": "ipc.client.connection.maxidletime",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.task.combine.progress.records",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.hours",
+      "value": "1"
+    },
+    {
+      "name": "dfs.datanode.ipc.address",
+      "value": "0.0.0.0:50020"
+    },
+    {
+      "name": "yarn.nodemanager.address",
+      "value": "${yarn.nodemanager.hostname}:0"
+    },
+    {
+      "name": "dfs.image.transfer.chunksize",
+      "value": "65536"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.embedded",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.store.fs.uri",
+      "value": "${hadoop.tmp.dir}/mapred/history/recoverystore"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-state-store.parent-path",
+      "value": "/rmstore"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.task.listener.thread-count",
+      "value": "30"
+    },
+    {
+      "name": "nfs.dump.dir",
+      "value": "/tmp/.hdfs-nfs"
+    },
+    {
+      "name": "dfs.namenode.list.cache.pools.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.job.running.map.limit",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.shared.edits.dir",
+      "value": "qjournal://hdpm1.zmf.tbsite.net;hdpm2.zmf.tbsite.net;hdp1.tbc.tbsite.net;/hdp"
+    },
+    {
+      "name": "dfs.namenode.safemode.extension",
+      "value": "30000"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.sizebasedweight",
+      "value": "false"
+    },
+    {
+      "name": "ha.zookeeper.parent-znode",
+      "value": "/hadoop-ha"
+    },
+    {
+      "name": "yarn.nodemanager.container-executor.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.LinuxContainerExecutor"
+    },
+    {
+      "name": "io.skip.checksum.errors",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.refresh.interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.encrypt.data.transfer.cipher.key.bitlength",
+      "value": "128"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.nodemanager.recovery.dir",
+      "value": "${hadoop.tmp.dir}/yarn-nm-recovery"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files.timestamp",
+      "value": "1450164780300,1450164781565,1450164781945"
+    },
+    {
+      "name": "mapreduce.job.emit-timeline-data",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.http.authentication.kerberos.principal",
+      "value": "HTTP/_HOST@LOCALHOST"
+    },
+    {
+      "name": "mapreduce.reduce.log.level",
+      "value": "DEBUG"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.user-pattern",
+      "value": "^[_.A-Za-z0-9][-@_.A-Za-z0-9]{0,255}?[$]?$"
+    },
+    {
+      "name": "fs.s3.maxRetries",
+      "value": "4"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compression.type",
+      "value": "RECORD"
+    },
+    {
+      "name": "yarn.nodemanager.resourcemanager.minimum.version",
+      "value": "NONE"
+    },
+    {
+      "name": "hadoop.kerberos.kinit.command",
+      "value": "kinit"
+    },
+    {
+      "name": "yarn.log-aggregation.retain-check-interval-seconds",
+      "value": "18000"
+    },
+    {
+      "name": "yarn.nodemanager.process-kill-wait.ms",
+      "value": "2000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.mount",
+      "value": "true"
+    },
+    {
+      "name": "dfs.balancer.maxIterationTime",
+      "value": "60000"
+    },
+    {
+      "name": "fs.s3a.fast.buffer.size",
+      "value": "1048576"
+    },
+    {
+      "name": "dfs.namenode.name.dir.restore",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobtracker.handler.count",
+      "value": "10"
+    },
+    {
+      "name": "mapreduce.jobhistory.admin.address",
+      "value": "0.0.0.0:10033"
+    },
+    {
+      "name": "yarn.app.mapreduce.client-am.ipc.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "dfs.client.use.datanode.hostname",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.util.hash.type",
+      "value": "murmur"
+    },
+    {
+      "name": "dfs.datanode.available-space-volume-choosing-policy.balanced-space-preference-fraction",
+      "value": "0.75f"
+    },
+    {
+      "name": "dfs.datanode.dns.interface",
+      "value": "default"
+    },
+    {
+      "name": "io.seqfile.lazydecompress",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.lazypersist.file.scrub.interval.sec",
+      "value": "300"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.min-healthy-disks",
+      "value": "0.25"
+    },
+    {
+      "name": "yarn.client.max-cached-nodemanagers-proxies",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.job.maxtaskfailures.per.tracker",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.tasktracker.healthchecker.script.timeout",
+      "value": "600000"
+    },
+    {
+      "name": "hadoop.proxyuser.httpfs.groups",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.attr.group.name",
+      "value": "cn"
+    },
+    {
+      "name": "dfs.namenode.top.enabled",
+      "value": "true"
+    },
+    {
+      "name": "fs.df.interval",
+      "value": "60000"
+    },
+    {
+      "name": "hadoop.security.crypto.buffer.size",
+      "value": "8192"
+    },
+    {
+      "name": "dfs.balancer.dispatcherThreads",
+      "value": "20"
+    },
+    {
+      "name": "dfs.namenode.kerberos.internal.spnego.principal",
+      "value": "${dfs.web.authentication.kerberos.principal}"
+    },
+    {
+      "name": "dfs.client.cached.conn.retry",
+      "value": "3"
+    },
+    {
+      "name": "mapreduce.job.reduce.shuffle.consumer.plugin.class",
+      "value": "org.apache.hadoop.mapreduce.task.reduce.Shuffle"
+    },
+    {
+      "name": "mapreduce.jobtracker.address",
+      "value": "local"
+    },
+    {
+      "name": "mapreduce.tasktracker.tasks.sleeptimebeforesigkill",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.journalnode.rpc-address",
+      "value": "0.0.0.0:8485"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-blocks-per-file",
+      "value": "1048576"
+    },
+    {
+      "name": "mapreduce.job.acl-view-job",
+      "value": "* "
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.committer.cancel-timeout",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.policy",
+      "value": "DEFAULT"
+    },
+    {
+      "name": "mapreduce.shuffle.connection-keep-alive.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.blink.zookeeper.quorum",
+      "value": "hdp1.tbc.tbsite.net"
+    },
+    {
+      "name": "dfs.namenode.replication.interval",
+      "value": "3"
+    },
+    {
+      "name": "mapreduce.jobhistory.minicluster.fixed.ports",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.num.checkpoints.retained",
+      "value": "2"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.address",
+      "value": "hdpm1.zmf.tbsite.net:8030"
+    },
+    {
+      "name": "mapreduce.tasktracker.http.address",
+      "value": "0.0.0.0:50060"
+    },
+    {
+      "name": "mapreduce.jobhistory.admin.acl",
+      "value": "*"
+    },
+    {
+      "name": "dfs.datanode.directoryscan.threads",
+      "value": "6"
+    },
+    {
+      "name": "mapreduce.reduce.memory.mb",
+      "value": "2048"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.ssl",
+      "value": "false"
+    },
+    {
+      "name": "dfs.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "mapreduce.task.merge.progress.records",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.heartbeat.interval",
+      "value": "3"
+    },
+    {
+      "name": "yarn.resourcemanager.system-metrics-publisher.dispatcher.pool-size",
+      "value": "10"
+    },
+    {
+      "name": "fs.s3a.threads.keepalivetime",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.hosts.exclude",
+      "value": "${hadoop.home}/etc/hadoop/exclude"
+    },
+    {
+      "name": "net.topology.script.number.args",
+      "value": "100"
+    },
+    {
+      "name": "fs.s3a.threads.core",
+      "value": "15"
+    },
+    {
+      "name": "mapreduce.local.clientfactory.class.name",
+      "value": "org.apache.hadoop.mapred.LocalClientFactory"
+    },
+    {
+      "name": "dfs.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "yarn.dispatcher.drain-events.timeout",
+      "value": "300000"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.directory.search.timeout",
+      "value": "10000"
+    },
+    {
+      "name": "io.native.lib.available",
+      "value": "true"
+    },
+    {
+      "name": "dfs.nameservices",
+      "value": "hdp"
+    },
+    {
+      "name": "dfs.client.failover.connection.retries",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.interval-ms",
+      "value": "120000"
+    },
+    {
+      "name": "dfs.blocksize",
+      "value": "134217728"
+    },
+    {
+      "name": "dfs.client.use.legacy.blockreader.local",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.container-tokens.master-key-rolling-interval-secs",
+      "value": "86400"
+    },
+    {
+      "name": "fs.s3a.connection.ssl.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.webapp.address",
+      "value": "hdpm1.zmf.tbsite.net:19888"
+    },
+    {
+      "name": "yarn.resourcemanager.resource-tracker.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.client.failover-retries",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.registry.jaas.context",
+      "value": "Client"
+    },
+    {
+      "name": "dfs.blockreport.initialDelay",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.aux-services.mapreduce_shuffle.class",
+      "value": "org.apache.hadoop.mapred.ShuffleHandler"
+    },
+    {
+      "name": "ha.health-monitor.rpc-timeout.ms",
+      "value": "45000"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-timeout-ms",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.reduce.markreset.buffer.percent",
+      "value": "0.0"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.start-time-read-cache-size",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.ha.tail-edits.period",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.client.thread-count",
+      "value": "50"
+    },
+    {
+      "name": "yarn.nodemanager.health-checker.script.timeout-ms",
+      "value": "1200000"
+    },
+    {
+      "name": "file.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "dfs.replication.max",
+      "value": "512"
+    },
+    {
+      "name": "yarn.nodemanager.container-metrics.enable",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.max.extra.edits.segments.retained",
+      "value": "10000"
+    },
+    {
+      "name": "io.map.index.skip",
+      "value": "0"
+    },
+    {
+      "name": "yarn.timeline-service.client.retry-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.mount-path",
+      "value": "/cgroup"
+    },
+    {
+      "name": "mapreduce.task.timeout",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.reduce.cpu.vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.datanode.du.reserved",
+      "value": "53687091200"
+    },
+    {
+      "name": "dfs.support.append",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.file-block-storage-locations.num-threads",
+      "value": "10"
+    },
+    {
+      "name": "ftp.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "net.topology.script.file.name",
+      "value": "${hadoop.home}/etc/hadoop/rack_awareness.py"
+    },
+    {
+      "name": "yarn.nodemanager.container-manager.thread-count",
+      "value": "20"
+    },
+    {
+      "name": "ipc.server.listen.queue.size",
+      "value": "12800"
+    },
+    {
+      "name": "hadoop.ssl.hostname.verifier",
+      "value": "DEFAULT"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.tasktracker.dns.interface",
+      "value": "default"
+    },
+    {
+      "name": "nfs.server.port",
+      "value": "2049"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.attr.member",
+      "value": "member"
+    },
+    {
+      "name": "dfs.datanode.synconclose",
+      "value": "true"
+    },
+    {
+      "name": "fs.s3a.impl",
+      "value": "org.apache.hadoop.fs.s3a.S3AFileSystem"
+    },
+    {
+      "name": "mapreduce.tasktracker.outofband.heartbeat",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.job.userlog.retain.hours",
+      "value": "24"
+    },
+    {
+      "name": "hadoop.registry.system.acls",
+      "value": "sasl:yarn@, sasl:mapred@, sasl:mapred@hdfs@"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.containermanager.monitor.EtaoContainersMonitorImpl"
+    },
+    {
+      "name": "yarn.nodemanager.resource.memory-mb",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.webhdfs.user.provider.user.pattern",
+      "value": "^[A-Za-z_][A-Za-z0-9._-]*[$]?$"
+    },
+    {
+      "name": "yarn.nodemanager.log-aggregation.roll-monitoring-interval-seconds",
+      "value": "-1"
+    },
+    {
+      "name": "dfs.namenode.delegation.token.renew-interval",
+      "value": "86400000"
+    },
+    {
+      "name": "hadoop.ssl.keystores.factory.class",
+      "value": "org.apache.hadoop.security.ssl.FileBasedKeyStoresFactory"
+    },
+    {
+      "name": "yarn.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.ceiling.ms",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.datanode.sync.behind.writes",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.os-overlimit-rate",
+      "value": "0.85"
+    },
+    {
+      "name": "nfs.wtmax",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.AbstractFileSystem.har.impl",
+      "value": "org.apache.hadoop.fs.HarFs"
+    },
+    {
+      "name": "mapreduce.map.maxattempts",
+      "value": "10"
+    },
+    {
+      "name": "hadoop.security.random.device.file.path",
+      "value": "/dev/urandom"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.skip.checksum",
+      "value": "false"
+    },
+    {
+      "name": "dfs.datanode.handler.count",
+      "value": "32"
+    },
+    {
+      "name": "yarn.timeline-service.webapp.address",
+      "value": "${yarn.timeline-service.hostname}:8188"
+    },
+    {
+      "name": "hadoop.ssl.require.client.cert",
+      "value": "false"
+    },
+    {
+      "name": "ftp.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.client.write.exclude.nodes.cache.expiry.interval.millis",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.jobhistory.cleaner.enable",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.retry-delay.max.ms",
+      "value": "60000"
+    },
+    {
+      "name": "yarn.app.blink.file.user.jar",
+      "value": "/home/wenlong.lwl/Blink/blink-dist/target/blink-dist-0.1.0-SNAPSHOT-bin/bin/../lib/blink-examples-0.1.0-SNAPSHOT.jar"
+    },
+    {
+      "name": "fs.du.interval",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.task.profile.reduces",
+      "value": "0-2"
+    },
+    {
+      "name": "ha.health-monitor.connect-retry-interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "hadoop.fuse.connection.timeout",
+      "value": "300"
+    },
+    {
+      "name": "dfs.permissions.superusergroup",
+      "value": "hadoop"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.task.numberprogresssplits",
+      "value": "12"
+    },
+    {
+      "name": "mapreduce.map.speculative",
+      "value": "false"
+    },
+    {
+      "name": "fs.ftp.host.port",
+      "value": "21"
+    },
+    {
+      "name": "dfs.namenode.startup.delay.block.deletion.sec",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.client.submit.file.replication",
+      "value": "10"
+    },
+    {
+      "name": "dfs.datanode.data.dir.perm",
+      "value": "700"
+    },
+    {
+      "name": "mapreduce.job.ubertask.maxmaps",
+      "value": "9"
+    },
+    {
+      "name": "dfs.block.scanner.volume.bytes.per.second",
+      "value": "1048576"
+    },
+    {
+      "name": "s3native.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "dfs.namenode.replication.min",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.cluster.acls.enabled",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.security.uid.cache.secs",
+      "value": "14400"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.fetch.thread-count",
+      "value": "4"
+    },
+    {
+      "name": "nfs.allow.insecure.ports",
+      "value": "true"
+    },
+    {
+      "name": "fs.trash.checkpoint.interval",
+      "value": "0"
+    },
+    {
+      "name": "map.sort.class",
+      "value": "org.apache.hadoop.util.QuickSort"
+    },
+    {
+      "name": "yarn.timeline-service.generic-application-history.max-applications",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.namenode.blocks.per.postponedblocks.rescan",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.image.transfer.timeout",
+      "value": "6000000"
+    },
+    {
+      "name": "dfs.namenode.name.dir",
+      "value": "${hadoop.tmp.dir}/dfs/name"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.staging-dir",
+      "value": "/tmp/hadoop-yarn/staging"
+    },
+    {
+      "name": "ipc.client.connect.timeout",
+      "value": "20000"
+    },
+    {
+      "name": "fs.AbstractFileSystem.file.impl",
+      "value": "org.apache.hadoop.fs.local.LocalFs"
+    },
+    {
+      "name": "yarn.nodemanager.env-whitelist",
+      "value": "JAVA_HOME,HADOOP_CONF_DIR,HADOOP_COMMON_HOME,HADOOP_HDFS_HOME,HADOOP_YARN_HOME,HBASE_HOME,LD_LIBRARY_PATH"
+    },
+    {
+      "name": "hadoop.registry.zk.retry.interval.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.strict-resource-usage",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "dfs.image.compression.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "mapreduce.job.reduces",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.store.class",
+      "value": "org.apache.hadoop.mapreduce.v2.hs.HistoryServerFileSystemStateStoreService"
+    },
+    {
+      "name": "mapreduce.job.complete.cancel.delegation.tokens",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.security.group.mapping.ldap.search.filter.user",
+      "value": "(\u0026(objectClass\u003duser)(sAMAccountName\u003d{0}))"
+    },
+    {
+      "name": "yarn.nodemanager.sleep-delay-before-sigkill.ms",
+      "value": "250"
+    },
+    {
+      "name": "dfs.namenode.enable.retrycache",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobhistory.joblist.cache.size",
+      "value": "20000"
+    },
+    {
+      "name": "mapreduce.tasktracker.healthchecker.interval",
+      "value": "60000"
+    },
+    {
+      "name": "mapreduce.jobtracker.heartbeats.in.second",
+      "value": "100"
+    },
+    {
+      "name": "dfs.namenode.backup.http-address",
+      "value": "0.0.0.0:50105"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.dir",
+      "value": "/jobtracker/jobsInfo"
+    },
+    {
+      "name": "hadoop.rpc.protection",
+      "value": "authentication"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.container.log.backups",
+      "value": "0"
+    },
+    {
+      "name": "dfs.client.mmap.enabled",
+      "value": "true"
+    },
+    {
+      "name": "ftp.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "dfs.namenode.https-address",
+      "value": "0.0.0.0:50470"
+    },
+    {
+      "name": "yarn.timeline-service.address",
+      "value": "${yarn.timeline-service.hostname}:10200"
+    },
+    {
+      "name": "yarn.nodemanager.recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.ha.log-roll.period",
+      "value": "120"
+    },
+    {
+      "name": "yarn.resourcemanager.admin.client.thread-count",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.top.windows.minutes",
+      "value": "1,5,25"
+    },
+    {
+      "name": "hadoop.security.groups.negative-cache.secs",
+      "value": "30"
+    },
+    {
+      "name": "yarn.app.blink.name",
+      "value": "FileLineCountAndWordCountWithCounter"
+    },
+    {
+      "name": "dfs.datanode.fsdatasetcache.max.threads.per.volume",
+      "value": "4"
+    },
+    {
+      "name": "file.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "hadoop.http.authentication.simple.anonymous.allowed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.path",
+      "value": "${hadoop.tmp.dir}/yarn/timeline"
+    },
+    {
+      "name": "yarn.nodemanager.log.retain-seconds",
+      "value": "108000"
+    },
+    {
+      "name": "dfs.datanode.drop.cache.behind.reads",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.proxy-user-privileges.enabled",
+      "value": "false"
+    },
+    {
+      "name": "dfs.image.transfer.bandwidthPerSec",
+      "value": "70000000"
+    },
+    {
+      "name": "yarn.resourcemanager.work-preserving-recovery.scheduling-wait-ms",
+      "value": "10000"
+    },
+    {
+      "name": "hadoop.registry.zk.session.timeout.ms",
+      "value": "60000"
+    },
+    {
+      "name": "dfs.datanode.slow.io.warning.threshold.ms",
+      "value": "300"
+    },
+    {
+      "name": "ha.failover-controller.cli-check.rpc-timeout.ms",
+      "value": "20000"
+    },
+    {
+      "name": "mapreduce.tasktracker.instrumentation",
+      "value": "org.apache.hadoop.mapred.TaskTrackerMetricsInst"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.cgroups.hierarchy",
+      "value": "/hadoop-yarn"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.assignmultiple",
+      "value": "true"
+    },
+    {
+      "name": "yarn.app.blink.distribute.classpath.files",
+      "value": "/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-examples-0.1.0-SNAPSHOT.jar,/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-dist.jar"
+    },
+    {
+      "name": "hadoop.security.groups.cache.warn.after.ms",
+      "value": "5000"
+    },
+    {
+      "name": "dfs.namenode.write.stale.datanode.ratio",
+      "value": "1.0f"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.timeout-ms",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.jobhistory.client.thread-count",
+      "value": "10"
+    },
+    {
+      "name": "io.mapfile.bloom.size",
+      "value": "1048576"
+    },
+    {
+      "name": "yarn.resourcemanager.work-preserving-recovery.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.docker-container-executor.exec-name",
+      "value": "/usr/bin/docker"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-num-retries",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.ha.fencing.ssh.connect-timeout",
+      "value": "30000"
+    },
+    {
+      "name": "hadoop.registry.zk.root",
+      "value": "/registry"
+    },
+    {
+      "name": "s3.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.container.log.limit.kb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.edit.log.autoroll.check.interval.ms",
+      "value": "300000"
+    },
+    {
+      "name": "fs.automatic.close",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.size.expiry.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.app.blink.conf",
+      "value": "/user/wenlong.lwl/.staging/application_1450160119977_0011/blink-job.xml"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.user-as-default-queue",
+      "value": "false"
+    },
+    {
+      "name": "fs.trash.interval",
+      "value": "1440"
+    },
+    {
+      "name": "dfs.journalnode.https-address",
+      "value": "0.0.0.0:8481"
+    },
+    {
+      "name": "hadoop.security.authentication",
+      "value": "simple"
+    },
+    {
+      "name": "yarn.timeline-service.ttl-ms",
+      "value": "604800000"
+    },
+    {
+      "name": "fs.defaultFS",
+      "value": "hdfs://hdp"
+    },
+    {
+      "name": "ipc.client.connect.max.retries",
+      "value": "10"
+    },
+    {
+      "name": "hadoop.ssl.server.conf",
+      "value": "ssl-server.xml"
+    },
+    {
+      "name": "nfs.rtmax",
+      "value": "1048576"
+    },
+    {
+      "name": "yarn.resourcemanager.delayed.delegation-token.removal-interval-ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.namenode.xattrs.enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.journalnode.http-address",
+      "value": "0.0.0.0:8480"
+    },
+    {
+      "name": "dfs.datanode.shared.file.descriptor.paths",
+      "value": "/dev/shm,/tmp"
+    },
+    {
+      "name": "hadoop.proxyuser.httpfs.hosts",
+      "value": "*"
+    },
+    {
+      "name": "mapreduce.jobtracker.taskscheduler",
+      "value": "org.apache.hadoop.mapred.JobQueueTaskScheduler"
+    },
+    {
+      "name": "yarn.timeline-service.store-class",
+      "value": "org.apache.hadoop.yarn.server.timeline.LeveldbTimelineStore"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress",
+      "value": "false"
+    },
+    {
+      "name": "yarn.am.liveness-monitor.expiry-interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "dfs.checksum.type",
+      "value": "CRC32"
+    },
+    {
+      "name": "dfs.user.home.dir.prefix",
+      "value": "/user"
+    },
+    {
+      "name": "net.topology.node.switch.mapping.impl",
+      "value": "org.apache.hadoop.net.ScriptBasedMapping"
+    },
+    {
+      "name": "dfs.namenode.replication.considerLoad",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.min-block-size",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.swift.impl",
+      "value": "org.apache.hadoop.fs.swift.snative.SwiftNativeFileSystem"
+    },
+    {
+      "name": "fs.s3a.fast.upload",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.audit.loggers",
+      "value": "default"
+    },
+    {
+      "name": "app.zookeeper.quorum",
+      "value": "hdp1.tbc.tbsite.net,hdp9.tbc.tbsite.net,hdp14.tbc.tbsite.net"
+    },
+    {
+      "name": "mapreduce.job.counters.max",
+      "value": "100000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.enabled",
+      "value": "${yarn.nodemanager.recovery.enabled}"
+    },
+    {
+      "name": "yarn.resourcemanager.address",
+      "value": "hdpm1.zmf.tbsite.net:8040"
+    },
+    {
+      "name": "mapreduce.job.max.split.locations",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.client.block.write.retries",
+      "value": "3"
+    },
+    {
+      "name": "dfs.namenode.resource.checked.volumes.minimum",
+      "value": "1"
+    },
+    {
+      "name": "dfs.short.circuit.shared.memory.watcher.interrupt.check.ms",
+      "value": "60000"
+    },
+    {
+      "name": "io.map.index.interval",
+      "value": "128"
+    },
+    {
+      "name": "mapreduce.tasktracker.local.dir.minspacestart",
+      "value": "0"
+    },
+    {
+      "name": "dfs.client.https.keystore.resource",
+      "value": "ssl-client.xml"
+    },
+    {
+      "name": "mapreduce.client.progressmonitor.pollinterval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.task.profile.map.params",
+      "value": "${mapreduce.task.profile.params}"
+    },
+    {
+      "name": "mapreduce.job.queuename",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.jobtracker.tasktracker.maxblacklists",
+      "value": "4"
+    },
+    {
+      "name": "fs.s3a.connection.establish.timeout",
+      "value": "5000"
+    },
+    {
+      "name": "hadoop.registry.zk.quorum",
+      "value": "hdp1.tbc.tbsite.net:2181,hdp9.tbc.tbsite.net:2181,hdp14.tbc.tbsite.net:2181"
+    },
+    {
+      "name": "yarn.app.mapreduce.client-am.ipc.max-retries-on-timeouts",
+      "value": "3"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.address",
+      "value": "${yarn.nodemanager.hostname}:8040"
+    },
+    {
+      "name": "io.mapfile.bloom.error.rate",
+      "value": "0.005"
+    },
+    {
+      "name": "mapreduce.job.split.metainfo.maxsize",
+      "value": "10000000"
+    },
+    {
+      "name": "yarn.nodemanager.delete.thread-count",
+      "value": "4"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files.size",
+      "value": "36351,50415632,97705"
+    },
+    {
+      "name": "yarn.scheduler.maximum-allocation-vcores",
+      "value": "32"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.resource.mb",
+      "value": "3072"
+    },
+    {
+      "name": "dfs.client.slow.io.warning.threshold.ms",
+      "value": "30000"
+    },
+    {
+      "name": "dfs.datanode.dns.nameserver",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.job.reducer.preempt.delay.sec",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.map.output.compress.codec",
+      "value": "org.apache.hadoop.io.compress.SnappyCodec"
+    },
+    {
+      "name": "yarn.nodemanager.disk-health-checker.min-free-space-per-disk-mb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.accesstime.precision",
+      "value": "3600000"
+    },
+    {
+      "name": "mapreduce.map.log.level",
+      "value": "DEBUG"
+    },
+    {
+      "name": "fs.s3a.connection.maximum",
+      "value": "15"
+    },
+    {
+      "name": "io.seqfile.compress.blocksize",
+      "value": "1000000"
+    },
+    {
+      "name": "mapreduce.tasktracker.taskcontroller",
+      "value": "org.apache.hadoop.mapred.DefaultTaskController"
+    },
+    {
+      "name": "dfs.namenode.heartbeat.recheck-interval",
+      "value": "300000"
+    },
+    {
+      "name": "hadoop.security.groups.cache.secs",
+      "value": "300"
+    },
+    {
+      "name": "dfs.datanode.cache.revocation.timeout.ms",
+      "value": "900000"
+    },
+    {
+      "name": "yarn.app.blink.jobgraph",
+      "value": "jobGraph"
+    },
+    {
+      "name": "dfs.client.context",
+      "value": "default"
+    },
+    {
+      "name": "mapreduce.input.lineinputformat.linespermap",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.job.end-notification.max.attempts",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.local-user",
+      "value": "yarn"
+    },
+    {
+      "name": "yarn.nodemanager.webapp.address",
+      "value": "${yarn.nodemanager.hostname}:8042"
+    },
+    {
+      "name": "mapreduce.jobhistory.recovery.enable",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobtracker.expire.trackers.interval",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.address",
+      "value": "hdpm1.zmf.tbsite.net:8088"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.num.refill.threads",
+      "value": "2"
+    },
+    {
+      "name": "yarn.nodemanager.health-checker.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.jobhistory.loadedjobs.cache.size",
+      "value": "5"
+    },
+    {
+      "name": "yarn.app.blink.am.staging-dir",
+      "value": "/user"
+    },
+    {
+      "name": "hadoop.security.authorization",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.job.map.output.collector.class",
+      "value": "org.apache.hadoop.mapred.MapTask$MapOutputBuffer"
+    },
+    {
+      "name": "mapreduce.am.max-attempts",
+      "value": "2"
+    },
+    {
+      "name": "fs.ftp.host",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "fs.s3a.attempts.maximum",
+      "value": "10"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.scheduler.heartbeat.interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.ifile.readahead",
+      "value": "true"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.monitor.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-retry-interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "ha.zookeeper.session-timeout.ms",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.tasktracker.taskmemorymanager.monitoringinterval",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.parallelcopies",
+      "value": "5"
+    },
+    {
+      "name": "dfs.client.mmap.retry.timeout.ms",
+      "value": "300000"
+    },
+    {
+      "name": "mapreduce.map.skip.maxrecords",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.yarn-overlimit-rate",
+      "value": "1.2"
+    },
+    {
+      "name": "dfs.namenode.avoid.read.stale.datanode",
+      "value": "true"
+    },
+    {
+      "name": "dfs.https.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.webapp.https.address",
+      "value": "${yarn.timeline-service.hostname}:8190"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.read.timeout",
+      "value": "180000"
+    },
+    {
+      "name": "dfs.namenode.list.encryption.zones.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "yarn.nodemanager.remote-app-log-dir-suffix",
+      "value": "logs"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compress.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "mapreduce.jobtracker.instrumentation",
+      "value": "org.apache.hadoop.mapred.JobTrackerMetricsInst"
+    },
+    {
+      "name": "dfs.blockreport.intervalMsec",
+      "value": "21600000"
+    },
+    {
+      "name": "ipc.client.connect.retry.interval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.reduce.speculative",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobhistory.keytab",
+      "value": "/etc/security/keytab/jhs.service.keytab"
+    },
+    {
+      "name": "mapreduce.jobhistory.datestring.cache.size",
+      "value": "100000"
+    },
+    {
+      "name": "dfs.datanode.balance.bandwidthPerSec",
+      "value": "10485760"
+    },
+    {
+      "name": "file.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "yarn.resourcemanager.admin.address",
+      "value": "hdpm1.zmf.tbsite.net:8141"
+    },
+    {
+      "name": "mapreduce.map.cpu.vcores",
+      "value": "1"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.procfs-tree.smaps-based-rss.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.resourcemanager.configuration.provider-class",
+      "value": "org.apache.hadoop.yarn.LocalConfigurationProvider"
+    },
+    {
+      "name": "yarn.resourcemanager.resource-tracker.address",
+      "value": "hdpm1.zmf.tbsite.net:8025"
+    },
+    {
+      "name": "mapreduce.tasktracker.local.dir.minspacekill",
+      "value": "0"
+    },
+    {
+      "name": "mapreduce.jobtracker.staging.root.dir",
+      "value": "${hadoop.tmp.dir}/mapred/staging"
+    },
+    {
+      "name": "mapreduce.jobtracker.retiredjobs.cache.size",
+      "value": "1000"
+    },
+    {
+      "name": "hadoop.registry.rm.enabled",
+      "value": "false"
+    },
+    {
+      "name": "ipc.client.connect.max.retries.on.timeouts",
+      "value": "45"
+    },
+    {
+      "name": "dfs.ha.fencing.methods",
+      "value": "sshfence"
+    },
+    {
+      "name": "ha.zookeeper.acl",
+      "value": "world:anyone:rwcda"
+    },
+    {
+      "name": "hadoop.security.crypto.codec.classes.aes.ctr.nopadding",
+      "value": "org.apache.hadoop.crypto.OpensslAesCtrCryptoCodec,org.apache.hadoop.crypto.JceAesCtrCryptoCodec"
+    },
+    {
+      "name": "yarn.nodemanager.local-dirs",
+      "value": "/dump/2/nm-local-dir,/dump/3/nm-local-dir,/dump/4/nm-local-dir,/dump/5/nm-local-dir,/dump/6/nm-local-dir,/dump/7/nm-local-dir,/dump/8/nm-local-dir,/dump/9/nm-local-dir"
+    },
+    {
+      "name": "mapreduce.app-submission.cross-platform",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.connect.timeout",
+      "value": "180000"
+    },
+    {
+      "name": "dfs.block.access.key.update.interval",
+      "value": "600"
+    },
+    {
+      "name": "rpc.metrics.quantile.enable",
+      "value": "false"
+    },
+    {
+      "name": "dfs.block.access.token.lifetime",
+      "value": "600"
+    },
+    {
+      "name": "mapreduce.job.end-notification.retry.attempts",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-xattrs-per-inode",
+      "value": "32"
+    },
+    {
+      "name": "mapreduce.jobtracker.system.dir",
+      "value": "${hadoop.tmp.dir}/mapred/system"
+    },
+    {
+      "name": "dfs.balancer.moverThreads",
+      "value": "100"
+    },
+    {
+      "name": "dfs.client.file-block-storage-locations.timeout.millis",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.nodemanager.admin-env",
+      "value": "MALLOC_ARENA_MAX\u003d$MALLOC_ARENA_MAX"
+    },
+    {
+      "name": "mapreduce.jobtracker.jobhistory.block.size",
+      "value": "3145728"
+    },
+    {
+      "name": "yarn.log-aggregation.retain-seconds",
+      "value": "604800"
+    },
+    {
+      "name": "mapreduce.tasktracker.indexcache.mb",
+      "value": "10"
+    },
+    {
+      "name": "yarn.timeline-service.handler-thread-count",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.check.period",
+      "value": "60"
+    },
+    {
+      "name": "yarn.resourcemanager.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "dfs.client.block.write.replace-datanode-on-failure.enable",
+      "value": "true"
+    },
+    {
+      "name": "net.topology.impl",
+      "value": "org.apache.hadoop.net.NetworkTopology"
+    },
+    {
+      "name": "dfs.datanode.directoryscan.interval",
+      "value": "21600"
+    },
+    {
+      "name": "fs.s3a.multipart.purge.age",
+      "value": "86400"
+    },
+    {
+      "name": "fs.s3a.threads.max",
+      "value": "256"
+    },
+    {
+      "name": "hadoop.security.java.secure.random.algorithm",
+      "value": "SHA1PRNG"
+    },
+    {
+      "name": "yarn.nodemanager.container-monitor.interval-ms",
+      "value": "3000"
+    },
+    {
+      "name": "dfs.default.chunk.view.size",
+      "value": "32768"
+    },
+    {
+      "name": "fs.s3a.multipart.threshold",
+      "value": "2147483647"
+    },
+    {
+      "name": "dfs.namenode.http-address.hdp.nn2",
+      "value": "hdpm2.zmf.tbsite.net:50070"
+    },
+    {
+      "name": "mapreduce.job.reduce.slowstart.completedmaps",
+      "value": "0.05"
+    },
+    {
+      "name": "dfs.namenode.http-address.hdp.nn1",
+      "value": "hdpm1.zmf.tbsite.net:50070"
+    },
+    {
+      "name": "hadoop.security.instrumentation.requires.admin",
+      "value": "false"
+    },
+    {
+      "name": "io.compression.codec.bzip2.library",
+      "value": "system-native"
+    },
+    {
+      "name": "yarn.resourcemanager.scheduler.page.class",
+      "value": "com.etao.hadoop.yarn.server.resourcemanager.webapp.FairSchedulerPage"
+    },
+    {
+      "name": "hadoop.proxyuser.hadoop.groups",
+      "value": "*"
+    },
+    {
+      "name": "hadoop.http.authentication.signature.secret.file",
+      "value": "${user.home}/hadoop-http-auth-signature-secret"
+    },
+    {
+      "name": "hadoop.registry.secure",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.safemode.min.datanodes",
+      "value": "0"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.cache.target-size-mb",
+      "value": "10240"
+    },
+    {
+      "name": "mapreduce.reduce.maxattempts",
+      "value": "10"
+    },
+    {
+      "name": "dfs.datanode.https.address",
+      "value": "0.0.0.0:50475"
+    },
+    {
+      "name": "dfs.ha.namenodes.hdp",
+      "value": "nn1,nn2"
+    },
+    {
+      "name": "s3native.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.journalnode.edits.dir",
+      "value": "${hadoop.tmp.dir}/dfs/edits"
+    },
+    {
+      "name": "dfs.namenode.inotify.max.events.per.rpc",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.namenode.path.based.cache.retry.interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.reduce.skip.proc.count.autoincr",
+      "value": "true"
+    },
+    {
+      "name": "dfs.datanode.cache.revocation.polling.ms",
+      "value": "500"
+    },
+    {
+      "name": "mapreduce.jobhistory.cleaner.interval-ms",
+      "value": "86400000"
+    },
+    {
+      "name": "file.replication",
+      "value": "1"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.max.assign",
+      "value": "1"
+    },
+    {
+      "name": "hadoop.hdfs.configuration.version",
+      "value": "1"
+    },
+    {
+      "name": "ipc.client.idlethreshold",
+      "value": "4000"
+    },
+    {
+      "name": "hadoop.tmp.dir",
+      "value": "${user.home.name}/hadoop-data"
+    },
+    {
+      "name": "yarn.resourcemanager.store.class",
+      "value": "org.apache.hadoop.yarn.server.resourcemanager.recovery.FileSystemRMStateStore"
+    },
+    {
+      "name": "mapreduce.jobhistory.address",
+      "value": "hdpm1.zmf.tbsite.net:10020"
+    },
+    {
+      "name": "mapreduce.jobtracker.restart.recover",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.cluster.local.dir",
+      "value": "${hadoop.tmp.dir}/mapred/local"
+    },
+    {
+      "name": "mapreduce.job.speculative.retry-after-no-speculate",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.client.nodemanager-client-async.thread-pool-max-size",
+      "value": "500"
+    },
+    {
+      "name": "dfs.namenode.decommission.nodes.per.interval",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.resource.cpu-vcores",
+      "value": "20"
+    },
+    {
+      "name": "dfs.namenode.reject-unresolved-dn-topology-mapping",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.delegation.key.update-interval",
+      "value": "86400000"
+    },
+    {
+      "name": "fs.s3.buffer.dir",
+      "value": "${hadoop.tmp.dir}/s3"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.expiry.ms",
+      "value": "300000"
+    },
+    {
+      "name": "dfs.namenode.support.allow.format",
+      "value": "true"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.continuous-scheduling-enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.remote-app-log-dir",
+      "value": "/logs"
+    },
+    {
+      "name": "io.compression.codecs",
+      "value": "org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,com.hadoop.compression.lzo.LzoCodec,com.hadoop.compression.lzo.LzopCodec,org.apache.hadoop.io.compress.BZip2Codec,org.apache.hadoop.io.compress.SnappyCodec"
+    },
+    {
+      "name": "mapreduce.map.memory.mb",
+      "value": "2048"
+    },
+    {
+      "name": "yarn.nodemanager.aux-services",
+      "value": "mapreduce_shuffle"
+    },
+    {
+      "name": "dfs.namenode.edit.log.autoroll.multiplier.threshold",
+      "value": "2.0"
+    },
+    {
+      "name": "hadoop.work.around.non.threadsafe.getpwuid",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.profile.reduce.params",
+      "value": "${mapreduce.task.profile.params}"
+    },
+    {
+      "name": "yarn.timeline-service.client.max-retries",
+      "value": "30"
+    },
+    {
+      "name": "dfs.ha.automatic-failover.enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.edits.noeditlogchannelflush",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.stale.datanode.interval",
+      "value": "30000"
+    },
+    {
+      "name": "mapreduce.shuffle.transfer.buffer.size",
+      "value": "131072"
+    },
+    {
+      "name": "mapreduce.jobtracker.persist.jobstatus.active",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.logging.level",
+      "value": "info"
+    },
+    {
+      "name": "yarn.resourcemanager.am-rm-tokens.master-key-rolling-interval-secs",
+      "value": "86400"
+    },
+    {
+      "name": "yarn.nodemanager.log-dirs",
+      "value": "/dump/2/nm-logs,/dump/3/nm-logs,/dump/4/nm-logs,/dump/5/nm-logs,/dump/6/nm-logs,/dump/7/nm-logs,/dump/8/nm-logs,/dump/9/nm-logs"
+    },
+    {
+      "name": "ha.health-monitor.sleep-after-disconnect.ms",
+      "value": "1000"
+    },
+    {
+      "name": "yarn.resourcemanager.fs.state-store.uri",
+      "value": "${hadoop.tmp.dir}/yarn/system/rmstore"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.edits.dir",
+      "value": "${dfs.namenode.checkpoint.dir}"
+    },
+    {
+      "name": "yarn.resourcemanager.keytab",
+      "value": "/etc/krb5.keytab"
+    },
+    {
+      "name": "hadoop.rpc.socket.factory.class.default",
+      "value": "org.apache.hadoop.net.StandardSocketFactory"
+    },
+    {
+      "name": "yarn.resourcemanager.fail-fast",
+      "value": "${yarn.fail-fast}"
+    },
+    {
+      "name": "dfs.datanode.http.address",
+      "value": "0.0.0.0:50075"
+    },
+    {
+      "name": "mapreduce.task.profile",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.jobhistory.move.interval-ms",
+      "value": "360000"
+    },
+    {
+      "name": "fs.s3a.max.total.tasks",
+      "value": "1000"
+    },
+    {
+      "name": "dfs.namenode.edits.dir",
+      "value": "${dfs.namenode.name.dir}"
+    },
+    {
+      "name": "dfs.storage.policy.enabled",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.size",
+      "value": "500"
+    },
+    {
+      "name": "hadoop.fuse.timer.period",
+      "value": "5"
+    },
+    {
+      "name": "mapreduce.jobhistory.http.policy",
+      "value": "HTTP_ONLY"
+    },
+    {
+      "name": "mapreduce.jobhistory.intermediate-done-dir",
+      "value": "/history/done_intermediate"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.allocation.file",
+      "value": "etao-fair-scheduler.xml"
+    },
+    {
+      "name": "mapreduce.map.skip.proc.count.autoincr",
+      "value": "true"
+    },
+    {
+      "name": "fs.AbstractFileSystem.viewfs.impl",
+      "value": "org.apache.hadoop.fs.viewfs.ViewFs"
+    },
+    {
+      "name": "mapreduce.job.speculative.slowtaskthreshold",
+      "value": "1.0"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.delegation-token-auth-filter.enabled",
+      "value": "true"
+    },
+    {
+      "name": "s3native.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "yarn.nodemanager.delete.debug-delay-sec",
+      "value": "0"
+    },
+    {
+      "name": "dfs.secondary.namenode.kerberos.internal.spnego.principal",
+      "value": "${dfs.web.authentication.kerberos.principal}"
+    },
+    {
+      "name": "dfs.datanode.available-space-volume-choosing-policy.balanced-space-threshold",
+      "value": "10737418240"
+    },
+    {
+      "name": "fs.s3n.multipart.uploads.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "hadoop.job.ugi",
+      "value": "etaocp,cug-etao,cug-edc_datauser,cug-tbdp,cug-tbdump,supergroup,hadoop"
+    },
+    {
+      "name": "dfs.namenode.safemode.threshold-pct",
+      "value": "0.999f"
+    },
+    {
+      "name": "mapreduce.ifile.readahead.bytes",
+      "value": "4194304"
+    },
+    {
+      "name": "yarn.scheduler.maximum-allocation-mb",
+      "value": "40960"
+    },
+    {
+      "name": "ipc.client.fallback-to-simple-auth-allowed",
+      "value": "false"
+    },
+    {
+      "name": "fs.har.impl.disable.cache",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.read-cache-size",
+      "value": "104857600"
+    },
+    {
+      "name": "yarn.timeline-service.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "s3native.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.job.committer.setup.cleanup.needed",
+      "value": "true"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.ttl-interval-ms",
+      "value": "300000"
+    },
+    {
+      "name": "fs.s3a.paging.maximum",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.client.nodemanager-connect.retry-interval-ms",
+      "value": "10000"
+    },
+    {
+      "name": "yarn.nodemanager.log-aggregation.compression-type",
+      "value": "none"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.job.committer.commit-window",
+      "value": "10000"
+    },
+    {
+      "name": "hadoop.http.authentication.type",
+      "value": "simple"
+    },
+    {
+      "name": "dfs.client.failover.sleep.base.millis",
+      "value": "500"
+    },
+    {
+      "name": "yarn.nodemanager.vmem-check-enabled",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.jetty.logs.serve.aliases",
+      "value": "true"
+    },
+    {
+      "name": "ha.failover-controller.graceful-fence.rpc-timeout.ms",
+      "value": "5000"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.input.buffer.percent",
+      "value": "0.60"
+    },
+    {
+      "name": "mapreduce.job.running.reduce.limit",
+      "value": "0"
+    },
+    {
+      "name": "dfs.datanode.max.transfer.threads",
+      "value": "10240"
+    },
+    {
+      "name": "mapreduce.reduce.merge.inmem.threshold",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.task.io.sort.mb",
+      "value": "200"
+    },
+    {
+      "name": "dfs.namenode.acls.enabled",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.security.kms.client.authentication.retry-count",
+      "value": "1"
+    },
+    {
+      "name": "yarn.client.application-client-protocol.poll-interval-ms",
+      "value": "200"
+    },
+    {
+      "name": "dfs.namenode.handler.count",
+      "value": "256"
+    },
+    {
+      "name": "yarn.resourcemanager.connect.max-wait.ms",
+      "value": "900000"
+    },
+    {
+      "name": "dfs.namenode.retrycache.heap.percent",
+      "value": "0.03f"
+    },
+    {
+      "name": "yarn.timeline-service.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.nonsecure-mode.limit-users",
+      "value": "true"
+    },
+    {
+      "name": "hadoop.ssl.client.conf",
+      "value": "ssl-client.xml"
+    },
+    {
+      "name": "yarn.resourcemanager.container.liveness-monitor.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "yarn.nodemanager.vmem-pmem-ratio",
+      "value": "100"
+    },
+    {
+      "name": "mapreduce.client.completion.pollinterval",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.app.mapreduce.client.max-retries",
+      "value": "3"
+    },
+    {
+      "name": "hadoop.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.client.resolve.remote.symlinks",
+      "value": "true"
+    },
+    {
+      "name": "fs.AbstractFileSystem.hdfs.impl",
+      "value": "org.apache.hadoop.fs.Hdfs"
+    },
+    {
+      "name": "mapreduce.reduce.java.opts",
+      "value": "-Xmx1200m"
+    },
+    {
+      "name": "mapreduce.client.genericoptionsparser.used",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.map.java.opts",
+      "value": "-Xmx1200m"
+    },
+    {
+      "name": "mapreduce.tasktracker.reduce.tasks.maximum",
+      "value": "6"
+    },
+    {
+      "name": "yarn.nodemanager.hostname",
+      "value": "0.0.0.0"
+    },
+    {
+      "name": "mapreduce.reduce.input.buffer.percent",
+      "value": "0.0"
+    },
+    {
+      "name": "fs.s3a.multipart.purge",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.command-opts",
+      "value": "-Xmx2048m -XX:+UseConcMarkSweepGC"
+    },
+    {
+      "name": "dfs.namenode.invalidate.work.pct.per.iteration",
+      "value": "0.32f"
+    },
+    {
+      "name": "dfs.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.job.heap.memory-mb.ratio",
+      "value": "0.8"
+    },
+    {
+      "name": "yarn.resourcemanager.webapp.https.address",
+      "value": "${yarn.resourcemanager.hostname}:8090"
+    },
+    {
+      "name": "dfs.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.datanode.block.id.layout.upgrade.threads",
+      "value": "12"
+    },
+    {
+      "name": "mapreduce.shuffle.ssl.file.buffer.size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.namenode.list.cache.directives.num.responses",
+      "value": "100"
+    },
+    {
+      "name": "dfs.permissions.enabled",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.jobtracker.maxtasks.perjob",
+      "value": "10000"
+    },
+    {
+      "name": "dfs.datanode.scan.period.hours",
+      "value": "0"
+    },
+    {
+      "name": "dfs.datanode.use.datanode.hostname",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.userlog.limit.kb",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-directory-items",
+      "value": "1048576"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.low-watermark",
+      "value": "0.3f"
+    },
+    {
+      "name": "fs.s3a.buffer.dir",
+      "value": "${hadoop.tmp.dir}/s3a"
+    },
+    {
+      "name": "s3.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.client.failover.proxy.provider.hdp",
+      "value": "org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider"
+    },
+    {
+      "name": "hadoop.user.group.static.mapping.overrides",
+      "value": "dr.who\u003d;"
+    },
+    {
+      "name": "mapreduce.shuffle.max.threads",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.security.kms.client.encrypted.key.cache.expiry",
+      "value": "43200000"
+    },
+    {
+      "name": "dfs.client.failover.sleep.max.millis",
+      "value": "15000"
+    },
+    {
+      "name": "mapreduce.job.maps",
+      "value": "2"
+    },
+    {
+      "name": "yarn.app.blink.deploy.path",
+      "value": "/home/wenlong.lwl/Blink/blink-dist/target/blink-dist-0.1.0-SNAPSHOT-bin/bin/../"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-component-length",
+      "value": "255"
+    },
+    {
+      "name": "yarn.fail-fast",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.ssl.enabled.protocols",
+      "value": "TLSv1"
+    },
+    {
+      "name": "s3.blocksize",
+      "value": "67108864"
+    },
+    {
+      "name": "mapreduce.map.output.compress",
+      "value": "true"
+    },
+    {
+      "name": "dfs.namenode.edits.journal-plugin.qjournal",
+      "value": "org.apache.hadoop.hdfs.qjournal.client.QuorumJournalManager"
+    },
+    {
+      "name": "dfs.namenode.datanode.registration.ip-hostname-check",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.pmem-check-enabled",
+      "value": "true"
+    },
+    {
+      "name": "dfs.client.short.circuit.replica.stale.threshold.ms",
+      "value": "1800000"
+    },
+    {
+      "name": "dfs.client.https.need-auth",
+      "value": "false"
+    },
+    {
+      "name": "ha.zookeeper.quorum",
+      "value": "hdp11.tbc.tbsite.net,hdp12.tbc.tbsite.net,hdp13.tbc.tbsite.net"
+    },
+    {
+      "name": "yarn.scheduler.minimum-allocation-mb",
+      "value": "512"
+    },
+    {
+      "name": "mapreduce.jobhistory.max-age-ms",
+      "value": "604800000"
+    },
+    {
+      "name": "yarn.timeline-service.http-authentication.type",
+      "value": "simple"
+    },
+    {
+      "name": "ftp.replication",
+      "value": "3"
+    },
+    {
+      "name": "dfs.namenode.secondary.https-address",
+      "value": "0.0.0.0:50091"
+    },
+    {
+      "name": "dfs.blockreport.split.threshold",
+      "value": "1000000"
+    },
+    {
+      "name": "mapreduce.input.fileinputformat.split.minsize",
+      "value": "0"
+    },
+    {
+      "name": "fs.s3n.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "yarn.app.blink.distribute.files",
+      "value": "hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-examples-0.1.0-SNAPSHOT.jar,hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/tmpjars/blink-dist.jar,hdfs://hdp/user/wenlong.lwl/.staging/application_1450160119977_0011/blink-job.xml"
+    },
+    {
+      "name": "mapreduce.job.token.tracking.ids.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.ipc.rpc.class",
+      "value": "org.apache.hadoop.yarn.ipc.HadoopYarnProtoRPC"
+    },
+    {
+      "name": "mapreduce.job.user.classpath.first",
+      "value": "false"
+    },
+    {
+      "name": "dfs.namenode.num.extra.edits.retained",
+      "value": "1000000"
+    },
+    {
+      "name": "yarn.nodemanager.localizer.cache.cleanup.interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "hadoop.http.staticuser.user",
+      "value": "dr.who"
+    },
+    {
+      "name": "mapreduce.jobhistory.move.thread-count",
+      "value": "3"
+    },
+    {
+      "name": "fs.s3a.multipart.size",
+      "value": "104857600"
+    },
+    {
+      "name": "mapreduce.job.jvm.numtasks",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.task.profile.maps",
+      "value": "0-2"
+    },
+    {
+      "name": "dfs.block.local-path-access.user",
+      "value": "hadoop,admin"
+    },
+    {
+      "name": "dfs.datanode.max.locked.memory",
+      "value": "0"
+    },
+    {
+      "name": "hadoop.home",
+      "value": "${user.home.name}/hadoop_hbase/hadoop-current"
+    },
+    {
+      "name": "dfs.cachereport.intervalMsec",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.shuffle.port",
+      "value": "13562"
+    },
+    {
+      "name": "yarn.resourcemanager.nodemanager.minimum.version",
+      "value": "NONE"
+    },
+    {
+      "name": "mapreduce.shuffle.connection-keep-alive.timeout",
+      "value": "5"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.merge.percent",
+      "value": "0.66"
+    },
+    {
+      "name": "mapreduce.jobtracker.http.address",
+      "value": "0.0.0.0:50030"
+    },
+    {
+      "name": "yarn.scheduler.etao-fair.preemption",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.task.skip.start.attempts",
+      "value": "2"
+    },
+    {
+      "name": "yarn.resourcemanager.connect.retry-interval.ms",
+      "value": "30000"
+    },
+    {
+      "name": "yarn.scheduler.minimum-allocation-vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.rpc-address.hdp.nn1",
+      "value": "hdpm1.zmf.tbsite.net:9000"
+    },
+    {
+      "name": "dfs.namenode.rpc-address.hdp.nn2",
+      "value": "hdpm2.zmf.tbsite.net:9000"
+    },
+    {
+      "name": "mapreduce.task.io.sort.factor",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.checkpoint.dir",
+      "value": "file://${hadoop.tmp.dir}/dfs/namesecondary"
+    },
+    {
+      "name": "mapreduce.job.speculative.retry-after-speculate",
+      "value": "15000"
+    },
+    {
+      "name": "mapreduce.output.fileoutputformat.compression.codec",
+      "value": "org.apache.hadoop.io.compress.DefaultCodec"
+    },
+    {
+      "name": "nfs.exports.allowed.hosts",
+      "value": "* rw"
+    },
+    {
+      "name": "tfile.fs.input.buffer.size",
+      "value": "262144"
+    },
+    {
+      "name": "fs.s3.block.size",
+      "value": "67108864"
+    },
+    {
+      "name": "tfile.io.chunk.size",
+      "value": "1048576"
+    },
+    {
+      "name": "fs.s3n.multipart.copy.block.size",
+      "value": "5368709120"
+    },
+    {
+      "name": "mapreduce.job.speculative.speculative-cap-total-tasks",
+      "value": "0.01"
+    },
+    {
+      "name": "io.serializations",
+      "value": "org.apache.hadoop.io.serializer.WritableSerialization,org.apache.hadoop.io.serializer.avro.AvroSpecificSerialization,org.apache.hadoop.io.serializer.avro.AvroReflectSerialization"
+    },
+    {
+      "name": "yarn.resourcemanager.max-completed-applications",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.jobhistory.principal",
+      "value": "jhs/_HOST@REALM.TLD"
+    },
+    {
+      "name": "yarn.resourcemanager.ha.automatic-failover.zk-base-path",
+      "value": "/yarn-leader-election"
+    },
+    {
+      "name": "mapreduce.reduce.shuffle.fetch.retry.interval-ms",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.job.end-notification.retry.interval",
+      "value": "1000"
+    },
+    {
+      "name": "mapreduce.job.speculative.minimum-allowed-tasks",
+      "value": "10"
+    },
+    {
+      "name": "dfs.namenode.backup.address",
+      "value": "0.0.0.0:50100"
+    },
+    {
+      "name": "fs.s3n.multipart.uploads.enabled",
+      "value": "false"
+    },
+    {
+      "name": "io.seqfile.sorter.recordlimit",
+      "value": "1000000"
+    },
+    {
+      "name": "dfs.block.access.token.enable",
+      "value": "false"
+    },
+    {
+      "name": "s3native.client-write-packet-size",
+      "value": "65536"
+    },
+    {
+      "name": "dfs.namenode.fs-limits.max-xattr-size",
+      "value": "16384"
+    },
+    {
+      "name": "ftp.bytes-per-checksum",
+      "value": "512"
+    },
+    {
+      "name": "hadoop.security.group.mapping",
+      "value": "org.apache.hadoop.security.JniBasedUnixGroupsMappingWithFallback"
+    },
+    {
+      "name": "dfs.client.domain.socket.data.traffic",
+      "value": "false"
+    },
+    {
+      "name": "dfs.balancer.maxBlocksSizeToFetch",
+      "value": "536870912"
+    },
+    {
+      "name": "dfs.client.read.shortcircuit.streams.cache.size",
+      "value": "1000"
+    },
+    {
+      "name": "fs.s3a.connection.timeout",
+      "value": "50000"
+    },
+    {
+      "name": "mapreduce.job.end-notification.max.retry.interval",
+      "value": "5000"
+    },
+    {
+      "name": "yarn.acl.enable",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nm.liveness-monitor.expiry-interval-ms",
+      "value": "600000"
+    },
+    {
+      "name": "mapreduce.input.fileinputformat.list-status.num-threads",
+      "value": "1"
+    },
+    {
+      "name": "dfs.client.mmap.cache.size",
+      "value": "256"
+    },
+    {
+      "name": "mapreduce.tasktracker.map.tasks.maximum",
+      "value": "6"
+    },
+    {
+      "name": "yarn.timeline-service.ttl-enable",
+      "value": "true"
+    },
+    {
+      "name": "yarn.nodemanager.linux-container-executor.resources-handler.class",
+      "value": "org.apache.hadoop.yarn.server.nodemanager.util.CgroupsLCEResourcesHandler"
+    },
+    {
+      "name": "yarn.resourcemanager.zk-address",
+      "value": "hdp1.tbc.tbsite.net,hdp9.tbc.tbsite.net,hdp14.tbc.tbsite.net"
+    },
+    {
+      "name": "dfs.namenode.max.objects",
+      "value": "0"
+    },
+    {
+      "name": "dfs.namenode.kerberos.principal.pattern",
+      "value": "*"
+    },
+    {
+      "name": "yarn.resourcemanager.state-store.max-completed-applications",
+      "value": "${yarn.resourcemanager.max-completed-applications}"
+    },
+    {
+      "name": "dfs.namenode.delegation.token.max-lifetime",
+      "value": "604800000"
+    },
+    {
+      "name": "mapreduce.job.classloader",
+      "value": "false"
+    },
+    {
+      "name": "yarn.timeline-service.leveldb-timeline-store.start-time-write-cache-size",
+      "value": "10000"
+    },
+    {
+      "name": "mapreduce.job.hdfs-servers",
+      "value": "${fs.defaultFS}"
+    },
+    {
+      "name": "yarn.application.classpath",
+      "value": "\n        $HADOOP_CONF_DIR,\n        $HADOOP_COMMON_HOME/share/hadoop/common/*,\n        $HADOOP_COMMON_HOME/share/hadoop/common/lib/*,\n        $HADOOP_HDFS_HOME/share/hadoop/hdfs/*,\n        $HADOOP_HDFS_HOME/share/hadoop/hdfs/lib/*,\n        $HADOOP_YARN_HOME/share/hadoop/yarn/*,\n        $HADOOP_YARN_HOME/share/hadoop/yarn/lib/*,\n        $HADOOP_YARN_HOME/share/hadoop/mapreduce/*,\n        $HADOOP_YARN_HOME/share/hadoop/mapreduce/lib/*,\n        $HBASE_HOME/conf,\n        $HBASE_HOME/*,\n        $HBASE_HOME/lib/*\n     "
+    },
+    {
+      "name": "dfs.datanode.hdfs-blocks-metadata.enabled",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.tasktracker.dns.nameserver",
+      "value": "default"
+    },
+    {
+      "name": "dfs.datanode.readahead.bytes",
+      "value": "4193404"
+    },
+    {
+      "name": "mapreduce.job.ubertask.maxreduces",
+      "value": "1"
+    },
+    {
+      "name": "dfs.image.compress",
+      "value": "false"
+    },
+    {
+      "name": "mapreduce.shuffle.ssl.enabled",
+      "value": "false"
+    },
+    {
+      "name": "yarn.log-aggregation-enable",
+      "value": "true"
+    },
+    {
+      "name": "mapreduce.tasktracker.report.address",
+      "value": "127.0.0.1:0"
+    },
+    {
+      "name": "mapreduce.tasktracker.http.threads",
+      "value": "40"
+    },
+    {
+      "name": "dfs.stream-buffer-size",
+      "value": "4096"
+    },
+    {
+      "name": "tfile.fs.output.buffer.size",
+      "value": "262144"
+    },
+    {
+      "name": "fs.permissions.umask-mode",
+      "value": "022"
+    },
+    {
+      "name": "dfs.client.datanode-restart.timeout",
+      "value": "30"
+    },
+    {
+      "name": "dfs.namenode.resource.du.reserved",
+      "value": "104857600"
+    },
+    {
+      "name": "yarn.resourcemanager.am.max-attempts",
+      "value": "5"
+    },
+    {
+      "name": "yarn.nodemanager.resource.percentage-physical-cpu-limit",
+      "value": "100"
+    },
+    {
+      "name": "ha.failover-controller.graceful-fence.connection.retries",
+      "value": "1"
+    },
+    {
+      "name": "mapreduce.job.speculative.speculative-cap-running-tasks",
+      "value": "0.1"
+    },
+    {
+      "name": "dfs.datanode.drop.cache.behind.writes",
+      "value": "false"
+    },
+    {
+      "name": "hadoop.common.configuration.version",
+      "value": "0.23.0"
+    },
+    {
+      "name": "mapreduce.job.ubertask.enable",
+      "value": "false"
+    },
+    {
+      "name": "yarn.app.mapreduce.am.resource.cpu-vcores",
+      "value": "1"
+    },
+    {
+      "name": "dfs.namenode.replication.work.multiplier.per.iteration",
+      "value": "2"
+    },
+    {
+      "name": "mapreduce.job.acl-modify-job",
+      "value": "* "
+    },
+    {
+      "name": "io.seqfile.local.dir",
+      "value": "${hadoop.tmp.dir}/io/local"
+    },
+    {
+      "name": "yarn.resourcemanager.system-metrics-publisher.enabled",
+      "value": "false"
+    },
+    {
+      "name": "fs.s3.sleepTimeSeconds",
+      "value": "10"
+    },
+    {
+      "name": "mapreduce.client.output.filter",
+      "value": "FAILED"
+    }
+  ]
+}

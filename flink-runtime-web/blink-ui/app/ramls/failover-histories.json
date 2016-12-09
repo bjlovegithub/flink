@@ -1,0 +1,13 @@
+{
+  "failoverHistoryRecords": [
+    {
+      "timestamp": 1,
+      "vertexID": "123",
+      "vertexName": "test",
+      "executionAttemptID": "attempt_1",
+      "state": "FAILED",
+      "message": "Failure",
+      "mode": "at_least_once"
+    }
+  ]
+}

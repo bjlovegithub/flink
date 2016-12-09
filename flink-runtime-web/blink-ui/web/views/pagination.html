@@ -1,0 +1,18 @@
+<div class="pagination" ng-if="pages.length >= 2">
+    <ul class="pagination">
+        <li ng-disabled="currentPage <= 1">
+            <a ng-click="selectPage(1)" class="fa fa-angle-double-left"></a>
+        </li>
+        <li ng-disabled="currentPage <= 1">
+            <a ng-click="selectPage(currentPage-1)" class="fa fa-angle-left"></a>
+        </li>
+        <li ng-repeat="page in pages" ng-class="{active: page==currentPage}"><a ng-click="selectPage(page)">{{page}}</a>
+        </li>
+        <li ng-disabled="currentPage >= numPages">
+            <a ng-click="selectPage(currentPage+1)" class="fa fa-angle-right"></a>
+        </li>
+        <li ng-disabled="currentPage >= numPages">
+            <a ng-click="selectPage(numPages)" class="fa fa-angle-double-right"></a>
+        </li>
+    </ul>
+</div>

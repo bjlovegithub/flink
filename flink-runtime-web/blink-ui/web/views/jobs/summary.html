@@ -1,0 +1,17 @@
+<nav class="navbar navbar-default navbar-main">
+    <div class="navbar-info first last hidden-xs hidden-sm"><img src="statics/cpu.png" style="width:22px;height:22px"/> {{vcore_total | number}} vCores</div>
+    <div class="navbar-info first last hidden-xs hidden-sm"><img src="statics/dram.png" style="width:22px;height:22px"/> {{memory_total}} MB</div>
+    <div class="navbar-info first last">
+        <div class="label-group">
+            <span title="created" status="created"  class="label label-default">{{created_task_num}}</span>
+            <span title="scheduling" status="scheduling"  class="label label-info">{{scheduled_task_num}}</span>
+            <span title="running" status="running" class="label label-success">{{running_task_num}}</span>
+            <span title="finished" status="finished" class="label label-primary">{{finished_task_num}}</span>
+            <span title="canceling" status="canceling" class="label label-warning2">{{canceling_task_num}}</span>
+            <span title="canceled" status="canceled" class="label label-warning">{{canceled_task_num}}</span>
+            <span title="failed" status="failed" class="label label-danger">{{failed_task_num}}</span>
+        </div>
+    </div>
+    <div class="navbar-info first last hidden-xs hidden-sm">{{start_time | date:'medium'}}</div>
+    <div class="navbar-info first last hidden-xs hidden-sm">{{duration}} s</div>
+</nav>

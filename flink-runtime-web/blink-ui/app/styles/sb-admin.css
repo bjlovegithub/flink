@@ -1,0 +1,451 @@
+/*!
+ * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+
+/* Global Styles */
+
+@font-face {
+    font-family: Oswald;
+    src: url('../fonts/Oswald-Bold.otf');
+}
+
+body {
+    margin-top: 100px;
+    /*background-color: #222;*/
+}
+
+th, td {
+    padding: 1px;
+    text-align: center;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+}
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 10px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 20px;
+    color: #999;
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #fff;
+    background-color: #000;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 51px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #222;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #000 !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: #999;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 40px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+
+.navbar-main .navbar-info,
+.navbar-secondary .navbar-info,
+.navbar-main-additional .navbar-info,
+.panel.panel-multi .navbar-info,
+.navbar-secondary-additional .navbar-info,
+.navbar-main .panel-info,
+.navbar-secondary .panel-info,
+.navbar-main-additional .panel-info,
+.panel.panel-multi .panel-info,
+.navbar-secondary-additional .panel-info {
+    float: left;
+    font-size: 14px;
+    padding: 15px 15px 15px 15px;
+    color: #999;
+    display: inline-block;
+    border-right: 1px solid #e7e7e7;
+    overflow: hidden;
+}
+.navbar-main .navbar-info .overflow,
+.navbar-secondary .navbar-info .overflow,
+.navbar-main-additional .navbar-info .overflow,
+.panel.panel-multi .navbar-info .overflow,
+.navbar-secondary-additional .navbar-info .overflow,
+.navbar-main .panel-info .overflow,
+.navbar-secondary .panel-info .overflow,
+.navbar-main-additional .panel-info .overflow,
+.panel.panel-multi .panel-info .overflow,
+.navbar-secondary-additional .panel-info .overflow {
+    position: absolute;
+    display: block;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+}
+.navbar-main .navbar-info.first,
+.navbar-secondary .navbar-info.first,
+.navbar-main-additional .navbar-info.first,
+.panel.panel-multi .navbar-info.first,
+.navbar-secondary-additional .navbar-info.first,
+.navbar-main .panel-info.first,
+.navbar-secondary .panel-info.first,
+.navbar-main-additional .panel-info.first,
+.panel.panel-multi .panel-info.first,
+.navbar-secondary-additional .panel-info.first {
+    border-left: 1px solid #e7e7e7;
+}
+.navbar-main .navbar-info.last,
+.navbar-secondary .navbar-info.last,
+.navbar-main-additional .navbar-info.last,
+.panel.panel-multi .navbar-info.last,
+.navbar-secondary-additional .navbar-info.last,
+.navbar-main .panel-info.last,
+.navbar-secondary .panel-info.last,
+.navbar-main-additional .panel-info.last,
+.panel.panel-multi .panel-info.last,
+.navbar-secondary-additional .panel-info.last {
+    border-right: none;
+}
+.panel.panel-multi .panel-heading {
+    padding: 0;
+}
+.panel.panel-multi .panel-heading .panel-info.thin {
+    padding: 8px 10px;
+}
+.panel.panel-multi .panel-body {
+    padding: 10px;
+    background-color: #fdfdfd;
+    color: #999;
+    font-size: 13px;
+}
+.panel.panel-multi .panel-body.clean {
+    color: inherit;
+    font-size: inherit;
+}
+.navbar-main-additional,
+.navbar-secondary-additional {
+    min-height: 40px;
+    background-color: #fdfdfd;
+}
+.navbar-main-additional .navbar-info,
+.navbar-secondary-additional .navbar-info {
+    font-size: 13px;
+    padding: 10px 15px 10px 15px;
+}
+
+.label-warning2 {
+    background-color: #b535b6;
+}
+.label-warning2[href]:hover,
+.label-warning2[href]:focus {
+    background-color: #5e5e5e;
+}
+
+.navbar-nav > li{
+    float:left;
+}
+
+.table{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+}
+
+.td{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+.table-list {
+    border-collapse: collapse;
+    border-spacing: 1px;
+    color: #000000 !important;
+    font-size: 12px;
+    width: 100%;
+}
+
+.table-list thead {
+    background: #337ab7;
+    cursor: pointer;
+    line-height: 28px;
+    font-size: 14px;
+    color: #ffffff !important;
+}
+
+.table-list thead th {
+    height:40px;
+}
+
+.table-list thead th:hover {
+    background-color: #36a9eb;
+}
+
+.table-list tbody > tr > td {
+    padding-left: 2px;
+    padding-right: 2px;
+    height: 40px;
+    border: 0px;
+    line-height: 16px;
+}
+
+.table-list tbody > tr:nth-child(even) > td {
+    background-color: #f8f8f8;
+}
+
+.table-list tbody tr:hover > td, .table-hover tbody tr:hover > th {
+    background-color: rgba(245, 178, 78, 0.6);
+}
+
+
+.table-text tr td {
+    vertical-align: middle !important;
+    text-align: left;
+}
+
+.table-text th {
+    vertical-align: middle !important;
+}
+
+.table-text tr {
+    font-size: 14px;
+    vertical-align: middle;
+    height: 40px !important;
+    line-height: 20px !important;
+}
+
+select {
+    padding: 0px 2px 2px 2px;
+    width: 100%;
+}
+
+.table-left td, .table-left th {
+    padding-left: 2px;
+    text-align: left;
+}
+
+.table-center td, .table-center th {
+    text-align: center;
+}
+
+.st-sort-ascent:before{
+    content: '\25B2';
+}
+
+.st-sort-descent:before{
+    content: '\25BC';
+}
+
+.div-agg {
+    width:100%;
+    height: 30px;
+}
+
+.div-agg .btn-agg {
+    width: 100%;
+    height: 100%;
+    padding: 2px 2px 2px 2px;
+}
+
+.tip {
+    line-height: 1;
+    padding: 12px;
+    background:rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    border-radius: 5px;
+    width: 250px;
+    word-break: normal;
+}
+
+Status

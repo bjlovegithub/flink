@@ -1,0 +1,183 @@
+<div>
+<table style="width:100%" st-table="displayedCollection" st-safe-src="rowCollection" class="table-list table-hover table-top table-center table-sort">
+    <thead>
+    <tr>
+        <th st-sort-default="true" st-sort="topology_id" width="2%">ID</th>
+        <th st-sort="name" width="16%">Name</th>
+        <th st-sort="start_time" width="6%">StartTime</th>
+        <th st-sort="stop_time" width="6%">StopTime</th>
+        <th st-sort="duration" width="6%">Duration<small>(s)</small></th>
+        <th st-sort="in_queue_cnt" width="6%">InQueue</th>
+        <th st-sort="out_queue_cnt" width="6%">OutQueue</th>
+        <th st-sort="latency" width="6%">Latency<small>(ms)</small></th>
+        <th st-sort="delay" width="6%">Delay<small>(ms)</small></th>
+        <th st-sort="recv_cnt" width="6%">RecvCnt</th>
+        <th st-sort="send_cnt" width="6%">SendCnt</th>
+        <th st-sort="tps" width="6%">TPS</th>
+        <th st-sort="parallelism" width="16%">Tasks
+        <th st-sort="status" width="6%">Status</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{inQueueAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in timeAggs">
+                        <a ng-click="updateAgg('inQueue', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{outQueueAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in timeAggs">
+                        <a ng-click="updateAgg('outQueue', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{latencyAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in timeAggs">
+                        <a ng-click="updateAgg('latency', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{delayAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in timeAggs">
+                        <a ng-click="updateAgg('delay', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{recvCntAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in countAggs">
+                        <a ng-click="updateAgg('recvCnt', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{sendCntAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in countAggs">
+                        <a ng-click="updateAgg('sendCnt', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group div-agg" uib-dropdown>
+                <button type="button" class="btn btn-danger btn-agg" uib-dropdown-toggle ng-disabled="disabled">
+                    {{tpsAgg}} <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                    <li role="menuitem" ng-repeat="agg in countAggs">
+                        <a ng-click="updateAgg('tps', agg);">{{agg}}</a>
+                    </li>
+                </ul>
+            </div>
+        </td>
+        <td></td>
+        <td></td>
+    </tr>
+
+    <tr ng-repeat="row in displayedCollection" id="{{row.id}}">
+        <td>{{row.topology_id}}</td>
+        <td style="text-align:left; word-break:normal">
+            <a ui-sref="job.execution_job_vertex.overview({execution_job_vertex_id: '{{row.id}}' })" uib-tooltip="{{row.name}}">
+                <span ng-if="row.name.length >= 40">{{row.name.substr(0, 40) + "..."}}</span>
+                <span ng-if="row.name.length < 40">{{row.name}}</span>
+            </a>
+        </td>
+        <td ng-if="row.start_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</td>
+        <td ng-if="row.start_time <= 0" >-</td>
+        <td ng-if="row.stop_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</td>
+        <td ng-if="row.stop_time <= 0" >-</td>
+        <td>{{(row.duration/1000) | number}}</td>
+        <td>
+            <span ng-if="row.in_queue_cnt == 'n/a' || row.in_queue_per == 'n/a'">-</span>
+            <span ng-if="row.in_queue != 'n/a' && row.in_queue_per != 'n/a'">
+                {{row.in_queue_cnt}}<br/> ({{row.in_queue_per | number: 2}}%)
+            </span>
+        </td>
+        <td>
+            <span ng-if="row.out_queue_cnt == 'n/a' || row.out_queue_per == 'n/a'">-</span>
+            <span ng-if="row.out_queue != 'n/a' && row.out_queue_per != 'n/a'">
+                {{row.out_queue_cnt}}<br/> ({{row.out_queue_per | number: 2}}%)
+            </span>
+        </td>
+        <td>
+            <span ng-if="row.latency == 'n/a'">-</span>
+            <span ng-if="row.latency != 'n/a'">{{row.latency | number: 2}}</span>
+        </td>
+        <td>
+            <span ng-if="row.delay == 'n/a'">-</span>
+            <span ng-if="row.delay != 'n/a'">{{row.delay | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.recv_cnt == 'n/a'">-</span>
+            <span ng-if="row.recv_cnt != 'n/a'">{{row.recv_cnt | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.send_cnt == 'n/a'">-</span>
+            <span ng-if="row.send_cnt != 'n/a'">{{row.send_cnt | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.tps == 'n/a'">-</span>
+            <span ng-if="row.tps != 'n/a'">{{row.tps | number}}</span>
+        </td>
+        <td class="label-group">
+            <span title="created" status="created"  class="label label-default">{{row.execution_summary.CREATED}}</span>
+            <span title="scheduling" status="scheduling"  class="label label-info">{{row.execution_summary.SCHEDULED}}</span>
+            <span title="running" status="running" class="label label-success">{{row.execution_summary.RUNNING}}</span>
+            <span title="finished" status="finished" class="label label-primary">{{row.execution_summary.FINISHED}}</span>
+            <span title="canceling" status="canceling" class="label label-warning2">{{row.execution_summary.CANCELING}}</span>
+            <span title="canceled" status="canceled" class="label label-warning">{{row.execution_summary.CANCELED}}</span>
+            <span title="failed" status="failed" class="label label-danger">{{row.execution_summary.FAILED}}</span>
+        </td>
+        <td>
+            <span ng-if="row.status=='CREATED'" title="created" status="created"  class="label label-default">{{row.status}}</span>
+            <span ng-if="row.status=='SCHEDULED'" title="scheduling" status="scheduling"  class="label label-info">SCHEDULING</span>
+            <span ng-if="row.status=='RUNNING'" title="running" status="running"  class="label label-success">{{row.status}}</span>
+            <span ng-if="row.status=='FINISHED'" title="finished" status="finished"  class="label label-primary">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELING'" title="canceling" status="canceling"  class="label label-warning2">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELED'" title="canceled" status="canceled"  class="label label-warning">{{row.status}}</span>
+            <span ng-if="row.status=='FAILED'" title="failed" status="failed"  class="label label-danger">{{row.status}}</span>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</div>

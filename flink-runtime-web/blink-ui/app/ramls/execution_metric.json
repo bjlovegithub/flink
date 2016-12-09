@@ -1,0 +1,185 @@
+{
+  "total": 24,
+  "metrics": [
+    {
+      "group": "system",
+      "name": "num_records_out",
+      "description": "num_records_out",
+      "value": 966.0
+    },
+    {
+      "group": "system",
+      "name": "num_records_in",
+      "description": "num_records_in",
+      "value": 7385.0
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_out",
+      "description": "num_bytes_out",
+      "value": 49526.0
+    },
+    {
+      "group": "system",
+      "name": "latency_75",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_95",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_99",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_average",
+      "description": "latency",
+      "value": 0.008530805687203791
+    },
+    {
+      "group": "system",
+      "name": "latency_max",
+      "description": "latency",
+      "value": 3.0
+    },
+    {
+      "group": "system",
+      "name": "latency_median",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "latency_min",
+      "description": "latency",
+      "value": 0.0
+    },
+    {
+      "group": "system",
+      "name": "TPS",
+      "description": "TPS",
+      "value": 4.0796890045061645
+    },
+    {
+      "group": "system",
+      "name": "num_bytes_in",
+      "description": "num_bytes_in",
+      "value": 348145.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
+      "value": 21.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-tps",
+      "value": 0.006636764356150898
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
+      "value": 0.006636764356150898
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
+      "value": 1.337233320668882
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
+      "value": 0.8923906282396848
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
+      "value": 0.009955135522578247
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
+      "value": 6.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
+      "value": 12.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
+      "value": 18.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
+      "value": 0.38932045331500287
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
+      "value": 0.003318160124453126
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
+      "value": 0.011610407790694202
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
+      "value": 2418.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
+      "value": 704.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
+      "value": 1614.0
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
+      "value": 0.892440958727094
+    },
+    {
+      "group": "user",
+      "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
+      "value": 12.0
+    }
+  ]
+}

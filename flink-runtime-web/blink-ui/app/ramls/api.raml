@@ -1,0 +1,522 @@
+#%RAML 0.8
+title: blink-master
+version: 0.0.1
+baseUri: http://server/api/{version}
+
+schemas:
+  - job: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "overview of a job",
+         "properties": {
+           "id": { "type": "string", "required": true },
+           "name": { "type": "string", "required": true },
+           "status": { "type": "string", "required": true },
+           "start_time": { "type": "number", "required": true},
+           "duration": { "type": "number", "required": true},
+           "stop_time": { "type": "number"},
+           "vertices": { "type": "integer", "required": true},
+           "executions": { "type": "integer", "required": true},
+           "executors": { "type": "integer", "required": true},
+           "created_task_num": {"type": "integer", "required": true},
+           "scheduled_task_num": {"type": "integer", "required": true},
+           "running_task_num": {"type": "integer", "required": true},
+           "finished_task_num": {"type": "integer", "required": true},
+           "canceled_task_num": {"type": "integer", "required": true},
+           "failed_task_num": {"type": "integer", "required": true},
+           "canceling_task_num": {"type": "integer", "required": true},
+           "vcore_total": {"type": "number", "required": true},
+           "memory_total": {"type": "number", "required": true}
+         }
+      }
+  - jobs: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all jobs",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "jobs": {
+              "type": "array",
+              "items": {"$ref": "job"}
+           }
+         }
+      }
+  - metric: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "metric",
+         "properties": {
+           "group": { "type": "string", "required": true},
+           "name": { "type": "string", "required": true},
+           "description": { "type": "string"},
+           "value": { "type": "number", "required": true}
+         }
+      }
+  - metrics: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all metrics",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "metrics": {
+              "type": "array",
+              "items": {"$ref": "metric"}
+           }
+         }
+      }
+  - executionSummary: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "summary of executions",
+         "properties": {
+             "created": { "type": "integer", "required": true},
+             "scheduled": { "type": "integer", "required": true},
+             "deploying": { "type": "integer", "required": true},
+             "running": { "type": "integer", "required": true},
+             "finished": { "type": "integer", "required": true},
+             "canceling": { "type": "integer", "required": true},
+             "canceled": { "type": "integer", "required": true},
+             "failed": { "type": "integer", "required": true}
+         }
+      }
+  - config: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "config",
+         "properties": {
+           "name": { "type": "string", "required": true},
+           "value": { "type": "string", "required": true},
+           "description": { "type": "string"}
+         }
+      }
+  - configs: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all config",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "configs": {
+              "type": "array",
+              "items": {"$ref": "config"}
+           }
+         }
+      }
+
+  - jobVertex: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "overview of job vertex",
+         "properties": {
+           "id": { "type": "string", "required": true},
+           "topology_id": { "type": "integer" },
+           "name": { "type": "string"},
+           "status": { "type": "string", "required": true },
+           "start_time": { "type": "number", "required": true},
+           "duration": { "type": "number", "required": true},
+           "stop_time": { "type": "number"},
+           "metric_summary": {"$ref": "metrics"},
+           "parallelism": { "type": "integer", "required": true},
+           "execution_summary": {"$ref": "executionSummary"}
+         }
+      }
+  - jobVertices: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all metrics",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "job_vertices": {
+              "type": "array",
+              "items": {"$ref": "jobVertex"}
+           }
+         }
+      }
+  - jobVertexInfo: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "information of job vertex",
+         "properties": {
+           "job_id": { "type": "string", "required": true },
+           "job_vertex_id": { "type": "string", "required": true },
+           "job_name": { "type": "string" },
+           "job_vertex_index": { "type": "integer" },
+           "job_vertex_name": { "type": "string" }
+         }
+      }
+  - executionVertex: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "overview of execution vertex",
+         "properties": {
+           "id": { "type": "integer", "required": true},
+           "status": { "type": "string", "required": true },
+           "start_time": { "type": "number", "required": true},
+           "duration": { "type": "number", "required": true},
+           "stop_time": { "type": "number"},
+           "execution_summary": {"$ref": "executionSummary"},
+           "metric_summary": {"$ref": "metrics"},
+           "host": {"type": "string"},
+           "port": {"type": "integer"}
+         }
+      }
+  - executionVertices: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all execution vertices",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "execution_vertices": {
+              "type": "array",
+              "items": {"$ref": "executionVertex"}
+           },
+           "offset": { "type": "integer"},
+           "limit": { "type": "integer"}
+         }
+      }
+  - execution: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "overview of execution",
+         "properties": {
+           "id": { "type": "string", "required": true},
+           "index": { "type": "integer", "required": true},
+           "start_time": { "type": "number", "required": true },
+           "duration": { "type": "number", "required": true },
+           "stop_time": { "type": "number" },
+           "host": { "type": "string" },
+           "container": { "type": "string" },
+           "message": {"type": "string" },
+           "status": { "type": "string", "required": true }
+         }
+      }
+  - executions: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "list of all executions",
+         "properties": {
+           "total": { "type": "integer", "required": true},
+           "executions": {
+              "type": "array",
+              "items": {"$ref": "execution"}
+           },
+           "offset": { "type": "integer"},
+           "limit": { "type": "integer"}
+         }
+      }
+  - log: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "log url",
+         "properties": {
+           "url": { "type": "string", "required": true}
+         }
+      }
+  - master: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+          "type":"object",
+          "description": "information of job master",
+          "properties": {
+            "host": { "type": "string" },
+            "port": { "type": "integer" },
+            "container": { "type": "string" },
+            "log_url": { "type": "string" }
+          }
+      }
+  - failoverHistoryRecord: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "failover history info",
+         "properties": {
+           "timestamp": { "type": "number", "required": true},
+           "vertexID": {"type": "string", "required": true},
+           "vertexName": { "type": "string", "required": true},
+           "executionAttemptID": { "type": "string", "required": true},
+           "state": { "type": "string", "required": true},
+           "message": { "type": "string", "required": true},
+           "mode": { "type": "string", "required": true}
+         }
+      }
+  - failoverHistories: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "failover histories",
+         "properties": {
+           "failoverHistoryRecords": {
+              "type": "array",
+              "items": {"$ref": "failoverHistoryRecord"}
+           },
+           "mode": {"type": "string", "required": true}
+         }
+      }
+
+  - nodeInput: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "node input of job plan",
+         "properties": {
+           "num": { "type": "string", "required": true},
+           "id": { "type": "string", "required": true},
+           "ship_strategy": { "type": "string", "required": true},
+           "local_strategy": { "type": "string", "required": true},
+           "caching": { "type": "string", "required": true},
+           "exchange": { "type": "string", "required": true}
+         }
+      }
+  - node: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "node of job plan",
+         "properties": {
+           "id": { "type": "string", "required": true},
+           "parallelism": { "type": "integer", "required": true},
+           "name": { "type": "string"},
+           "vcore": {"type": "number"},
+           "memory": {"type": "number"},
+           "topology_id":{"type": "string"},
+           "inputs": {
+              "type": "array",
+              "items": {"$ref": "nodeInput"}
+           },
+           "delay": {"type": "number"},
+           "latency": {"type": "number"},
+           "tps": {"type": "number"}
+         }
+      }
+  - plan: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "job plan description",
+         "properties": {
+           "id": { "type": "string", "required": true},
+           "name": { "type": "string", "required": true},
+           "nodes": {
+              "type": "array",
+              "items": {"$ref": "node"}
+           }
+         }
+      }
+  - about: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "system info of the job runtime",
+         "properties": {
+           "version": { "type": "string", "required": true },
+           "builder": { "type": "string", "required": true },
+           "jdk": { "type": "string", "required": true }
+         }
+      }
+
+  - pendingCP: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "pending checkpoint information object",
+         "properties": {
+           "id": { "type": "number", "required": true},
+           "start_time": { "type": "number", "required": true},
+           "ack_task_num": { "type": "integer", "required": true},
+           "no_ack_task_num": { "type": "integer", "required": true},
+           "no_ack_task_detail": { "type": "string", "required": true}
+         }
+      }
+
+  - completedCP: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "completed checkpoint information object",
+         "properties": {
+           "id": { "type": "number", "required": true},
+           "start_time": { "type": "number", "required": true},
+           "duration": { "type": "number", "required": true}
+         }
+      }
+
+  - checkpoints: |
+      {  "$schema":"http://json-schema.org/draft-03/schema",
+         "type":"object",
+         "description": "checkpoint info",
+         "properties": {
+           "completed_checkpoint_info": {
+               "type": "array",
+               "items": {"$ref": "completedCP"}
+           },
+           "pending_checkpoint_info": {
+               "type": "array",
+               "items": {"$ref": "pendingCP"}
+           }
+         }
+      }
+
+
+resourceTypes:
+  - base:
+      get?:
+        responses: &standardResponses
+          200:
+            description: OK
+  - collection:
+      type: base
+      get:
+        is: [ paged ]
+  - typedCollection:
+      type: collection
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<collectionSchema>>
+                example: <<example>>
+
+  - member:
+      type: base
+  - typedMember:
+      type: member
+      get:
+        responses:
+          200:
+            body:
+              application/json:
+                schema: <<schema>>
+                example: <<example>>
+traits:
+  - paged:
+      displayName: paged
+      queryParameters:
+        offset:
+          displayName: start
+          description: The offset of the items to return
+          type: integer
+          required: false
+        limit:
+          displayName: pages
+          description: The number of item to return
+          type: integer
+          required: false
+
+/jobs:
+  type:
+    typedCollection:
+      collectionSchema: jobs
+      example: !include jobs.json
+  get:
+    description: get all job id loaded in the api server
+  /{job_id}:
+    type:
+      typedMember:
+        schema: job
+        example: !include job.json
+    get:
+      description: get overview of the given job
+    /configuration:
+      type:
+        typedCollection:
+          collectionSchema: configs
+          example: !include configs.json
+      get:
+        description: get configuration of the given job
+    /checkpoints:
+      type:
+        typedCollection:
+          collectionSchema: checkpoints
+          example: !include checkpoints.json
+      get:
+        description: get configuration of the given job
+    /master:
+      type:
+        typedMember:
+          schema: master
+          example: !include master-log.json
+      get:
+        description: get master log and stdout of the given job
+    /failover-history:
+      type:
+        typedMember:
+          schema: failoverHistories
+          example: !include failover-histories.json
+      get:
+        description: get failover history of the given job
+    /plan:
+      type:
+        typedMember:
+          schema: plan
+          example: !include plan.json
+      get:
+        description: get the execution plan of the given job
+    /about:
+      type:
+        typedMember:
+          schema: about
+          example: !include about.json
+      get:
+        description: get summary of the given job
+    /job_vertices:
+      type:
+        typedCollection:
+          collectionSchema: jobVertices
+          example: !include job_vertices.json
+      get:
+        description: get overviews of all execution job vertices
+      /{job_vertex_id}:
+        type:
+          typedMember:
+            schema: jobVertex
+            example: !include job_vertex.json
+        get:
+          description: get overviews of the given EJV
+        /info:
+          type:
+            typedMember:
+              schema: jobVertexInfo
+              example: !include job_vertex_info.json
+          get:
+            description: get information of the given EJV
+        /metrics:
+          type:
+            typedCollection:
+              collectionSchema: metrics
+              example: !include job_vertex_metric.json
+          get:
+            description: get metrics of the given EJV
+        /execution_vertices:
+          type:
+            typedCollection:
+              collectionSchema: executionVertices
+              example: !include execution_vertices.json
+          get:
+            description: get overview of all execution vertices
+          /{execution_vertex_id}:
+            type:
+              typedMember:
+                schema: executionVertex
+                example: !include execution_vertex.json
+            get:
+              description: get overview of given execution vertex
+            /metrics:
+              type:
+                typedCollection:
+                  collectionSchema: metrics
+                  example: !include execution_vertex_metric.json
+              get:
+                description: get metric of the given execution vertex
+            /executions:
+              type:
+                typedCollection:
+                  collectionSchema: executions
+                  example: !include executions.json
+              get:
+                description: get overview of all execution, the same as the /jobs/{jobId}/executoinJobVertices/{EJVID}/executionVertices/{EVId}
+              /{execution_id}:
+                /metrics:
+                  type:
+                    typedCollection:
+                      collectionSchema: metrics
+                      example: !include execution_metric.json
+                  get:
+                    description: get metric of the given execution
+                /log:
+                  type:
+                    typedMember:
+                      schema: log
+                      example: !include execution_log.json
+                  get:
+                    description: get log of the given execution

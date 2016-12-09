@@ -1,0 +1,105 @@
+{
+  "id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+  "name": "FileLineCountAndWordCountWithCounter",
+  "nodes": [
+    {
+      "id": "607a92f0551691743f8bd88d2d076f5d",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Source: Custom Source",
+      "inputs": []
+    },
+    {
+      "id": "561371308bfe2fc83cdf6e8fffccb573",
+      "parallelism": 2,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Flat Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "607a92f0551691743f8bd88d2d076f5d",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "605330236f9a87e61d5df719b030a2d5",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "561371308bfe2fc83cdf6e8fffccb573",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "df28e35e9b731d678c18b22464d3336c",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Fast TumblingTimeWindows(60000) of Reduce at aggregate(WindowedStream.java:588) -\u003e Sink: Unnamed",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "605330236f9a87e61d5df719b030a2d5",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "186872bd1aee503cdc6f9a329376284c",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Flat Map",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "561371308bfe2fc83cdf6e8fffccb573",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "5f134851a59fb8a3363600d6fc9a0b78",
+      "parallelism": 4,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "186872bd1aee503cdc6f9a329376284c",
+          "exchange": "pipelined"
+        }
+      ]
+    },
+    {
+      "id": "27f8c9064ab6010e231347049478d232",
+      "parallelism": 1,
+      "operator": "(not set)",
+      "operator_strategy": "(not set)",
+      "optimizer_properties": "{}",
+      "description": "Sink: Unnamed",
+      "inputs": [
+        {
+          "num": "0",
+          "id": "5f134851a59fb8a3363600d6fc9a0b78",
+          "exchange": "pipelined"
+        }
+      ]
+    }
+  ]
+}

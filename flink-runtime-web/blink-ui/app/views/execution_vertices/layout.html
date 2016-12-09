@@ -1,0 +1,27 @@
+<ol class="breadcrumb">
+    <li title="{{job_name}}">
+        <i class="fa fa-tachometer">
+            <a ui-sref="job.overview.sub({job_id: job_id})"> Job Overview</a>
+        </i>
+    </li>
+    <li title="{{execution_job_vertex_name}}">
+        <i class="fa fa-th-large">
+            <a ui-sref="job.execution_job_vertex.overview({execution_job_vertex_id: '{{job_vertex_id}}'})">ExecutionJobVertex Overview [{{job_vertex_index}}] </a>
+        </i>
+    </li>
+    <li class="active" title="{{execution_job_vertex_name}}">
+        <i class="fa fa-th"> ExecutionVertex Overview [{{execution_vertex_id}}]</i>
+    </li>
+</ol>
+
+
+<ul class="nav nav-tabs">
+    <li ui-sref-active="active">
+        <a ui-sref="job.execution_vertex.overview({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{execution_vertex_id}}'})">Overview</a>
+    </li>
+    <li ui-sref-active="active">
+        <a ui-sref="job.execution_vertex.metrics({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{execution_vertex_id}}'})">Metrics</a>
+    </li>
+</ul>
+
+<div ui-view=""></div>

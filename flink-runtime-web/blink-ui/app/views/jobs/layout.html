@@ -1,0 +1,68 @@
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header" style="padding-left:30px">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <img src="statics/blink-logo.png" style="width:38px;height:38px;margin-top:5px;float:left"/>
+            <div class="navbar-brand" style="padding-left:5px;margin-top: 6px">
+                Blink
+            </div>
+        </div>
+
+        <!--</ul>-->
+        <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse navbar-right" style="padding-right:30px">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a ui-sref=".overview.sub">
+                        <i class="fa fa-tachometer fa-lg"></i> Overview
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref=".checkpoints">
+                        <i class="fa fa-asterisk fa-lg"></i> Checkpoints
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref=".configure">
+                        <i class="fa fa-cogs fa-lg"></i> Configuration
+                    </a>
+                </li>
+                <li>
+                    <a ui-sref="job.master.failover_histories">
+                        <i class="fa fa-book fa-lg"></i> Master
+                    </a>
+                </li>
+
+                <li>
+                    <a ui-sref=".about"><i class="fa fa-info-circle fa-lg"></i> About</a>
+                </li>
+
+                <li>
+                    <a href="cluster/home"><i class="fa fa-reply fa-lg"></i> Go Back To Yarn</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </nav>
+
+    <div id="page-wrapper">
+
+        <div class="container-fluid">
+
+            <div ui-view=""></div>
+        </div>
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
+
+</div>
+<!-- /#wrapper -->

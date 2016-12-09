@@ -1,0 +1,7 @@
+{
+  "job_id": "77350c64ed78bc6e29ef133a2f9ff2a5",
+  "job_name": "FileLineCountAndWordCountWithCounter",
+  "job_vertex_id": "5f134851a59fb8a3363600d6fc9a0b78",
+  "job_vertex_name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+  "job_vertex_index": 3
+}

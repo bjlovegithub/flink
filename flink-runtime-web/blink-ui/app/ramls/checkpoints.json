@@ -1,0 +1,28 @@
+{
+  "pending_checkpoints": [
+    {
+      "id": 1,
+      "start_time": 1,
+      "ack_task_num": 1,
+      "no_ack_task_num": 1
+    },
+    {
+      "id": 2,
+      "start_time": 1,
+      "ack_task_num": 1,
+      "no_ack_task_num": 1
+    }
+  ],
+  "completed_checkpoints": [
+    {
+      "id": 1,
+      "start_time": 1,
+      "duration": 1
+    },
+    {
+      "id": 2,
+      "start_time": 1,
+      "duration": 1
+    }
+  ]
+}

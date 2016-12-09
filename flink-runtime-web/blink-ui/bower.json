@@ -1,0 +1,27 @@
+{
+  "name": "blink-dashboard",
+  "description": "A starter project for AngularJS",
+  "version": "0.0.0",
+  "homepage": "https://github.com/angular/angular-seed",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.0",
+    "angular-route": "~1.4.0",
+    "angular-loader": "~1.4.0",
+    "angular-mocks": "~1.4.0",
+    "angular-smart-table": "~2.1.6",
+    "angular-ui-router": "ui-router#~0.2.15",
+    "angular-bootstrap": "angular-ui/bootstrap-bower",
+    "angular-resource": "~1.4.8",
+    "html5-boilerplate": "~5.2.0",
+    "bootstrap": "~3.3.6",
+    "jquery": "~2.1.4",
+    "dagre-d3": "~0.4.11",
+    "d3": "~3.5.10",
+    "d3-tip": "Caged/d3-tip",
+    "tipsy": "~0.1.7",
+    "font-awesome": "Font-Awesome#~4.5.0",
+    "animate.css": "animate-css#~3.5.0"
+  }
+}

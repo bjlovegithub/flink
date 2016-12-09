@@ -1,0 +1,170 @@
+/* This sets the color for "TK" nodes to a light blue green. */
+/*.plan.graph text {*/
+    /*font-weight: 300;*/
+    /*font-size: 14px;*/
+/*}*/
+.plan.graph .node rect {
+    stroke-width: 1.5px;
+    stroke: #bbb;
+    /*fill: #666;*/
+    fill: #337ab7;
+}
+/*.plan.graph .status {*/
+    /*height: 100%;*/
+    /*width: 15px;*/
+    /*display: block;*/
+    /*float: left;*/
+    /*border-top-left-radius: 5px;*/
+    /*border-bottom-left-radius: 5px;*/
+    /*margin-right: 4px;*/
+/*}*/
+.plan.graph .running .status {
+    background-color: #7f7;
+}
+.plan.graph .running.warn .status {
+    background-color: #ffed68;
+}
+.plan.graph .stopped .status {
+    background-color: #f77;
+}
+.plan.graph .warn .queue {
+    color: #f77;
+}
+.warn {
+    -webkit-animation-name: flash;
+    animation-name: flash;
+}
+.plan.graph .consumers {
+    margin-right: 2px;
+}
+.plan.graph .consumers,
+.plan.graph .name {
+    margin-top: 4px;
+}
+.plan.graph .consumers:after {
+    content: "x";
+}
+.plan.graph .queue {
+    display: block;
+    float: left;
+    width: 130px;
+    height: 20px;
+    font-size: 12px;
+    margin-top: 2px;
+}
+.plan.graph .node g div {
+    width: 250px;
+    height: 75px;
+    color: #fff;
+}
+.plan.graph .node g div span.consumers {
+    display: inline-block;
+    width: 20px;
+}
+.plan.graph .edgeLabel text {
+    width: 50px;
+    fill: black;
+}
+.plan.graph .edgePath path {
+    stroke: #999;
+    stroke-width: 1.5px;
+    fill: #999;
+}
+
+.plan.graph .name{
+    height: 30%;
+    display: block;
+    padding-top: 2px;
+    border-bottom: 1px gainsboro solid;
+    font-weight: 300;
+}
+.plan.graph .info {
+    display: block;
+    height: 70%;
+    font-size: 12px;
+    font-weight: 200;
+}
+
+.plan.graph .info .item {
+    display: block;
+    border-bottom: 1px gainsboro solid;
+}
+.plan.graph .info .item .key{
+    display: block;
+    float: left;
+    width: 40%;
+    border-right: 1px gainsboro solid;
+}
+.plan.graph .info .item .val{
+    display: block;
+    float: left;
+    width: 60%
+}
+
+.plan.graph .info .item .clear{
+    display: block;
+    clear: both;
+
+}
+.plan.graph .info .queue_in
+{
+    display: block;
+    float: left;
+    padding-top: 7%;
+    width: 20%;
+    height: 90%;
+    border-right: 1px gainsboro solid;
+}
+
+.plan.graph .info .udf
+{
+    display: block;
+    float: left;
+    width: 60%;
+    height: 90%;
+    border-right: 1px gainsboro solid;
+
+}
+
+.plan.graph .info .queue_out
+{
+    display: block;
+    float: left;
+    padding-top: 7%;
+    width:20%;
+}
+.plan.graph .info .udf .qps
+{
+    display: block;
+    padding-top: 2px;
+    height: 33%;
+    border-bottom: 1px gainsboro solid;
+
+}
+.plan.graph .info .udf .latency
+{
+    display: block;
+    padding-top: 2px;
+    height: 33%;
+    border-bottom: 1px gainsboro solid;
+}
+.plan.graph .info .udf .delay
+{
+    display: block;
+    height: 33%;
+    padding-top: 2px;
+
+}
+
+
+/* This styles the title of the tooltip */
+.tipsy .name {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #60b1fc;
+    margin: 0;
+}
+/* This styles the body of the tooltip */
+.tipsy .description {
+    font-size: 1.2em;
+}

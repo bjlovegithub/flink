@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            {{job_name}} <small>About</small>
+        </h1>
+    </div>
+</div>
+<table style="font-size: 14px" class="table-list table-hover table-left table-top">
+    <tbody>
+    <tr ng-repeat="(key, val) in about">
+        <td>
+            {{key}}
+        </td>
+        <td>
+            {{val}}
+        </td>
+    </tr>
+    </tbody>
+</table>

@@ -1,0 +1,89 @@
+<table st-table="execution_vertices_displayed_collection" st-safe-src="execution_vertices_row_collection" class="table-list table-hover table-top table-center table-sort">
+    <thead>
+    <tr>
+        <th width="2%" st-sort-default="true" st-sort="id">ID</th>
+        <th width="9%" st-sort="start_time">StartTime</th>
+        <th width="9%" st-sort="stop_time">StopTime</th>
+        <th width="6%" st-sort="duration">Duration<small>(s)</small></th>
+        <th width="6%" st-sort="in_queue_cnt">InQueue</th>
+        <th width="6%" st-sort="out_queue_cnt">OutQueue</th>
+        <th width="6%" st-sort="latency">Latency<small>(ms)</small></th>
+        <th width="6%" st-sort="delay">Delay<small>(ms)</small></th>
+        <th width="6%" st-sort="recv_cnt">RecvCnt</th>
+        <th width="6%" st-sort="send_cnt">SendCnt</th>
+        <th width="6%" st-sort="tps">TPS</th>
+        <th width="6%" st-sort="retry">Retries</th>
+        <th width="8%" st-sort="host">Host</th>
+        <th width="6%" st-sort="port">Port</th>
+        <th width="12%" st-sort="status" >Status</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr>
+        <th colspan="15"><input st-search ng-model="query" class="form-control" placeholder="global search ..." type="text"/></th>
+    </tr>
+    <tr ng-repeat="row in execution_vertices_displayed_collection">
+        <td>
+            <a ui-sref="job.execution_vertex.overview({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{row.id}}'})">{{row.id}}</a>
+        </td>
+        <td>
+            <span ng-if="row.start_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</span>
+            <span ng-if="row.start_time <= 0" >-</span>
+        </td>
+        <td>
+            <span ng-if="row.stop_time >0" >{{row.stop_time | date:'yyyy-MM-dd'}}<br/>{{row.stop_time | date: 'HH:mm:ss'}}</span>
+            <span ng-if="row.stop_time <= 0" >-</span>
+        </td>
+        <td>{{(row.duration/1000) | number}}</td>
+        <td>
+            <span ng-if="row.in_queue_cnt == 'n/a' || row.in_queue_per == 'n/a'">-</span>
+            <span ng-if="row.in_queue_cnt != 'n/a' && row.in_queue_cnt != 'n/a'">{{row.in_queue_cnt | number}}<br/>({{row.in_queue_per | number:2}}%)</span>
+        </td>
+        <td>
+            <span ng-if="row.out_queue_cnt == 'n/a' || row.out_queue_per == 'n/a'">-</span>
+            <span ng-if="row.out_queue_cnt != 'n/a' && row.out_queue_cnt != 'n/a'">{{row.out_queue_cnt | number}}<br/>({{row.out_queue_per | number:2}}%)</span>
+        </td>
+        <td>
+            <span ng-if="row.latency == 'n/a'">-</span>
+            <span ng-if="row.latency != 'n/a'">{{row.latency | number:2}}</span>
+        </td>
+        <td>
+            <span ng-if="row.delay == 'n/a'">-</span>
+            <span ng-if="row.delay != 'n/a'">{{row.delay | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.recv_cnt == 'n/a'">-</span>
+            <span ng-if="row.recv_cnt != 'n/a'">{{row.recv_cnt | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.send_cnt == 'n/a'">-</span>
+            <span ng-if="row.send_cnt != 'n/a'">{{row.send_cnt | number}}</span>
+        </td>
+        <td>
+            <span ng-if="row.tps == 'n/a'">-</span>
+            <span ng-if="row.tps != 'n/a'">{{row.tps | number}}</span>
+        </td>
+        <td>{{row.retry}}</td>
+        <td>{{row.host}}</td>
+        <td>{{row.port}}</td>
+        <td>
+            <span ng-if="row.status=='CREATED'" title="created" status="created"  class="label label-default">{{row.status}}</span>
+            <span ng-if="row.status=='SCHEDULED'" title="scheduling" status="scheduling"  class="label label-info">SCHEDULING</span>
+            <span ng-if="row.status=='RUNNING'" title="running" status="running"  class="label label-success">{{row.status}}</span>
+            <span ng-if="row.status=='FINISHED'" title="finished" status="finished"  class="label label-primary">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELING'" title="canceling" status="canceling"  class="label label-warning2">{{row.status}}</span>
+            <span ng-if="row.status=='CANCELED'" title="canceled" status="canceled"  class="label label-warning">{{row.status}}</span>
+            <span ng-if="row.status=='FAILED'" title="failed" status="failed"  class="label label-danger">{{row.status}}</span>
+        </td>
+    </tr>
+    </tbody>
+
+    <tfoot>
+    <tr>
+        <td colspan="15" class="text-center">
+            <div st-pagination="" st-items-by-page="20" st-displayed-pages="10" st-template="views/pagination.html" style="text-align:center"></div>
+        </td>
+    </tr>
+    </tfoot>
+</table>

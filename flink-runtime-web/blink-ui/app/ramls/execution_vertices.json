@@ -1,0 +1,385 @@
+{
+  "total": 4,
+  "execution_vertices": [
+    {
+      "id": "0",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652446.0,
+      "stop_time": -1.0,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 49526.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.008530805687203791
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 3.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 348145.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 966.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7385.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.53995529511861
+          }
+        ]
+      }
+    },
+    {
+      "id": "1",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652446.0,
+      "stop_time": 1.45016481626E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 52321.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.008413624643777989
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 348280.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 1021.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7369.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.529782288913928
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652447.0,
+      "stop_time": 1.450164816534E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 52624.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.013241937996572676
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 308564.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 1029.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 6419.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 3.946469664934335
+          }
+        ]
+      }
+    },
+    {
+      "id": "3",
+      "name": "Fast TumblingTimeWindows(60000) of Reduce at main(FileLineCountAndWordCountWithCounter.java:120)",
+      "status": "RUNNING",
+      "start_time": 1.450164790481E12,
+      "duration": 1652447.0,
+      "stop_time": 1.450164816526E12,
+      "execution_summary": {
+        "created": 0,
+        "scheduled": 0,
+        "deploying": 0,
+        "running": 1,
+        "finished": 0,
+        "canceling": 0,
+        "canceled": 0,
+        "failed": 0
+      },
+      "metric_summary": {
+        "total": 6,
+        "metrics": [
+          {
+            "group": "system",
+            "name": "num_bytes_out",
+            "description": "num_bytes_out",
+            "value": 50164.0
+          },
+          {
+            "group": "system",
+            "name": "latency_75",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_95",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_99",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_average",
+            "description": "latency",
+            "value": 0.009843284548633596
+          },
+          {
+            "group": "system",
+            "name": "latency_max",
+            "description": "latency",
+            "value": 1.0
+          },
+          {
+            "group": "system",
+            "name": "latency_median",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "latency_min",
+            "description": "latency",
+            "value": 0.0
+          },
+          {
+            "group": "system",
+            "name": "num_bytes_in",
+            "description": "num_bytes_in",
+            "value": 366240.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_out",
+            "description": "num_records_out",
+            "value": 985.0
+          },
+          {
+            "group": "system",
+            "name": "num_records_in",
+            "description": "num_records_in",
+            "value": 7721.0
+          },
+          {
+            "group": "system",
+            "name": "TPS",
+            "description": "TPS",
+            "value": 4.7469298043374675
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+.plan .edgeLabel {
+    font-size: 12px;
+    font-family: Oswald;
+    color: black;
+}
+
+.plan .edgePath {
+    fill: #000;
+    stroke-width: 2px;
+    stroke: black;
+}
+
+.plan rect {
+    fill: white;
+}
+
+.plan .label {
+    font-size: 12px;
+    font-family: Oswald;
+    color: black;
+}
+
+.plan-vertex {
+    width: 120px;
+    height: 160px;
+}
+
+.plan-config {
+    width: 120px;
+    height: 40px;
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.plan-icon {
+    width: 80px;
+    height: 60px;
+    float: left;
+}
+
+.plan-id {
+    width: 40px;
+    height: 60px;
+    float: right;
+    font-size: 48px;
+    padding-top: 6px;
+    text-align: center;
+}
+
+.plan-metric {
+    width: 120px;
+    height: 60px;
+    float: left;
+    font-size: 14px;
+    text-align: left;
+    padding-top: 5px;
+}
