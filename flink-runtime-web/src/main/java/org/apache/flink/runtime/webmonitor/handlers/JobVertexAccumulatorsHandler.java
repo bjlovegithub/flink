@@ -44,7 +44,7 @@ public class JobVertexAccumulatorsHandler extends AbstractJobVertexRequestHandle
 		gen.writeStartObject();
 		gen.writeStringField("id", jobVertex.getJobVertexId().toString());
 		
-		gen.writeArrayFieldStart("user-accumulators");
+		gen.writeArrayFieldStart("accumulators");
 		for (StringifiedAccumulatorResult acc : accs) {
 			gen.writeStartObject();
 			gen.writeStringField("name", acc.getName());

@@ -117,7 +117,7 @@
     <tr ng-repeat="row in displayedCollection" id="{{row.id}}">
         <td>{{row.topology_id}}</td>
         <td style="text-align:left; word-break:normal">
-            <a ui-sref="job.execution_job_vertex.overview({execution_job_vertex_id: '{{row.id}}' })" uib-tooltip="{{row.name}}">
+            <a ui-sref="job.execution_job_vertex.overview({vertex_id: '{{row.id}}', vertex_name: '{{row.name}}', topology_id: '{{row.topology_id}}'})" uib-tooltip="{{row.name}}">
                 <span ng-if="row.name.length >= 40">{{row.name.substr(0, 40) + "..."}}</span>
                 <span ng-if="row.name.length < 40">{{row.name}}</span>
             </a>

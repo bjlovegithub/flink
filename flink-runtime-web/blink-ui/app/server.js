@@ -3,6 +3,15 @@ var fs      = require('fs');
 var app = express();
 
 var web_root = '/api'
+
+app.get(web_root+'/jobs',function(req,res){
+    return res.json(jobs)
+})
+
+app.get(web_root+'/jobs/:jobid/summary',function(req,res){
+    return res.json(job)
+})
+
 app.get(web_root+'/jobs/:jobid/plan',function(req,res){
         res.json(plan);
 })
@@ -27,33 +36,40 @@ app.get(web_root+'/jobs/:job_id/about',function(req,res){
     res.json(job_about)
 })
 
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_vertices',function(req,res){
-    res.json(execution_vertices)
-})
-
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/info',function(req,res){
-    res.json(execution_job_vertex_info)
-})
-
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/metrics',function(req,res){
-    res.json(execution_job_vertex_metrics)
-})
-
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id/metrics',function(req,res){
-    res.json(execution_vertex_metrics)
-})
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id/executions',function(req,res){
-    executions.executions[0].metric_summary.metrics[0].value = Math.ceil(Math.random() * 250);
-    res.json(executions)
-})
 app.get(web_root+'/jobs/:job_id/configuration',function(req,res){
     res.json(configure)
 })
 
+//app.get(web_root+'/jobs/:jobid/vertices/:vertexid/info',function(req,res){
+//    res.json(execution_job_vertex_info)
+//})
+
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks',function(req,res){
+    res.json(execution_vertices)
+})
+
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/metrics',function(req,res){
+    res.json(execution_job_vertex_metrics)
+})
+
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/accumulators',function(req,res){
+    res.json(execution_job_vertex_accumulators)
+})
+
+app.get(web_root+'/jobs/:job_id/vertices/:vertexid/subtasks/:subtaskid',function(req,res){
+    res.json(executions)
+})
+/*
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/metrics',function(req,res){
+    res.json(execution_vertex_metrics)
+})
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/accumulators',function(req,res){
+    res.json(execution_vertex_accumulators)
+})
+*/
 
 
-
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id/executions/:execution_id/metrics',function(req,res){
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/metrics',function(req,res){
     execution_metrics.metrics.splice(0,0,{
         "group": "system",
         "name": "aa",
@@ -68,17 +84,15 @@ app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_
     res.json(execution_metrics)
 })
 
-app.get(web_root+'/jobs/:job_id/job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id/executions/:execution_id/log',function(req,res){
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/accumulators',function(req,res){
+    res.json(execution_accumulators)
+})
+
+app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/log',function(req,res){
     res.json(execution_log)
 })
 
-app.get(web_root+'/jobs',function(req,res){
-    return res.json(jobs)
-})
 
-app.get(web_root+'/jobs/:jobid/summary',function(req,res){
-    return res.json(job)
-})
 
 
 app.use('/', express.static(__dirname+"/../web/"));
@@ -122,15 +136,13 @@ var job=
   "stop_time": -1,
   "duration": 1116262,
   "vertices": 7,
-  "executions": 11,
-  "executors": 11,
-  "created_task_num": 1,
-  "scheduled_task_num": 1,
-  "running_task_num": 1,
-  "finished_task_num": 1,
-  "canceled_task_num": 1,
-  "failed_task_num": 1,
-  "canceling_task_num": 2,
+  "CREATED": 1,
+  "SCHEDULED": 1,
+  "RUNNING": 1,
+  "FINISHED": 1,
+  "CANCELED": 1,
+  "FAILED": 1,
+  "CANCELING": 2,
   "vcore_total": 99.999999123,
   "memory_total": 99
 }
@@ -223,7 +235,8 @@ var checkpoints = {
 }
 
 
-var execution_metrics={
+var execution_metrics=
+{
     "total": 24,
     "metrics": [
         {
@@ -267,49 +280,60 @@ var execution_metrics={
             "name": "latency_99",
             "description": "latency",
             "value": 0.0
+        }
+	]
+};
+
+var execution_metrics =
+{
+    "metrics": [
+        {
+            "name": "queue_in_cnt_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_average",
-            "description": "latency",
-            "value": 0.008530805687203791
+            "name": "queue_out_cnt_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_max",
-            "description": "latency",
-            "value": 3.0
+            "name": "queue_in_per_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_median",
-            "description": "latency",
-            "value": 0.0
+            "name": "queue_out_per_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_min",
-            "description": "latency",
-            "value": 0.0
+            "name": "lag_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "TPS",
-            "description": "TPS",
-            "value": 4.0796890045061645
+            "name": "latency_value",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "num_bytes_in",
-            "description": "num_bytes_in",
-            "value":  1034814599.0
+            "name": "delay_value",
+            "value": 0
         },
         {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
-            "value": 1614.0
+            "name": "num_records_in_value",
+            "value": 111
         },
+        {
+            "name": "num_records_out_value",
+            "value": 111
+        },
+        {
+            "name": "tps_value",
+            "value": 111
+        }
+    ]
+};
+
+var execution_accumulators =
+{
+	"accumulators":
+	[
         {
             "group": "user",
             "name": "hdfs://hdp/user/wenlong.lwl/blink-total-count",
@@ -333,287 +357,30 @@ var execution_metrics={
             "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
             "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
             "value": 1.337233320668882
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "value": 0.8923906282396848
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "value": 0.009955135522578247
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "value": 6.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "value": 12.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "value": 18.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "value": 0.38932045331500287
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "value": 0.003318160124453126
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "value": 0.011610407790694202
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "value": 2418.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "value": 704.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "value": 1614.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "value": 0.892440958727094
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "value": 12.0
         }
     ]
 }
 var executions={
-    "total": 2,
     "executions": [
         {
             "id": "8df70e101cd465435de28c11ea849492",
             "status": "RUNNING",
             "start_time": 1.450164790481E12,
             "duration": 1764252.0,
-            "metric_summary": {
-                "total": 6,
-                "metrics": [
-                    {
-                        "group": "system",
-                        "name": "num_bytes_out",
-                        "description": "num_bytes_out",
-                        "value": 535.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_75",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_95",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_99",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_average",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_max",
-                        "description": "latency",
-                        "value": 1.401298464324817E-45
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_median",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_min",
-                        "description": "latency",
-                        "value": 3.4028234663852886E38
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_bytes_in",
-                        "description": "num_bytes_in",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_records_out",
-                        "description": "num_records_out",
-                        "value": 10.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_records_in",
-                        "description": "num_records_in",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "queue_in_usage",
-                        "description": "latency",
-                        "value": 0.2
-                    },
-                    {
-                        "group": "system",
-                        "name": "queue_out_usage",
-                        "description": "latency",
-                        "value": 0.2
-                    },
-                    {
-                        "group": "system",
-                        "name": "TPS",
-                        "description": "TPS",
-                        "value": 0.0
-                    }
-                ]
-            }
+			"attempt_number": 0
         },
         {
             "id": "8df70e101cd465435de28c11ea849493",
             "status": "FAILED",
             "start_time": 1.450064890481E12,
             "duration": 1764252.0,
-            "metric_summary": {
-                "total": 6,
-                "metrics": [
-                    {
-                        "group": "system",
-                        "name": "num_bytes_out",
-                        "description": "num_bytes_out",
-                        "value": 535.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_75",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_95",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_99",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_average",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_max",
-                        "description": "latency",
-                        "value": 1.401298464324817E-45
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_median",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_min",
-                        "description": "latency",
-                        "value": 3.4028234663852886E38
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_bytes_in",
-                        "description": "num_bytes_in",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_records_out",
-                        "description": "num_records_out",
-                        "value": 10.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_records_in",
-                        "description": "num_records_in",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "queue_in_usage",
-                        "description": "latency",
-                        "value": 0.3
-                    },
-                    {
-                        "group": "system",
-                        "name": "queue_out_usage",
-                        "description": "latency",
-                        "value": 0.5
-                    },
-                    {
-                        "group": "system",
-                        "name": "TPS",
-                        "description": "TPS",
-                        "value": 0.0
-                    }
-                ]
-            }
+			"attempt_number": 1
         }
     ]
 }
 
-
-
-var execution_vertex_metrics ={
-    "total": 24,
+var execution_vertex_metrics =
+{
     "metrics": [
         {
             "group": "system",
@@ -638,55 +405,13 @@ var execution_vertex_metrics ={
             "name": "latency_99",
             "description": "latency",
             "value": 0.0
-        },
-        {
-            "group": "system",
-            "name": "latency_average",
-            "description": "latency",
-            "value": 0.008530805687203791
-        },
-        {
-            "group": "system",
-            "name": "latency_max",
-            "description": "latency",
-            "value": 3.0
-        },
-        {
-            "group": "system",
-            "name": "latency_median",
-            "description": "latency",
-            "value": 0.0
-        },
-        {
-            "group": "system",
-            "name": "latency_min",
-            "description": "latency",
-            "value": 0.0
-        },
-        {
-            "group": "system",
-            "name": "num_bytes_in",
-            "description": "num_bytes_in",
-            "value": 348145.0
-        },
-        {
-            "group": "system",
-            "name": "num_records_out",
-            "description": "num_records_out",
-            "value": 966.0
-        },
-        {
-            "group": "system",
-            "name": "num_records_in",
-            "description": "num_records_in",
-            "value": 7385.0
-        },
-        {
-            "group": "system",
-            "name": "TPS",
-            "description": "TPS",
-            "value": 4.352058874487447
-        },
+        }
+	]
+}
+
+var execution_vertex_accumulators =
+{
+	"accumulators": [
         {
             "group": "user",
             "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
@@ -710,92 +435,8 @@ var execution_vertex_metrics ={
             "name": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
             "description": "hdfs://hdp/user/wenlong.lwl/test3-total-tps",
             "value": 0.00708039374069592
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
-            "value": 1.4266151637745947
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "value": 0.9520242311991435
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "value": 0.01062057807806479
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "value": 6.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "value": 12.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "value": 18.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "value": 0.4153416834317607
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "value": 0.003539944139681476
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "value": 0.012386216382481642
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "value": 1614.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "value": 704.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "value": 2418.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "value": 12.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "value": 0.9520809516562316
         }
-    ]
+	]
 }
 
 var configure = {
@@ -812,51 +453,54 @@ var configure = {
     ]
 }
 
-var execution_job_vertex_metrics = {
-    "total": 24,
+var execution_job_vertex_metrics =
+{
     "metrics": [
         {
-            "group": "system",
-            "name": "num_bytes_out",
-            "description": "num_bytes_out",
-            "value": 204635.0
+            "name": "queue_in_cnt_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_max",
-            "description": "latency",
-            "value": 3.0
+            "name": "queue_out_cnt_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "latency_min",
-            "description": "latency",
-            "value": 0.0
+            "name": "queue_in_per_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "num_bytes_in",
-            "description": "num_bytes_in",
-            "value": 1371229.0
+            "name": "queue_out_per_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "num_records_out",
-            "description": "num_records_out",
-            "value": 4001.0
+            "name": "lag_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "num_records_in",
-            "description": "num_records_in",
-            "value": 28894.0
+            "name": "latency_sum",
+            "value": 0
         },
         {
-            "group": "system",
-            "name": "TPS",
-            "description": "TPS",
-            "value": 13.999387229098975
+            "name": "delay_sum",
+            "value": 0
         },
+        {
+            "name": "num_records_in_sum",
+            "value": 117
+        },
+        {
+            "name": "num_records_out_sum",
+            "value": 111
+        },
+        {
+            "name": "tps_sum",
+            "value": 112
+        }
+    ]
+}	
+
+var execution_job_vertex_accumulators = {
+    "accumulators": [
         {
             "group": "user",
             "name": "hdfs://hdp/user/wenlong.lwl/example4-total-count",
@@ -886,89 +530,10 @@ var execution_job_vertex_metrics = {
             "name": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
             "description": "hdfs://hdp/user/wenlong.lwl/example3-total-tps",
             "value": 3.025732191362966
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example4-total-tps",
-            "value": 3.5487280879224876
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-tps",
-            "value": 0.14402959083450373
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-count",
-            "value": 36.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test3-total-count",
-            "value": 36.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/hardcopy.7-total-count",
-            "value": 239.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-tps",
-            "value": 1.6297767445700022
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/test2-total-tps",
-            "value": 0.019550186697770883
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/blink-total-tps",
-            "value": 0.0892515579220289
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example3-total-count",
-            "value": 7061.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/stream_checkpointing.html-total-count",
-            "value": 3205.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-count",
-            "value": 7061.0
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "description": "hdfs://hdp/user/wenlong.lwl/example-total-tps",
-            "value": 3.5489777175774524
-        },
-        {
-            "group": "user",
-            "name": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "description": "hdfs://hdp/user/wenlong.lwl/test-total-count",
-            "value": 36.0
         }
     ]
 }
 var execution_vertices = {
-    "total": 4,
     "execution_vertices": [
         {
             "id": "0",
@@ -977,101 +542,35 @@ var execution_vertices = {
             "start_time": 0,
             "duration": 1652446.0,
             "stop_time": 0,
-            "execution_summary": {
-                "CREATED": 0,
-                "SCHEDULED": 0,
-                "DEPLOYING": 0,
-                "RUNNING": 1,
-                "FINISHED": 0,
-                "CANCELING": 2,
-                "CANCELED": 1,
-                "FAILED": 0
-            },
+			"execution_summary":{"CREATED":0,"SCHEDULED":0,"DEPLOYING":0,"RUNNING":32,"FINISHED":0,"CANCELING":0,"CANCELED":0,"FAILED":1},
             "metric_summary": {
-                "total": 6,
-                "metrics": [
-                    {
-                        "group": "system",
-                        "name": "num_bytes_out",
-                        "description": "num_bytes_out",
+				"metrics": [
+					{
+                        "name": "queue_in_cnt",
                         "value": 49526.0
                     },
                     {
-                        "group": "system",
-                        "name": "latency_75",
-                        "description": "latency",
-                        "value": 0.0
+                        "name": "latency_cnt",
+                        "value": 0.3
                     },
                     {
-                        "group": "system",
-                        "name": "latency_95",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_99",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_average",
-                        "description": "latency",
-                        "value": 0.008530805687203791
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_max",
-                        "description": "latency",
-                        "value": 3.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_median",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "latency_min",
-                        "description": "latency",
-                        "value": 0.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_bytes_in",
-                        "description": "num_bytes_in",
-                        "value": 348145.0
-                    },
-                    {
-                        "group": "system",
-                        "name": "num_records_out",
-                        "description": "num_records_out",
+                        "name": "num_records_out_cnt",
                         "value": 966.0
                     },
                     {
-                        "group": "system",
-                        "name": "num_records_in",
-                        "description": "num_records_in",
+                        "name": "num_records_in_cnt",
                         "value": 7385.0
                     },
                     {
-                        "group": "system",
-                        "name": "TPS",
-                        "description": "TPS",
+                        "name": "tps_cnt",
                         "value": 4.53995529511861
                     },
                     {
-                        "group": "system",
-                        "name": "queue_in_usage",
-                        "description": "latency",
+                        "name": "queue_in_per_cnt",
                         "value": 0.2
                     },
                     {
-                        "group": "system",
-                        "name": "queue_out_usage",
-                        "description": "latency",
+                        "name": "queue_out_per_cnt",
                         "value": 0.2
                     }
                 ]
@@ -1086,101 +585,64 @@ var execution_vertices = {
             "start_time": 1.450154790481E12,
             "duration": 1652446.0,
             "stop_time": 1.45016481626E12,
-            "execution_summary": {
-                "CREATED": 0,
-                "SCHEDULED": 0,
-                "DEPLOYING": 0,
-                "RUNNING": 1,
-                "FINISHED": 0,
-                "CANCELING": 0,
-                "CANCELED": 0,
-                "FAILED": 0
-            },
+			"execution_summary":{"CREATED":0,"SCHEDULED":0,"DEPLOYING":0,"RUNNING":32,"FINISHED":0,"CANCELING":0,"CANCELED":0,"FAILED":0},
             "metric_summary": {
                 "total": 6,
                 "metrics": [
                     {
-                        "group": "system",
                         "name": "num_bytes_out",
-                        "description": "num_bytes_out",
                         "value": 52321.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_75",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_95",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_99",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_average",
-                        "description": "latency",
                         "value": 0.008413624643777989
                     },
                     {
-                        "group": "system",
                         "name": "latency_max",
-                        "description": "latency",
                         "value": 1.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_median",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_min",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "num_bytes_in",
-                        "description": "num_bytes_in",
                         "value": 348280.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_out",
-                        "description": "num_records_out",
                         "value": 1021.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_in",
-                        "description": "num_records_in",
                         "value": 7369.0
                     },
                     {
-                        "group": "system",
                         "name": "TPS",
-                        "description": "TPS",
                         "value": 4.529782288913928
                     },
                     {
-                        "group": "system",
                         "name": "queue_in_usage",
-                        "description": "latency",
                         "value": 0.3
                     },
                     {
-                        "group": "system",
                         "name": "queue_out_usage",
-                        "description": "latency",
                         "value": 0.7
                     }
                 ]
@@ -1195,101 +657,64 @@ var execution_vertices = {
             "start_time": 1.450164790481E12,
             "duration": 1652447.0,
             "stop_time": 1.450164816534E12,
-            "execution_summary": {
-                "CREATED": 0,
-                "SCHEDULED": 0,
-                "DEPLOYING": 0,
-                "RUNNING": 1,
-                "FINISHED": 0,
-                "CANCELING": 0,
-                "CANCELED": 0,
-                "FAILED": 0
-            },
+			"execution_summary":{"CREATED":0,"SCHEDULED":0,"DEPLOYING":0,"RUNNING":32,"FINISHED":0,"CANCELING":0,"CANCELED":0,"FAILED":0},
             "metric_summary": {
                 "total": 6,
                 "metrics": [
                     {
-                        "group": "system",
                         "name": "num_bytes_out",
-                        "description": "num_bytes_out",
                         "value": 52624.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_75",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_95",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_99",
-                        "description": "latency",
                         "value": 1.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_average",
-                        "description": "latency",
                         "value": 0.013241937996572676
                     },
                     {
-                        "group": "system",
                         "name": "latency_max",
-                        "description": "latency",
                         "value": 1.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_median",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_min",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "num_bytes_in",
-                        "description": "num_bytes_in",
                         "value": 308564.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_out",
-                        "description": "num_records_out",
                         "value": 1029.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_in",
-                        "description": "num_records_in",
                         "value": 6419.0
                     },
                     {
-                        "group": "system",
                         "name": "queue_in_usage",
-                        "description": "latency",
                         "value": 0.1
                     },
                     {
-                        "group": "system",
                         "name": "queue_out_usage",
-                        "description": "latency",
                         "value": 0.9
                     },
                     {
-                        "group": "system",
                         "name": "TPS",
-                        "description": "TPS",
                         "value": 3.946469664934335
                     }
                 ]
@@ -1304,101 +729,64 @@ var execution_vertices = {
             "start_time": 1.450164790481E12,
             "duration": 1652447.0,
             "stop_time": 1.450164816526E12,
-            "execution_summary": {
-                "CREATED": 0,
-                "SCHEDULED": 0,
-                "DEPLOYING": 0,
-                "RUNNING": 1,
-                "FINISHED": 0,
-                "CANCELING": 0,
-                "CANCELED": 0,
-                "FAILED": 0
-            },
+			"execution_summary":{"CREATED":0,"SCHEDULED":0,"DEPLOYING":0,"RUNNING":32,"FINISHED":0,"CANCELING":0,"CANCELED":0,"FAILED":0},
             "metric_summary": {
                 "total": 6,
                 "metrics": [
                     {
-                        "group": "system",
                         "name": "num_bytes_out",
-                        "description": "num_bytes_out",
                         "value": 50164.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_75",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_95",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_99",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_average",
-                        "description": "latency",
                         "value": 0.009843284548633596
                     },
                     {
-                        "group": "system",
                         "name": "latency_max",
-                        "description": "latency",
                         "value": 1.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_median",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "latency_min",
-                        "description": "latency",
                         "value": 0.0
                     },
                     {
-                        "group": "system",
                         "name": "num_bytes_in",
-                        "description": "num_bytes_in",
                         "value": 366240.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_out",
-                        "description": "num_records_out",
                         "value": 985.0
                     },
                     {
-                        "group": "system",
                         "name": "num_records_in",
-                        "description": "num_records_in",
                         "value": 7721.0
                     },
                     {
-                        "group": "system",
                         "name": "queue_in_usage",
-                        "description": "latency",
                         "value": 0.111
                     },
                     {
-                        "group": "system",
                         "name": "queue_out_usage",
-                        "description": "latency",
                         "value": 0.2222
                     },
                     {
-                        "group": "system",
                         "name": "TPS",
-                        "description": "TPS",
                         "value": 4.7469298043374675
                     }
                 ]
@@ -1408,8 +796,78 @@ var execution_vertices = {
         }
     ]
 }
+
+var execution_vertices =
+{
+    "execution_vertices": [
+        {
+            "id": 0,
+            "name": "test task",
+            "status": "RUNNING",
+            "start_time": -1,
+            "stop_time": -1,
+            "duration": 0,
+            "execution_summary": {
+                "CREATED": 0,
+                "SCHEDULED": 0,
+                "DEPLOYING": 0,
+                "RUNNING": 0,
+                "FINISHED": 0,
+                "CANCELING": 0,
+                "CANCELED": 0,
+                "FAILED": 0
+            },
+            "host": "1.1.1.1",
+            "port": 1111,
+            "metric_summary": {
+                "metrics": [
+                    {
+                        "name": "queue_in_cnt_value",
+                        "value": 2
+                    },
+                    {
+                        "name": "queue_out_cnt_value",
+                        "value": 0
+                    },
+                    {
+                        "name": "queue_in_per_value",
+                        "value": 0.3
+                    },
+                    {
+                        "name": "queue_out_per_value",
+                        "value": 0
+                    },
+                    {
+                        "name": "lag_value",
+                        "value": 0
+                    },
+                    {
+                        "name": "latency_value",
+                        "value": 0
+                    },
+                    {
+                        "name": "delay_value",
+                        "value": 0
+                    },
+                    {
+                        "name": "num_records_in_value",
+                        "value": 111
+                    },
+                    {
+                        "name": "num_records_out_value",
+                        "value": 111
+                    },
+                    {
+                        "name": "tps_value",
+                        "value": 111
+                    }
+                ]
+            }
+        }
+    ]
+}	
+
 var job_vertices= {
-    "total":7,
     "job_vertices":[{
         "id":"51079cf65c9a38dac3086c2aa0596b48",
         "topology_id":0,
@@ -1419,7 +877,6 @@ var job_vertices= {
         "duration":4413765.0,
         "stop_time":-1.0,
         "metric_summary":{
-            "total":40,
             "metrics":[
                 {"name":"queue_in_cnt_avg","value":0.0},
                 {"name":"queue_in_cnt_cnt","value":31.0},
@@ -1820,13 +1277,14 @@ var job_vertices= {
     ]
 };
 
+
+/*
 var execution_job_vertex_info = {
-    "job_id":"a61190fce96b021d63107a1c4c3b7c4e",
     "job_vertex_id":"717c7b8afebbfb7137f6f0f99beb2a94",
     "job_name":"TaobaoAntiSpamD101",
-    "job_vertex_index":0,
     "job_vertex_name":"Source: PayTTTableSource -> PayTTTableParse -> PayTTTableSelect -> OrderTableFilter -> OrderTableShuffle"
 };
+*/
 
 var plan = {
     "jid":"6679a5480e8c496f3c6a4a87edaae2e2",

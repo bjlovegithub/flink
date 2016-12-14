@@ -10,8 +10,6 @@ var blinkJobMasterApp= angular.module('blinkJobMasterApp',[
     'PlanService',
     'smart-table',
     'MetricsService',
-    'JobNameService',
-    'ExecutionJobVertexNameService',
     'angularUtils.directives.dirPagination'
 ]);
 
@@ -26,7 +24,7 @@ blinkJobMasterApp.config(['$urlRouterProvider','$stateProvider',
             controller: 'JobsController.index'
         })
         .state('job', {
-            url:'/jobs/:jobid',
+            url:'/jobs/:job_id',
             templateUrl: 'views/jobs/layout.html',
             controller: 'JobsController.show'
         })
@@ -87,7 +85,11 @@ blinkJobMasterApp.config(['$urlRouterProvider','$stateProvider',
             controller: "JobsController.configure"
         })
         .state('job.execution_job_vertex',{
-            url: '/execution_job_vertices/:execution_job_vertex_id',
+            url: '/vertices/:vertex_id',
+			params: {
+				vertex_name: null,
+				topology_id: null
+			},
             templateUrl: "views/execution_job_vertices/layout.html",
             controller: "ExecutionJobVerticesController.layout"
         })
@@ -101,8 +103,17 @@ blinkJobMasterApp.config(['$urlRouterProvider','$stateProvider',
             templateUrl: "views/execution_job_vertices/metrics.html",
             controller: "ExecutionJobVerticesController.metrics"
         })
+        .state('job.execution_job_vertex.accumulators',{
+            url: '/accumulators',
+            templateUrl: "views/execution_job_vertices/accumulators.html",
+            controller: "ExecutionJobVerticesController.accumulators"
+        })
         .state('job.execution_vertex',{
-            url: '/execution_job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id',
+            url: '/vertices/:vertex_id/subtasks/:subtask_id',
+			params: {
+				vertex_name: null,
+				topology_id: null
+			},
             templateUrl: "views/execution_vertices/layout.html",
             controller: "ExecutionVerticesController.layout"
 
@@ -118,8 +129,18 @@ blinkJobMasterApp.config(['$urlRouterProvider','$stateProvider',
             templateUrl: "views/execution_vertices/metrics.html",
             controller: "ExecutionVerticesController.metrics"
         })
+        .state("job.execution_vertex.accumulators",{
+            url: '/accumulators',
+            templateUrl: "views/execution_vertices/accumulators.html",
+            controller: "ExecutionVerticesController.accumulators"
+        })
         .state('job.execution',{
-            url: '/execution_job_vertices/:execution_job_vertex_id/execution_vertices/:execution_vertex_id/executions/:execution_id',
+            url: '/vertices/:vertex_id/subtasks/:subtask_id/attempts/:attempt_number',
+			params: {
+				vertex_name: null,
+				topology_id: null
+			},
+
             templateUrl: "views/executions/layout.html",
             controller: "ExecutionsController.layout"
         })
@@ -127,6 +148,11 @@ blinkJobMasterApp.config(['$urlRouterProvider','$stateProvider',
             url: '/metrics',
             templateUrl: "views/executions/metrics.html",
             controller: "ExecutionsController.metrics"
+        })
+        .state('job.execution.accumulators',{
+            url: '/accumulators',
+            templateUrl: "views/executions/accumulators.html",
+            controller: "ExecutionsController.accumulators"
         })
         .state('job.execution.log',{
             url: '/log',

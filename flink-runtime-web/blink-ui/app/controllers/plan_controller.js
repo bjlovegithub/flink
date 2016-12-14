@@ -3,7 +3,7 @@
  */
 jobsController.controller('JobsController.plan',['$scope','$stateParams','Job', '$rootScope',
     function($scope,$stateParams,$Job, $rootScope){
-        $scope.jobid = $stateParams.jobid;
+        $scope.job_id = $stateParams.job_id;
 
         $scope.svg = d3.select("svg");
 
@@ -16,10 +16,10 @@ jobsController.controller('JobsController.plan',['$scope','$stateParams','Job', 
 
         $scope.drawPlan = function() {
             //get the plan from job master
-            console.log("Draw the plan for job " + $scope.jobid);
+            console.log("Draw the plan for job " + $scope.job_id);
 
             $Job.Plan.get({
-            jobid: $scope.jobid
+            jobid: $scope.job_id
             }, function (plan) {
                 $scope.graph = new dagreD3.graphlib.Graph();
 

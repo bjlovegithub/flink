@@ -37,17 +37,17 @@ public abstract class AbstractSubtaskRequestHandler extends AbstractJobVertexReq
 
 	@Override
 	public final String handleRequest(AccessExecutionJobVertex jobVertex, Map<String, String> params) throws Exception {
-		final String subtaskNumberString = params.get("subtasknum");
-		if (subtaskNumberString == null) {
-			throw new RuntimeException("Subtask number parameter missing");
+		final String subtaskIdString = params.get("subtaskid");
+		if (subtaskIdString == null) {
+			throw new RuntimeException("Subtask id parameter missing");
 		}
 
 		final int subtask;
 		try {
-			subtask = Integer.parseInt(subtaskNumberString);
+			subtask = Integer.parseInt(subtaskIdString);
 		}
 		catch (NumberFormatException e) {
-			throw new RuntimeException("Invalid subtask number parameter");
+			throw new RuntimeException("Invalid subtask id parameter");
 		}
 		
 		if (subtask < 0 || subtask >= jobVertex.getParallelism()) {

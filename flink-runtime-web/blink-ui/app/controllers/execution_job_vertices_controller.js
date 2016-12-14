@@ -5,28 +5,23 @@ var executionJobVerticesController = angular.module('ExecutionJobVerticesControl
 
 executionJobVerticesController.controller('ExecutionJobVerticesController.layout',
     ['$scope','$stateParams','Job',function($scope,$stateParams,Job){
-        Job.JobVertexInfo.get({
-            job_id: $stateParams.job_id,
-            execution_job_vertex_id: $stateParams.execution_job_vertex_id
+        Job.Summary.get({
+            jobid: $stateParams.job_id
         }, function(result) {
-            $scope.job_name = result.job_name;
-            $scope.job_vertex_name = result.job_vertex_name;
-            $scope.job_vertex_index = result.job_vertex_index;
+            $scope.job_name = result.name;
         });
         $scope.job_id = $stateParams.job_id;
-        $scope.job_vertex_id = $stateParams.execution_job_vertex_id;
+        $scope.topology_id = $stateParams.topology_id;
+		$scope.job_vertex_id = $stateParams.vertex_id;
+		$scope.job_vertex_name = $stateParams.vertex_name;
     }]);
 
 executionJobVerticesController.controller('ExecutionJobVerticesController.overview',
     ['$scope','$stateParams','Job','BlinkMetricsBuilder','$rootScope', function($scope,$stateParams,Job,BlinkMetricsBuilder,$rootScope){
         $scope.refresh = function () {
-            console.log("Get execution vertices of job vertex (" +
-                $stateParams.job_id + ", " +
-                $stateParams.execution_job_vertex_id + ")");
-
-            Job.ExecutionVertices.get({
-                    job_id: $stateParams.job_id,
-                    execution_job_vertex_id: $stateParams.execution_job_vertex_id
+            Job.ExecutionJobVertexSubtasks.get({
+                    jobid: $stateParams.job_id,
+                    vertexid: $stateParams.vertex_id
                 },
                 function (result) {
                     $scope.execution_vertices = result.execution_vertices;
@@ -46,7 +41,7 @@ executionJobVerticesController.controller('ExecutionJobVerticesController.overvi
                         execution_vertex.tps = execution_vertex.blink_metric.tps('value');
                         execution_vertex.recv_cnt = execution_vertex.blink_metric.recv_cnt('value');
                         execution_vertex.send_cnt = execution_vertex.blink_metric.send_cnt('value');
-                        execution_vertex.retry = execution_vertex.execution_summary.canceled + execution_vertex.execution_summary.failed;
+                        execution_vertex.retry = execution_vertex.execution_summary.CANCELED + execution_vertex.execution_summary.FAILED;
 
                         $scope.execution_vertices_row_collection[index] = execution_vertex;
                     });
@@ -68,8 +63,8 @@ executionJobVerticesController.controller('ExecutionJobVerticesController.metric
     ['$scope','$stateParams','Job','$rootScope',function($scope,$stateParams,Job,$rootScope){
         $scope.refresh = function() {
             Job.ExecutionJobVertexMetrics.get({
-                    job_id: $stateParams.job_id,
-                    execution_job_vertex_id: $stateParams.execution_job_vertex_id
+                    jobid: $stateParams.job_id,
+                    vertexid: $stateParams.vertex_id
                 },
                 function (result) {
                     // group by metric group names
@@ -113,3 +108,26 @@ executionJobVerticesController.controller('ExecutionJobVerticesController.metric
 
     }]
 );
+
+executionJobVerticesController.controller('ExecutionJobVerticesController.accumulators',
+    ['$scope','$stateParams','Job','$rootScope',function($scope,$stateParams,Job,$rootScope){
+        $scope.refresh = function() {
+            Job.ExecutionJobVertexAccumulators.get({
+                    jobid: $stateParams.job_id,
+                    vertexid: $stateParams.vertex_id
+                },
+                function (result) {
+                    $scope.accumulators=result.accumulators;
+                })
+        };
+
+        $scope.refresh();
+
+        if ($rootScope.__interval == undefined) {
+            $rootScope.__interval = [];
+        }
+        $rootScope.__interval.push(setInterval($scope.refresh, 10000));
+
+    }]
+);
+

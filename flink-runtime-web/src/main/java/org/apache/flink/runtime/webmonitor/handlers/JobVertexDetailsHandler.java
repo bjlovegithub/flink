@@ -19,7 +19,6 @@
 package org.apache.flink.runtime.webmonitor.handlers;
 
 import com.fasterxml.jackson.core.JsonGenerator;
-
 import org.apache.flink.runtime.execution.ExecutionState;
 import org.apache.flink.runtime.executiongraph.AccessExecutionJobVertex;
 import org.apache.flink.runtime.executiongraph.AccessExecutionVertex;
@@ -27,14 +26,14 @@ import org.apache.flink.runtime.executiongraph.IOMetrics;
 import org.apache.flink.runtime.taskmanager.TaskManagerLocation;
 import org.apache.flink.runtime.webmonitor.ExecutionGraphHolder;
 import org.apache.flink.runtime.webmonitor.metrics.MetricFetcher;
+import org.apache.flink.runtime.webmonitor.metrics.MetricHolder;
 import org.apache.flink.runtime.webmonitor.metrics.MetricStore;
 
 import java.io.StringWriter;
 import java.util.Map;
 
 /**
- * A request handler that provides the details of a job vertex, including id, name, parallelism,
- * and the runtime and metrics of all its subtasks.
+ * A request handler that provides the details of a job vertex, including the runtime and metrics of all its subtasks.
  */
 public class JobVertexDetailsHandler extends AbstractJobVertexRequestHandler {
 
@@ -54,65 +53,95 @@ public class JobVertexDetailsHandler extends AbstractJobVertexRequestHandler {
 
 		gen.writeStartObject();
 
-		gen.writeStringField("id", jobVertex.getJobVertexId().toString());
-		gen.writeStringField("name", jobVertex.getName());
-		gen.writeNumberField("parallelism", jobVertex.getParallelism());
-		gen.writeNumberField("now", now);
-
-		gen.writeArrayFieldStart("subtasks");
+		gen.writeArrayFieldStart("execution_vertices");
 		int num = 0;
 		for (AccessExecutionVertex vertex : jobVertex.getTaskVertices()) {
 			final ExecutionState status = vertex.getExecutionState();
 			
 			TaskManagerLocation location = vertex.getCurrentAssignedResourceLocation();
-			String locationString = location == null ? "(unassigned)" : location.getHostname() + ":" + location.dataPort();
 
 			long startTime = vertex.getStateTimestamp(ExecutionState.DEPLOYING);
 			if (startTime == 0) {
 				startTime = -1;
 			}
 			long endTime = status.isTerminal() ? vertex.getStateTimestamp(status) : -1;
-			long duration = startTime > 0 ? ((endTime > 0 ? endTime : now) - startTime) : -1;
+			long duration = startTime > 0 ? ((endTime > 0 ? endTime : now) - startTime) : 0;
 			
 			gen.writeStartObject();
-			gen.writeNumberField("subtask", num);
+			gen.writeNumberField("id", num);
+			gen.writeStringField("name", vertex.getTaskNameWithSubtaskIndex());
 			gen.writeStringField("status", status.name());
-			gen.writeNumberField("attempt", vertex.getCurrentExecutionAttempt().getAttemptNumber());
-			gen.writeStringField("host", locationString);
-			gen.writeNumberField("start-time", startTime);
-			gen.writeNumberField("end-time", endTime);
+			gen.writeNumberField("start_time", startTime);
+			gen.writeNumberField("stop_time", endTime);
 			gen.writeNumberField("duration", duration);
+
+			// TODO - get attempts from time line server
+			int[] exeSummary = new int[ExecutionState.values().length];
+			gen.writeObjectFieldStart("execution_summary");
+			for (ExecutionState state : ExecutionState.values()) {
+				gen.writeNumberField(state.name(), exeSummary[state.ordinal()]);
+			}
+			gen.writeEndObject();
+
+			if (location != null) {
+				gen.writeStringField("host", location.getHostname());
+				gen.writeNumberField("port", location.dataPort());
+			}
+
+			// get metrics
+			MetricHolder queueInCountHolder = new MetricHolder();
+			MetricHolder queueOutCountHolder = new MetricHolder();
+			MetricHolder queueInPerHolder = new MetricHolder();
+			MetricHolder queueOutPerHolder = new MetricHolder();
+			MetricHolder lagHolder = new MetricHolder();
+			MetricHolder latencyHolder = new MetricHolder();
+			MetricHolder delayHolder = new MetricHolder();
+			MetricHolder recordsInCountHolder = new MetricHolder();
+			MetricHolder recordsOutCountHolder = new MetricHolder();
+			MetricHolder tpsHolder = new MetricHolder();
 
 			IOMetrics ioMetrics = vertex.getCurrentExecutionAttempt().getIOMetrics();
 
-			long numBytesIn = 0;
-			long numBytesOut = 0;
-			long numRecordsIn = 0;
-			long numRecordsOut = 0;
-
-			if (ioMetrics != null) { // execAttempt is already finished, use final metrics stored in ExecutionGraph
-				numBytesIn = ioMetrics.getNumBytesInLocal() + ioMetrics.getNumBytesInRemote();
-				numBytesOut = ioMetrics.getNumBytesOut();
-				numRecordsIn = ioMetrics.getNumRecordsIn();
-				numRecordsOut = ioMetrics.getNumRecordsOut();
-			} else { // execAttempt is still running, use MetricQueryService instead
+			// execAttempt is already finished, use final metrics stored in ExecutionGraph
+			if (ioMetrics != null) {
+				recordsInCountHolder.update(ioMetrics.getNumRecordsIn());
+				recordsOutCountHolder.update(ioMetrics.getNumRecordsOut());
+				tpsHolder.update((float)ioMetrics.getNumRecordsInPerSecond());
+			} else {
+				// execAttempt is still running, use MetricQueryService instead
 				fetcher.update();
-				MetricStore.SubtaskMetricStore metrics = fetcher.getMetricStore().getSubtaskMetricStore(params.get("jobid"), jobVertex.getJobVertexId().toString(), vertex.getParallelSubtaskIndex());
+				MetricStore.SubtaskMetricStore metrics =
+					fetcher.getMetricStore().getSubtaskMetricStore(
+						params.get("jobid"),
+						jobVertex.getJobVertexId().toString(),
+						vertex.getParallelSubtaskIndex());
 				if (metrics != null) {
-					numBytesIn += Long.valueOf(metrics.getMetric("numBytesInLocal", "0")) + Long.valueOf(metrics.getMetric("numBytesInRemote", "0"));
-					numBytesOut += Long.valueOf(metrics.getMetric("numBytesOut", "0"));
-					numRecordsIn += Long.valueOf(metrics.getMetric("numRecordsIn", "0"));
-					numRecordsOut += Long.valueOf(metrics.getMetric("numRecordsOut", "0"));
+					recordsInCountHolder.update(Float.valueOf(metrics.getMetric("numRecordsIn", "0")));
+					recordsOutCountHolder.update(Float.valueOf(metrics.getMetric("numRecordsOut", "0")));
+					queueInCountHolder.update(Float.valueOf(metrics.getMetric("inputQueueLength", "0")));
+					queueOutCountHolder.update(Float.valueOf(metrics.getMetric("outputQueueLength", "0")));
+					queueInPerHolder.update(Float.valueOf(metrics.getMetric("inPoolUsage", "0")));
+					queueOutPerHolder.update(Float.valueOf(metrics.getMetric("outPoolUsage", "0")));
+					latencyHolder.update(Float.valueOf(metrics.getMetric("latency", "0")));
+					tpsHolder.update(Float.valueOf(metrics.getMetric("numRecordsInPerSecond", "0")));
 				}
 			}
 
-			gen.writeObjectFieldStart("metrics");
-			gen.writeNumberField("read-bytes", numBytesIn);
-			gen.writeNumberField("write-bytes", numBytesOut);
-			gen.writeNumberField("read-records", numRecordsIn);
-			gen.writeNumberField("write-records", numRecordsOut);
+			gen.writeObjectFieldStart("metric_summary");
+			gen.writeArrayFieldStart("metrics");
+			queueInCountHolder.writeToJsonGenerator("queue_in_cnt", gen, MetricHolder.Field.VALUE);
+			queueOutCountHolder.writeToJsonGenerator("queue_out_cnt", gen, MetricHolder.Field.VALUE);
+			queueInPerHolder.writeToJsonGenerator("queue_in_per", gen, MetricHolder.Field.VALUE);
+			queueOutPerHolder.writeToJsonGenerator("queue_out_per", gen, MetricHolder.Field.VALUE);
+			lagHolder.writeToJsonGenerator("lag", gen, MetricHolder.Field.VALUE);
+			latencyHolder.writeToJsonGenerator("latency", gen, MetricHolder.Field.VALUE);
+			delayHolder.writeToJsonGenerator("delay", gen, MetricHolder.Field.VALUE);
+			recordsInCountHolder.writeToJsonGenerator("num_records_in", gen, MetricHolder.Field.VALUE);
+			recordsOutCountHolder.writeToJsonGenerator("num_records_out", gen, MetricHolder.Field.VALUE);
+			tpsHolder.writeToJsonGenerator("tps", gen, MetricHolder.Field.VALUE);
+			gen.writeEndArray();
 			gen.writeEndObject();
-			
+
 			gen.writeEndObject();
 			
 			num++;
@@ -122,6 +151,7 @@ public class JobVertexDetailsHandler extends AbstractJobVertexRequestHandler {
 		gen.writeEndObject();
 
 		gen.close();
+
 		return writer.toString();
 	}
 }

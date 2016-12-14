@@ -54,7 +54,7 @@ public class JobSummaryHandler extends AbstractExecutionGraphRequestHandler {
 		final long jobEndTime = graph.getState().isGloballyTerminalState() ?
 			graph.getStatusTimestamp(graph.getState()) : -1L;
 		gen.writeNumberField("start_time", jobStartTime);
-		gen.writeNumberField("end_time", jobEndTime);
+		gen.writeNumberField("stop_time", jobEndTime);
 		gen.writeNumberField("duration", (jobEndTime > 0 ? jobEndTime : now) - jobStartTime);
 		gen.writeNumberField("now", now);
 		gen.writeNumberField("vertices", graph.getAllVertices().size());
@@ -69,8 +69,8 @@ public class JobSummaryHandler extends AbstractExecutionGraphRequestHandler {
 		for (AccessExecutionJobVertex ejv : graph.getVerticesTopologically()) {
 			for (AccessExecutionVertex vertex : ejv.getTaskVertices()) {
 				final ExecutionState state = vertex.getExecutionState();
-                
-                jobVerticesPerState[state.ordinal()]++;
+
+				jobVerticesPerState[state.ordinal()]++;
 
 				// TODO - Get cpu/memory info
 			}

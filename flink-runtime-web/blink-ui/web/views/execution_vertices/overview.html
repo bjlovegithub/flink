@@ -9,7 +9,7 @@
         <th st-sort="container" width="10%">Container</th>
         <th st-sort="message" width="50%">Message</th>
         <th st-sort="status" width="6%">Status</th>
-        <th width="6%">Log</th>
+        <th width="6%">Details</th>
     </tr>
     </thead>
 
@@ -18,7 +18,7 @@
         <th colspan="9"><input st-search ng-model="query" class="form-control" placeholder="global search ..." type="text"/></th>
     </tr>
     <tr ng-repeat="row in executions_displayed_collection">
-        <td>{{row.index}}</td>
+        <td>{{row.attempt_number}}</td>
         <td>
             <span ng-if="row.start_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</span>
             <span ng-if="row.start_time <= 0" >-</span>
@@ -40,7 +40,7 @@
             <span ng-if="row.status=='CANCELED'" title="canceled" status="canceled"  class="label label-warning">{{row.status}}</span>
             <span ng-if="row.status=='FAILED'" title="failed" status="failed"  class="label label-danger">{{row.status}}</span></td>
         <td>
-            <a ui-sref="job.execution.log({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{execution_vertex_id}}', execution_id: '{{row.id}}'})">LOG</a>
+            <a ui-sref="job.execution.log({vertex_id: '{{vertex_id}}', vertex_name: '{{vertex_name}}', topology_id: '{{topology_id}}', subtask_id: '{{subtask_id}}', attempt_number: '{{row.attempt_number}}'})">detail</a>
         </td>
     </tr>
     <tfoot>

@@ -65,18 +65,17 @@ import org.apache.flink.runtime.webmonitor.handlers.JobVertexAccumulatorsHandler
 import org.apache.flink.runtime.webmonitor.handlers.JobVertexBackPressureHandler;
 import org.apache.flink.runtime.webmonitor.handlers.JobVertexCheckpointsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.JobVertexDetailsHandler;
+import org.apache.flink.runtime.webmonitor.handlers.JobVertexMetricsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.JobVertexTaskManagersHandler;
 import org.apache.flink.runtime.webmonitor.handlers.RequestHandler;
-import org.apache.flink.runtime.webmonitor.handlers.SubtaskCurrentAttemptDetailsHandler;
+import org.apache.flink.runtime.webmonitor.handlers.SubtaskDetailsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtaskExecutionAttemptAccumulatorsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtaskExecutionAttemptDetailsHandler;
-import org.apache.flink.runtime.webmonitor.handlers.SubtasksAllAccumulatorsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtasksTimesHandler;
 import org.apache.flink.runtime.webmonitor.handlers.TaskManagerLogHandler;
 import org.apache.flink.runtime.webmonitor.handlers.TaskManagersHandler;
 import org.apache.flink.runtime.webmonitor.metrics.JobManagerMetricsHandler;
 import org.apache.flink.runtime.webmonitor.metrics.JobMetricsHandler;
-import org.apache.flink.runtime.webmonitor.metrics.JobVertexMetricsHandler;
 import org.apache.flink.runtime.webmonitor.metrics.MetricFetcher;
 import org.apache.flink.runtime.webmonitor.metrics.TaskManagerMetricsHandler;
 import org.slf4j.Logger;
@@ -251,6 +250,24 @@ public class WebRuntimeMonitor implements WebMonitor {
 		RuntimeMonitorHandler inProgressHandler = handler(cancelWithSavepoint.getInProgressHandler());
 
 		router = new Router()
+			// overview over jobs
+			.GET("/api/jobs", handler(new CurrentJobsOverviewHandler(DEFAULT_REQUEST_TIMEOUT, true, true)))
+			.GET("/api/jobs/:jobid/summary", handler(new JobSummaryHandler(currentGraphs)))
+			.GET("/api/jobs/:jobid/vertices", handler(new JobDetailsHandler(currentGraphs, metricFetcher)))
+			.GET("/api/jobs/:jobid/plan", handler(new JobPlanHandler(currentGraphs, metricFetcher)))
+
+			// execution job vertex related api
+			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks", handler(new JobVertexDetailsHandler(currentGraphs, metricFetcher)))
+			.GET("/api/jobs/:jobid/vertices/:vertexid/metrics", handler(new JobVertexMetricsHandler(currentGraphs, metricFetcher)))
+			.GET("/api/jobs/:jobid/vertices/:vertexid/accumulators", handler(new JobVertexAccumulatorsHandler(currentGraphs)))
+
+			// execution vertex related api
+			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid", handler(new SubtaskDetailsHandler(currentGraphs)))
+
+			// execution attempt related api
+			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt_number/metrics", handler(new SubtaskExecutionAttemptDetailsHandler(currentGraphs, metricFetcher)))
+			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt/accumulators", handler(new SubtaskExecutionAttemptAccumulatorsHandler(currentGraphs)))
+
 			// config how to interact with this web server
 			.GET("/config", handler(new DashboardConfigHandler(cfg.getRefreshInterval())))
 
@@ -260,18 +277,13 @@ public class WebRuntimeMonitor implements WebMonitor {
 			// job manager configuration
 			.GET("/jobmanager/config", handler(new JobManagerConfigHandler(config)))
 
-			// overview over jobs
-			.GET("/api/jobs", handler(new CurrentJobsOverviewHandler(DEFAULT_REQUEST_TIMEOUT, true, true)))
 			.GET("/joboverview/running", handler(new CurrentJobsOverviewHandler(DEFAULT_REQUEST_TIMEOUT, true, false)))
 			.GET("/joboverview/completed", handler(new CurrentJobsOverviewHandler(DEFAULT_REQUEST_TIMEOUT, false, true)))
 
 			.GET("/jobs", handler(new CurrentJobIdsHandler(DEFAULT_REQUEST_TIMEOUT)))
 
 			.GET("/jobs/:jobid", handler(new JobDetailsHandler(currentGraphs, metricFetcher)))
-			.GET("/api/jobs/:jobid/summary", handler(new JobSummaryHandler(currentGraphs)))
-			.GET("/api/jobs/:jobid/vertices", handler(new JobDetailsHandler(currentGraphs, metricFetcher)))
 
-			.GET("/jobs/:jobid/vertices/:vertexid", handler(new JobVertexDetailsHandler(currentGraphs, metricFetcher)))
 			.GET("/jobs/:jobid/vertices/:vertexid/subtasktimes", handler(new SubtasksTimesHandler(currentGraphs)))
 			.GET("/jobs/:jobid/vertices/:vertexid/taskmanagers", handler(new JobVertexTaskManagersHandler(currentGraphs, metricFetcher)))
 			.GET("/jobs/:jobid/vertices/:vertexid/accumulators", handler(new JobVertexAccumulatorsHandler(currentGraphs)))
@@ -280,13 +292,10 @@ public class WebRuntimeMonitor implements WebMonitor {
 							currentGraphs,
 							backPressureStatsTracker,
 							refreshInterval)))
-			.GET("/jobs/:jobid/vertices/:vertexid/metrics", handler(new JobVertexMetricsHandler(metricFetcher)))
-			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/accumulators", handler(new SubtasksAllAccumulatorsHandler(currentGraphs)))
-			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum", handler(new SubtaskCurrentAttemptDetailsHandler(currentGraphs, metricFetcher)))
+			//.GET("/jobs/:jobid/vertices/:vertexid/metrics", handler(new JobVertexMetricsHandler(metricFetcher)))
 			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt", handler(new SubtaskExecutionAttemptDetailsHandler(currentGraphs, metricFetcher)))
 			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt/accumulators", handler(new SubtaskExecutionAttemptAccumulatorsHandler(currentGraphs)))
 
-			.GET("/api/jobs/:jobid/plan", handler(new JobPlanHandler(currentGraphs, metricFetcher)))
 			.GET("/jobs/:jobid/config", handler(new JobConfigHandler(currentGraphs)))
 			.GET("/jobs/:jobid/exceptions", handler(new JobExceptionsHandler(currentGraphs)))
 			.GET("/jobs/:jobid/accumulators", handler(new JobAccumulatorsHandler(currentGraphs)))

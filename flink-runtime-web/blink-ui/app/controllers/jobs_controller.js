@@ -3,13 +3,16 @@
 var jobsController = angular.module('JobsController', []);
 
 jobsController.controller('JobsController.show',['$scope','$stateParams',function($scope,$stateParams){
-    $scope.jobid = $stateParams.jobid
+    $scope.job_id = $stateParams.job_id
 }]);
 
 
-jobsController.controller('JobsController.title',['$scope','$stateParams','JobName',function($scope,$stateParams,JobName){
-    console.log($stateParams);
-    JobName.call($scope, $stateParams)
+jobsController.controller('JobsController.title',['$scope','$stateParams','Job',function($scope,$stateParams,Job){
+    Job.Summary.get({
+        jobid: $stateParams.job_id
+    }, function(result) {
+        $scope.job_name = result.name;
+    });
 }]);
 
 jobsController.controller('JobsController.ejvs',['$scope','$stateParams','Job','BlinkMetricsBuilder','$rootScope',
@@ -84,7 +87,7 @@ jobsController.controller('JobsController.ejvs',['$scope','$stateParams','Job','
         };
 
         $scope.refresh = function(){
-            Job.ExecutionJobVertices.get({jobid: $stateParams.jobid}, function(ejvs){
+            Job.ExecutionJobVertices.get({jobid: $stateParams.job_id}, function(ejvs){
                 $scope.execution_job_vertices = ejvs.job_vertices;
                 if ($scope.rowCollection == undefined) {
                     $scope.rowCollection = [];
@@ -124,7 +127,7 @@ jobsController.controller('JobsController.summary',['$scope','$stateParams','Job
     function($scope,$stateParams,Job,$rootScope){
 
         $scope.refresh = function() {
-          Job.Summary.get({jobid: $stateParams.jobid}, function(result) {
+          Job.Summary.get({jobid: $stateParams.job_id}, function(result) {
             $scope.start_time = result.start_time
             $scope.duration = Math.trunc(result.duration/1000)
             $scope.created_task_num = result.CREATED
@@ -237,7 +240,7 @@ jobsController.controller('JobsController.checkpoints',
 jobsController.controller('JobsController.index',
     ['$scope','$stateParams','Job','$state','$rootScope',function($scope,$stateParams,Job,$state,$rootScope){
         Job.Index.get(function(result){
-            $state.go('job.overview.sub', {jobid: result.running[0].jid})
+			$state.go('job.overview.sub', {job_id: result.running[0].jid});
         })
     }]
 );

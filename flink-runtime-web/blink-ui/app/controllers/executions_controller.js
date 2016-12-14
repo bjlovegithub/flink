@@ -5,18 +5,17 @@ var executions_controller = angular.module('ExecutionsController',[]);
 
 executions_controller.controller('ExecutionsController.layout',
     ['$scope','$stateParams','Job',function($scope,$stateParams,Job){
-        Job.JobVertexInfo.get({
-            job_id: $stateParams.job_id,
-            execution_job_vertex_id: $stateParams.execution_job_vertex_id
+        Job.Summary.get({
+            jobid: $stateParams.job_id,
         }, function(result) {
             $scope.job_name = result.job_name;
-            $scope.job_vertex_name = result.job_vertex_name;
-            $scope.job_vertex_index = result.job_vertex_index;
         });
         $scope.job_id = $stateParams.job_id;
-        $scope.job_vertex_id = $stateParams.execution_job_vertex_id;
-        $scope.execution_vertex_id = $stateParams.execution_vertex_id;
-        $scope.execution_id = $stateParams.execution_id;
+		$scope.topology_id = $stateParams.topology_id;		
+        $scope.vertex_id = $stateParams.vertex_id;
+		$scope.vertex_name = $stateParams.vertex_name;
+        $scope.subtask_id = $stateParams.subtask_id;
+        $scope.attempt_number = $stateParams.attempt_number;
     }]);
 
 executions_controller.controller('ExecutionsController.metrics',
@@ -25,10 +24,10 @@ executions_controller.controller('ExecutionsController.metrics',
 
         $scope.refresh = function() {
             Job.ExecutionMetrics.get({
-                    job_id: $stateParams.job_id,
-                    execution_job_vertex_id: $stateParams.execution_job_vertex_id,
-                    execution_vertex_id: $stateParams.execution_vertex_id,
-                    execution_id: $stateParams.execution_id
+                    jobid: $stateParams.job_id,
+                    vertexid: $stateParams.vertex_id,
+                    subtaskid: $stateParams.subtask_id,
+                    attempt_number: $stateParams.attempt_number
                 }, function (result) {
                     // group by metric group names
                     var group_map = {}
@@ -72,13 +71,41 @@ executions_controller.controller('ExecutionsController.metrics',
     }]
 );
 
+executions_controller.controller('ExecutionsController.accumulators',
+    ['$scope','$stateParams','Job','$rootScope',function($scope,$stateParams,Job,$rootScope){
+        $scope.itemsByPage = 100;
+
+        $scope.refresh = function() {
+            Job.ExecutionAccumulators.get({
+                    jobid: $stateParams.job_id,
+                    vertexid: $stateParams.vertex_id,
+                    subtaskid: $stateParams.subtask_id,
+                    attempt_number: $stateParams.attempt_number
+                }, function (result) {
+                    $scope.result=result.accumulators;
+					console.log($scope.result);
+                    $scope.itemsByPage = 100;
+                })
+        };
+
+        $scope.refresh();
+
+        if ($rootScope.__interval == undefined) {
+            $rootScope.__interval = [];
+        }
+        $rootScope.__interval.push(setInterval($scope.refresh, 10000));
+
+    }]
+);
+
 executions_controller.controller('ExecutionsController.log',
     ['$scope','$stateParams','Job',function($scope,$stateParams,Job){
         Job.ExecutionLog.get(
-            {job_id: $stateParams.job_id,
-                execution_job_vertex_id: $stateParams.execution_job_vertex_id,
-                execution_vertex_id: $stateParams.execution_vertex_id,
-                execution_id: $stateParams.execution_id
+			{
+				jobid: $stateParams.job_id,
+                vertexid: $stateParams.vertex_id,
+                subtaskid: $stateParams.subtask_id,
+                attempt_number: $stateParams.attempt_number
             },function(result){
                 $scope.execution_log_url = result.url
             })

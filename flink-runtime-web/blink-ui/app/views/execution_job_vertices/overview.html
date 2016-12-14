@@ -25,7 +25,7 @@
     </tr>
     <tr ng-repeat="row in execution_vertices_displayed_collection">
         <td>
-            <a ui-sref="job.execution_vertex.overview({execution_job_vertex_id: '{{job_vertex_id}}',execution_vertex_id: '{{row.id}}'})">{{row.id}}</a>
+            <a ui-sref="job.execution_vertex.overview({vertex_id: '{{job_vertex_id}}', subtask_id: '{{row.id}}', vertex_name: '{{job_vertex_name}}', topology_id: '{{topology_id}}'})">{{row.id}}</a>
         </td>
         <td>
             <span ng-if="row.start_time >0" >{{row.start_time | date:'yyyy-MM-dd'}}<br/>{{row.start_time | date: 'HH:mm:ss'}}</span>

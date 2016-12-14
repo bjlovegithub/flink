@@ -3,11 +3,12 @@
         <i class="fa fa-tachometer"> <a ui-sref="job.overview.sub({job_id: job_id})"> Job Overview</a></i>
     </li>
     <li class="active" title="{{job_vertex_name}}">
-            <i class="fa fa-th-large"> Execution Job Vertex [{{job_vertex_index}}]</i>
+            <i class="fa fa-th-large"> Execution Job Vertex [{{topology_id}}]</i>
     </li>
 </ol>
 <ul class="nav nav-tabs">
     <li ui-sref-active="active"><a ui-sref=".overview">OverView</a></li>
     <li ui-sref-active="active"><a ui-sref=".metrics">Metrics</a></li>
+	<li ui-sref-active="active"><a ui-sref=".accumulators">Accumulators</a></li>
 </ul>
 <div ui-view=""></div>
