@@ -8,6 +8,7 @@ app.get(web_root+'/jobs',function(req,res){
     return res.json(jobs)
 })
 
+// for job overview page
 app.get(web_root+'/jobs/:jobid/summary',function(req,res){
     return res.json(job)
 })
@@ -16,27 +17,31 @@ app.get(web_root+'/jobs/:jobid/plan',function(req,res){
         res.json(plan);
 })
 
-app.get(web_root+'/jobs/:job_id/checkpoints',function(req,res){
-        res.json(checkpoints);
-})
-
-app.get(web_root+'/jobs/:job_id/master-log',function(req,res){
-    res.json(master_log);
-})
-
-app.get(web_root+'/jobs/:job_id/failover-history',function(req,res){
-    res.json(failover_history);
-})
-
 app.get(web_root+'/jobs/:jobid/vertices',function(req,res){
     res.json(job_vertices)
 })
 
-app.get(web_root+'/jobs/:job_id/about',function(req,res){
+// for checkpoint page
+app.get(web_root+'/jobs/:jobid/checkpoints',function(req,res){
+        res.json(checkpoints);
+})
+
+// for job manager page
+app.get(web_root+'/jobs/:jobid/master-log',function(req,res){
+    res.json(master_log);
+})
+
+app.get(web_root+'/jobs/:jobid/failover-history',function(req,res){
+    res.json(failover_history);
+})
+
+// for about page
+app.get(web_root+'/jobs/:jobid/about',function(req,res){
     res.json(job_about)
 })
 
-app.get(web_root+'/jobs/:job_id/configuration',function(req,res){
+// for job conf page
+app.get(web_root+'/jobs/:jobid/configuration',function(req,res){
     res.json(configure)
 })
 
@@ -44,6 +49,7 @@ app.get(web_root+'/jobs/:job_id/configuration',function(req,res){
 //    res.json(execution_job_vertex_info)
 //})
 
+// for execution job vertex page
 app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks',function(req,res){
     res.json(execution_vertices)
 })
@@ -56,6 +62,7 @@ app.get(web_root+'/jobs/:jobid/vertices/:vertexid/accumulators',function(req,res
     res.json(execution_job_vertex_accumulators)
 })
 
+// for execution vertex page
 app.get(web_root+'/jobs/:job_id/vertices/:vertexid/subtasks/:subtaskid',function(req,res){
     res.json(executions)
 })
@@ -68,7 +75,7 @@ app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/accumulato
 })
 */
 
-
+// for execution attempt page
 app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/metrics',function(req,res){
     execution_metrics.metrics.splice(0,0,{
         "group": "system",
@@ -94,7 +101,7 @@ app.get(web_root+'/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:
 
 
 
-
+// set up the local server
 app.use('/', express.static(__dirname+"/../web/"));
 
 console.log(__dirname)
@@ -102,7 +109,7 @@ console.log(__dirname)
 app.listen(4730);
 
 
-
+// variables for restful api
 var jobs=
 {
   "running": [

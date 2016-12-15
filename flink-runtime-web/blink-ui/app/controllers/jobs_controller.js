@@ -154,28 +154,28 @@ jobsController.controller('JobsController.summary',['$scope','$stateParams','Job
 jobsController.controller('JobsController.configure',['$scope','$stateParams','Job',
     function($scope,$stateParams,Job){
         $scope.configure_row_collection = []
-        Job.Configure.get({job_id: $stateParams.job_id},function(result){
+        Job.Configure.get({jobid: $stateParams.job_id},function(result){
             result.configs.forEach(function(config){
                 $scope.configure_row_collection.push(config)
             })
         });
         $scope.configure_displayed_collection = [].concat($scope.configure_row_collection)
 
-        Job.Index.get(function(result){
-            $scope.job_name = result.jobs[0].name
+        Job.Summary.get({jobid: $stateParams.job_id}, function(result){
+            $scope.job_name = result.name
         })
     }]);
 
 jobsController.controller('JobsController.master_layout',['$scope','$stateParams','Job',
     function($scope,$stateParams,Job){
-        Job.Index.get(function(result){
-            $scope.job_name = result.jobs[0].name;
+        Job.Summary.get({jobid: $stateParams.job_id}, function(result){
+            $scope.job_name = result.name;
         })
     }]);
 
 jobsController.controller('JobsController.master_overview',['$scope','$stateParams','Job',
     function($scope,$stateParams,Job){
-        Job.Master.get({job_id: $stateParams.job_id},function(result){
+        Job.Master.get({jobid: $stateParams.job_id},function(result){
             $scope.master_host = result.host;
             $scope.master_port = result.port;
             $scope.master_container = result.container;
@@ -187,7 +187,7 @@ jobsController.controller('JobsController.failover_histories',['$scope','$stateP
     function($scope,$stateParams,Job,$rootScope,$filter){
         $scope.refresh = function () {
             $scope.failover_row_collection = [];
-            Job.FailoverHistory.get({job_id: $stateParams.job_id}, function (result) {
+            Job.FailoverHistory.get({jobid: $stateParams.job_id}, function (result) {
                 $scope.mode = result.mode;
 
                 result.failoverHistoryRecords.forEach(function (failover) {
@@ -218,12 +218,12 @@ jobsController.controller('JobsController.about',
 
 jobsController.controller('JobsController.checkpoints',
     ['$scope','$stateParams','Job','$rootScope',function($scope,$stateParams,Job,$rootScope){
-        Job.Index.get(function(result){
-            $scope.job_name = result.jobs[0].name
+        Job.Summary.get({jobid: $stateParams.job_id}, function(result){
+            $scope.job_name = result.name
         });
 
         $scope.refresh = function() {
-            Job.Checkpoints.get({job_id: $stateParams.job_id},function(result){
+            Job.Checkpoints.get({jobid: $stateParams.job_id},function(result){
                 $scope.checkpoints = result
             })
         };

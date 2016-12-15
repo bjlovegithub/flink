@@ -71,6 +71,7 @@ import org.apache.flink.runtime.webmonitor.handlers.RequestHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtaskDetailsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtaskExecutionAttemptAccumulatorsHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtaskExecutionAttemptDetailsHandler;
+import org.apache.flink.runtime.webmonitor.handlers.SubtaskExecutionAttemptLogHandler;
 import org.apache.flink.runtime.webmonitor.handlers.SubtasksTimesHandler;
 import org.apache.flink.runtime.webmonitor.handlers.TaskManagerLogHandler;
 import org.apache.flink.runtime.webmonitor.handlers.TaskManagersHandler;
@@ -265,9 +266,22 @@ public class WebRuntimeMonitor implements WebMonitor {
 			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid", handler(new SubtaskDetailsHandler(currentGraphs)))
 
 			// execution attempt related api
-			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt_number/metrics", handler(new SubtaskExecutionAttemptDetailsHandler(currentGraphs, metricFetcher)))
-			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt/accumulators", handler(new SubtaskExecutionAttemptAccumulatorsHandler(currentGraphs)))
+			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/metrics", handler(new SubtaskExecutionAttemptDetailsHandler(currentGraphs, metricFetcher)))
+			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/accumulators", handler(new SubtaskExecutionAttemptAccumulatorsHandler(currentGraphs)))
+			.GET("/api/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/log", handler(new SubtaskExecutionAttemptLogHandler(currentGraphs)))
 
+			// get job configuration
+			.GET("/api/jobs/:jobid/configuration", handler(new JobConfigHandler(currentGraphs)))
+
+			// get checkpoint info
+			.GET("/api/jobs/:jobid/checkpoints", handler(new JobCheckpointsHandler(currentGraphs)))
+
+			// get fail-over info
+			.GET("/api/jobs/:jobid/failover-history", handler(new JobExceptionsHandler(currentGraphs)))
+
+
+			
+			
 			// config how to interact with this web server
 			.GET("/config", handler(new DashboardConfigHandler(cfg.getRefreshInterval())))
 
@@ -296,10 +310,7 @@ public class WebRuntimeMonitor implements WebMonitor {
 			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt", handler(new SubtaskExecutionAttemptDetailsHandler(currentGraphs, metricFetcher)))
 			.GET("/jobs/:jobid/vertices/:vertexid/subtasks/:subtasknum/attempts/:attempt/accumulators", handler(new SubtaskExecutionAttemptAccumulatorsHandler(currentGraphs)))
 
-			.GET("/jobs/:jobid/config", handler(new JobConfigHandler(currentGraphs)))
-			.GET("/jobs/:jobid/exceptions", handler(new JobExceptionsHandler(currentGraphs)))
 			.GET("/jobs/:jobid/accumulators", handler(new JobAccumulatorsHandler(currentGraphs)))
-			.GET("/jobs/:jobid/checkpoints", handler(new JobCheckpointsHandler(currentGraphs)))
 			.GET("/jobs/:jobid/metrics", handler(new JobMetricsHandler(metricFetcher)))
 
 			.GET("/taskmanagers", handler(new TaskManagersHandler(DEFAULT_REQUEST_TIMEOUT, metricFetcher)))

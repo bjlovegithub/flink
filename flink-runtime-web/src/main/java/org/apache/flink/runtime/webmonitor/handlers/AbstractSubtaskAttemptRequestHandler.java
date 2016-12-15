@@ -38,7 +38,7 @@ public abstract class AbstractSubtaskAttemptRequestHandler extends AbstractSubta
 	
 	@Override
 	public String handleRequest(AccessExecutionVertex vertex, Map<String, String> params) throws Exception {
-		final String attemptNumberString = params.get("attempt");
+		final String attemptNumberString = params.get("attempt_number");
 		if (attemptNumberString == null) {
 			throw new RuntimeException("Attempt number parameter missing");
 		}

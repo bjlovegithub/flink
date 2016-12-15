@@ -38,13 +38,17 @@ jobs_service.factory('Job',['$resource','config',
            ExecutionLog:
                $resource(config.web_root+"/jobs/:jobid/vertices/:vertexid/subtasks/:subtaskid/attempts/:attempt_number/log"),
 
-		   
+
+		   // apis for job manager
            Master: $resource(config.web_root+"/jobs/:jobid/master"),
            FailoverHistory: $resource(config.web_root+"/jobs/:jobid/failover-history"),
+
+		   // apis for misc
            Configure: $resource(config.web_root+"/jobs/:jobid/configuration"),
            About: $resource(config.web_root+"/jobs/:jobid/about"),
-           Checkpoints: $resource(config.web_root+"/jobs/:jobid/checkpoints")
 
+		   // apis for checkpoints
+           Checkpoints: $resource(config.web_root+"/jobs/:jobid/checkpoints")
        }
     }
 ])

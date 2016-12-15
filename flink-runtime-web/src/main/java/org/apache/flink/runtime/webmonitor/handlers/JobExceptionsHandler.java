@@ -29,11 +29,11 @@ import java.io.StringWriter;
 import java.util.Map;
 
 /**
- * Request handler that returns the configuration of a job.
+ * Request handler that returns the failover info of a job.
  */
 public class JobExceptionsHandler extends AbstractExecutionGraphRequestHandler {
 
-	private static final int MAX_NUMBER_EXCEPTION_TO_REPORT = 20;
+	private static final int MAX_NUMBER_EXCEPTION_TO_REPORT = 200;
 	
 	public JobExceptionsHandler(ExecutionGraphHolder executionGraphHolder) {
 		super(executionGraphHolder);
@@ -53,7 +53,7 @@ public class JobExceptionsHandler extends AbstractExecutionGraphRequestHandler {
 		}
 
 		// we additionally collect all exceptions (up to a limit) that occurred in the individual tasks
-		gen.writeArrayFieldStart("all-exceptions");
+		gen.writeArrayFieldStart("failoverHistoryRecords");
 
 		int numExceptionsSoFar = 0;
 		boolean truncated = false;
@@ -71,8 +71,9 @@ public class JobExceptionsHandler extends AbstractExecutionGraphRequestHandler {
 						location.getFQDNHostname() + ':' + location.dataPort() : "(unassigned)";
 
 				gen.writeStartObject();
-				gen.writeStringField("exception", t);
-				gen.writeStringField("task", task.getTaskNameWithSubtaskIndex());
+				gen.writeStringField("message", t);
+				gen.writeStringField("executionAttemptID", task.getTaskNameWithSubtaskIndex());
+				gen.writeStringField("state", task.getExecutionState().name());
 				gen.writeStringField("location", locationString);
 				gen.writeEndObject();
 				numExceptionsSoFar++;

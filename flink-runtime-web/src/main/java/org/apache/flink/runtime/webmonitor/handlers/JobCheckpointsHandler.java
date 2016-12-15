@@ -53,6 +53,8 @@ public class JobCheckpointsHandler extends AbstractExecutionGraphRequestHandler 
 			if (stats.isDefined()) {
 				JobCheckpointStats jobStats = stats.get();
 
+				gen.writeObjectFieldStart("summary");
+
 				// Total number of checkpoints
 				gen.writeNumberField("count", jobStats.getCount());
 
@@ -77,12 +79,14 @@ public class JobCheckpointsHandler extends AbstractExecutionGraphRequestHandler 
 				gen.writeNumberField("avg", jobStats.getAverageStateSize());
 				gen.writeEndObject();
 
+				gen.writeEndObject();
+
 				// Recent history
-				gen.writeArrayFieldStart("history");
+				gen.writeArrayFieldStart("completed_checkpoint_info");
 				for (CheckpointStats checkpoint : jobStats.getRecentHistory()) {
 					gen.writeStartObject();
 					gen.writeNumberField("id", checkpoint.getCheckpointId());
-					gen.writeNumberField("timestamp", checkpoint.getTriggerTimestamp());
+					gen.writeNumberField("start_time", checkpoint.getTriggerTimestamp());
 					gen.writeNumberField("duration", checkpoint.getDuration());
 					gen.writeNumberField("size", checkpoint.getStateSize());
 					gen.writeEndObject();
@@ -92,6 +96,7 @@ public class JobCheckpointsHandler extends AbstractExecutionGraphRequestHandler 
 		}
 
 		gen.writeEndObject();
+		
 		gen.close();
 
 		return writer.toString();

@@ -1,9 +1,7 @@
-<h3>Checkpoint Mode: {{mode}}</h3>
 <table st-table="failover_displayed_collection" st-safe-src="failover_row_collection" class="table-list table-hover table-left">
     <thead>
     <tr>
         <th st-sort="timestamp" width="10%">ChangeTime</th>
-        <th st-sort="vertexName" width="15%">JobVertex</th>
         <th st-sort="executionAttemptID" width="15%">ExecutionAttempt</th>
         <th st-sort="state" width="10%">State</th>
         <th st-sort="message" width="50%">Message</th>
@@ -19,9 +17,6 @@
         </td>
         <td ng-if="row.timestamp <= 0" >
             -
-        </td>
-        <td style="word-break: normal">
-            {{row.vertexName}}
         </td>
         <td>
             {{row.executionAttemptID}}

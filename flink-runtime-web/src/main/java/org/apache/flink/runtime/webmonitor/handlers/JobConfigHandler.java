@@ -18,13 +18,13 @@
 
 package org.apache.flink.runtime.webmonitor.handlers;
 
-import java.io.StringWriter;
-import java.util.Map;
-
 import com.fasterxml.jackson.core.JsonGenerator;
 import org.apache.flink.api.common.ArchivedExecutionConfig;
 import org.apache.flink.runtime.executiongraph.AccessExecutionGraph;
 import org.apache.flink.runtime.webmonitor.ExecutionGraphHolder;
+
+import java.io.StringWriter;
+import java.util.Map;
 
 /**
  * Request handler that returns the execution config of a job.
@@ -42,36 +42,49 @@ public class JobConfigHandler extends AbstractExecutionGraphRequestHandler {
 		JsonGenerator gen = JsonFactory.jacksonFactory.createGenerator(writer);
 
 		gen.writeStartObject();
-		gen.writeStringField("jid", graph.getJobID().toString());
-		gen.writeStringField("name", graph.getJobName());
+
+		gen.writeArrayFieldStart("configs");
 
 		final ArchivedExecutionConfig summary = graph.getArchivedExecutionConfig();
 
 		if (summary != null) {
-			gen.writeObjectFieldStart("execution-config");
+			gen.writeStartObject();
+			gen.writeStringField("name", "execution-mode");
+			gen.writeStringField("value", summary.getExecutionMode());
+			gen.writeEndObject();
 
-			gen.writeStringField("execution-mode", summary.getExecutionMode());
+			gen.writeStartObject();
+			gen.writeStringField("name", "restart-strategy");
+			gen.writeStringField("value", summary.getRestartStrategyDescription());
+			gen.writeEndObject();
 
-			gen.writeStringField("restart-strategy", summary.getRestartStrategyDescription());
-			gen.writeNumberField("job-parallelism", summary.getParallelism());
-			gen.writeBooleanField("object-reuse-mode", summary.getObjectReuseEnabled());
+			gen.writeStartObject();
+			gen.writeStringField("name", "job-parallelism");
+			gen.writeNumberField("value", summary.getParallelism());
+			gen.writeEndObject();
+
+			gen.writeStartObject();
+			gen.writeStringField("name", "object-reuse-mode");
+			gen.writeBooleanField("value", summary.getObjectReuseEnabled());
+			gen.writeEndObject();
 
 			Map<String, String> ucVals = summary.getGlobalJobParameters();
 			if (ucVals != null) {
-				gen.writeObjectFieldStart("user-config");
-				
 				for (Map.Entry<String, String> ucVal : ucVals.entrySet()) {
-					gen.writeStringField(ucVal.getKey(), ucVal.getValue());
+					gen.writeStartObject();
+					gen.writeStringField("name", ucVal.getKey());
+					gen.writeStringField("value", ucVal.getValue());
+					gen.writeEndObject();
 				}
-
-				gen.writeEndObject();
 			}
-
-			gen.writeEndObject();
 		}
+
+		gen.writeEndArray();
+		
 		gen.writeEndObject();
 		
 		gen.close();
+		
 		return writer.toString();
 	}
 }
