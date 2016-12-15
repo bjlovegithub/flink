@@ -27,33 +27,22 @@ import java.io.StringWriter;
 import java.util.Map;
 
 /**
- * Base class for request handlers whose response depends on a specific job vertex (defined
- * via the "vertexid" parameter) in a specific job, defined via (defined voa the "jobid" parameter).  
+ * Get log url for current execution attempt.
  */
-public class SubtaskExecutionAttemptAccumulatorsHandler extends AbstractSubtaskAttemptRequestHandler {
+public class SubtaskExecutionAttemptLogHandler extends AbstractSubtaskAttemptRequestHandler {
 	
-	public SubtaskExecutionAttemptAccumulatorsHandler(ExecutionGraphHolder executionGraphHolder) {
+	public SubtaskExecutionAttemptLogHandler(ExecutionGraphHolder executionGraphHolder) {
 		super(executionGraphHolder);
 	}
 
 	@Override
 	public String handleRequest(AccessExecution execAttempt, Map<String, String> params) throws Exception {
-		final StringifiedAccumulatorResult[] accs = execAttempt.getUserAccumulatorsStringified();
-		
 		StringWriter writer = new StringWriter();
 		JsonGenerator gen = JsonFactory.jacksonFactory.createGenerator(writer);
 
 		gen.writeStartObject();
 
-		gen.writeArrayFieldStart("accumulators");
-		for (StringifiedAccumulatorResult acc : accs) {
-			gen.writeStartObject();
-			gen.writeStringField("name", acc.getName());
-			gen.writeStringField("type", acc.getType());
-			gen.writeStringField("value", acc.getValue());
-			gen.writeEndObject();
-		}
-		gen.writeEndArray();
+		gen.writeStringField("url", "#");
 		
 		gen.writeEndObject();
 		
